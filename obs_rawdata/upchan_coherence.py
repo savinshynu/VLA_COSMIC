@@ -263,7 +263,7 @@ if __name__ == '__main__':
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-d','--dat_file', type = str, required = True, help = 'GUPPI raw file to read in')
     parser.add_argument('-f','--lfft', type = int, required = True, default = 120,  help = 'Length of FFT, default:120')
-    parser.add_argument('-i', '--tint', type = int, required = True, help = 'Time to integrate in (s), default: whole file duration')
+    parser.add_argument('-i', '--tint', type = int, required = True, help = 'Time to integrate in (s)')
     parser.add_argument('-p', '--plot', action = 'store_true', help = 'plot the figures, otherwise save figures to working directory')
     parser.add_argument('-t', '--track', action = 'store_true', help = 'Track a channel as a function of time, need to enter a RFI free channel after inspection. Use this only if plotting is enabled.')
 

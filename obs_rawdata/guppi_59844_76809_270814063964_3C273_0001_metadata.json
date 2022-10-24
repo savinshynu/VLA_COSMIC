@@ -1,0 +1,5593 @@
+{
+  "META_timestamps": {
+    "META_FIBER_DELAY": "2022/09/16 19:31:14.294477 UTC",
+    "META_antennaProperties": "2022/09/22 14:23:37.828749 UTC",
+    "META": "2022/09/22 21:20:03.020790 UTC",
+    "META_flagAnt": "2022/09/05 04:10:47.906402 UTC",
+    "META_ANT": "2022/09/22 14:23:37.828183 UTC",
+    "META_VCI_DELAY": "2022/09/22 21:20:03.115720 UTC",
+    "META_antennaDelays": "2022/09/22 21:20:03.094981 UTC",
+    "META_arrayConfiguration": "2022/09/22 21:20:09.370245 UTC",
+    "META_fengineDevice": "2022/09/14 12:04:58.227758 UTC",
+    "META_observationConfiguration": "2022/09/17 19:27:45.506583 UTC",
+    "META_fengineCompensations": "2022/09/22 21:19:54.201347 UTC"
+  },
+  "META": {
+    "tstart": 59844.88892361111,
+    "station": [
+      "ea14",
+      "ea13",
+      "ea12",
+      "ea11",
+      "ea10",
+      "ea28",
+      "ea27",
+      "ea26",
+      "ea25",
+      "ea24",
+      "ea23",
+      "ea22",
+      "ea21",
+      "ea09",
+      "ea08",
+      "ea07",
+      "ea06",
+      "ea05",
+      "ea04",
+      "ea03",
+      "ea02",
+      "ea19",
+      "ea18",
+      "ea17",
+      "ea16",
+      "ea15"
+    ],
+    "mjd": "59844",
+    "baseband": [
+      "AC_8BIT",
+      "BD_8BIT"
+    ],
+    "samplehz": 2048000000.0,
+    "fenpol": 2,
+    "tnow": 59844.88892385147,
+    "fcents": [
+      1500.0,
+      1510.0
+    ],
+    "src": "3C273",
+    "fenchan": 1024.0,
+    "scanid": "cosmic_L_split_000.59844.86789516204.31.1",
+    "tbin": 1e-06,
+    "datasetid": "cosmic_L_split_000.59844.86789516204",
+    "tend": 59844.88961805555,
+    "projid": "Unknown",
+    "ra_deg": 187.27791666666664,
+    "nbits": 8,
+    "dec_deg": 2.052388888888889,
+    "ifids": [
+      "AC",
+      "BD"
+    ],
+    "sideband": [
+      1,
+      1
+    ],
+    "nant": 26,
+    "intents": {
+      "ScanIntent": "CALIBRATE_BANDPASS"
+    },
+    "obsbwmhz": [
+      1024.0,
+      1024.0
+    ],
+    "sslo": [
+      988.0,
+      998.0
+    ]
+  },
+  "META_flagAnt": {
+    "verified": "ea08,ea21,ea12,ea11,ea10,ea27,ea26,ea25,ea22,ea09,ea07,ea06,ea05,ea02,ea01,ea19,ea18,ea17,ea15,ea28",
+    "current": "",
+    "observation": "ea01,ea05",
+    "issue_nodata": "",
+    "issue_sync": "ea16"
+  },
+  "META_arrayConfiguration": {
+    "cosmic-gpu-0.0": {
+      "SYNCTIME": 0,
+      "OBSFREQ": 1500.0,
+      "SIDEBAND": 1,
+      "PKTNTIME": 32,
+      "PKTNPOL": 2,
+      "NPOL": 2,
+      "NBITS": 8,
+      "FENCHAN": 1024.0,
+      "SCHAN": 0,
+      "NCHAN": 1024,
+      "PKTNCHAN": 64,
+      "NANTS": 2,
+      "ANTNMS00": "ea02,ea24",
+      "OBSNCHAN": 2048,
+      "TBIN": 1e-06,
+      "CHAN_BW": 1.0,
+      "OBSBW": 1024.0,
+      "XPCTPKSZ": 8192.0,
+      "XPCTPKPS": 1000000.0,
+      "XPCTGBPS": "66.0 Gb/s"
+    },
+    "cosmic-gpu-0.1": {
+      "SYNCTIME": 0,
+      "OBSFREQ": 1510.0,
+      "SIDEBAND": 1,
+      "PKTNTIME": 32,
+      "PKTNPOL": 2,
+      "NPOL": 2,
+      "NBITS": 8,
+      "FENCHAN": 1024.0,
+      "SCHAN": 0,
+      "NCHAN": 1024,
+      "PKTNCHAN": 64,
+      "NANTS": 2,
+      "ANTNMS00": "ea02,ea24",
+      "OBSNCHAN": 2048,
+      "TBIN": 1e-06,
+      "CHAN_BW": 1.0,
+      "OBSBW": 1024.0,
+      "XPCTPKSZ": 8192.0,
+      "XPCTPKPS": 1000000.0,
+      "XPCTGBPS": "66.0 Gb/s"
+    }
+  },
+  "META_antennaProperties": {
+    "ea30": {
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie64",
+      "pipeline_id": 1
+    },
+    "ea19": {
+      "pad": "E05",
+      "widarID": 19,
+      "offset": -7.5e-12,
+      "X": 170.9355,
+      "Y": -108.7454,
+      "Z": -75.1047,
+      "config": "D",
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie64",
+      "pipeline_id": 0
+    },
+    "ea05": {
+      "pad": "W04",
+      "widarID": 5,
+      "offset": 1.9e-12,
+      "X": -130.5072,
+      "Y": -7.80897,
+      "Z": -67.5978,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie3d",
+      "pipeline_id": 0
+    },
+    "ea20": {
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie64",
+      "pipeline_id": 1
+    },
+    "ea07": {
+      "pad": "E07",
+      "widarID": 7,
+      "offset": -8.8e-12,
+      "X": 304.8161,
+      "Y": -192.8869,
+      "Z": -134.4455,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie65",
+      "pipeline_id": 0
+    },
+    "ea06": {
+      "pad": "N04",
+      "widarID": 6,
+      "offset": 2.4e-12,
+      "X": 11.4333,
+      "Y": 74.8534,
+      "Z": 111.6222,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie3d",
+      "pipeline_id": 1
+    },
+    "ea01": {
+      "pad": "W05",
+      "widarID": 1,
+      "offset": 1.2e-12,
+      "X": -191.6133,
+      "Y": -11.157,
+      "Z": -99.5125,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie3e",
+      "pipeline_id": 0
+    },
+    "ea10": {
+      "pad": "E08",
+      "widarID": 10,
+      "offset": -2.6e-12,
+      "X": 383.4825,
+      "Y": -241.8706,
+      "Z": -169.4508,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie64",
+      "pipeline_id": 1
+    },
+    "ea21": {
+      "pad": "E09",
+      "widarID": 21,
+      "offset": 2.1e-12,
+      "X": 469.4505,
+      "Y": -295.6832,
+      "Z": -207.7468,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie3e",
+      "pipeline_id": 0
+    },
+    "ea02": {
+      "pad": "N09",
+      "widarID": 2,
+      "offset": 0.0,
+      "X": 45.9155,
+      "Y": 298.4631,
+      "Z": 440.6382,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie3e",
+      "pipeline_id": 1
+    },
+    "ea03": {
+      "pad": "W01",
+      "widarID": 3,
+      "offset": -4.8e-12,
+      "X": -3.64364,
+      "Y": -22.9778,
+      "Z": -32.4726,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie43",
+      "pipeline_id": 0
+    },
+    "ea26": {
+      "pad": "W03",
+      "widarID": 26,
+      "offset": -5.1e-12,
+      "X": -79.7537,
+      "Y": -5.03095,
+      "Z": -41.0461,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie3d",
+      "pipeline_id": 1
+    },
+    "ea22": {
+      "pad": "N02",
+      "widarID": 22,
+      "offset": 7.1e-12,
+      "X": 4.51882,
+      "Y": 30.0682,
+      "Z": 45.7234,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie3e",
+      "pipeline_id": 1
+    },
+    "ea13": {
+      "pad": "W07",
+      "widarID": 13,
+      "offset": 6.3e-12,
+      "X": -340.9751,
+      "Y": -19.3425,
+      "Z": -177.5606,
+      "config": "D",
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie43",
+      "pipeline_id": 0
+    },
+    "ea27": {
+      "pad": "E04",
+      "widarID": 27,
+      "offset": -2e-13,
+      "X": 116.5888,
+      "Y": -74.4138,
+      "Z": -51.0601,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie65",
+      "pipeline_id": 0
+    },
+    "ea17": {
+      "pad": "N06",
+      "widarID": 17,
+      "offset": -6.4e-12,
+      "X": 22.7962,
+      "Y": 148.5204,
+      "Z": 220.0013,
+      "config": "D",
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie65",
+      "pipeline_id": 0
+    },
+    "ea29": {
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie3d",
+      "pipeline_id": 0
+    },
+    "ea28": {
+      "pad": "W08",
+      "widarID": 28,
+      "offset": -7e-12,
+      "X": -428.6815,
+      "Y": -24.1537,
+      "Z": -223.392,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie65",
+      "pipeline_id": 1
+    },
+    "ea25": {
+      "pad": "E02",
+      "widarID": 25,
+      "offset": -1.19e-11,
+      "X": 35.3352,
+      "Y": -23.1231,
+      "Z": -15.1837,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie3d",
+      "pipeline_id": 0
+    },
+    "ea12": {
+      "pad": "N01",
+      "widarID": 12,
+      "offset": -3.4e-12,
+      "X": -0.251565,
+      "Y": -0.643716,
+      "Z": 0.5318,
+      "config": "D",
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie3e",
+      "pipeline_id": 1
+    },
+    "ea23": {
+      "pad": "N08",
+      "widarID": 23,
+      "offset": -2.5e-12,
+      "X": 37.455,
+      "Y": 243.6808,
+      "Z": 360.0454,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie43",
+      "pipeline_id": 0
+    },
+    "ea14": {
+      "pad": "N03",
+      "widarID": 14,
+      "offset": -1.9e-12,
+      "X": 7.99834,
+      "Y": 52.4439,
+      "Z": 78.6808,
+      "config": "D",
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie43",
+      "pipeline_id": 1
+    },
+    "ea16": {
+      "pad": "E06",
+      "widarID": 16,
+      "offset": -1.61e-11,
+      "X": 233.8052,
+      "Y": -148.4077,
+      "Z": -102.9147,
+      "config": "D",
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie3d",
+      "pipeline_id": 1
+    },
+    "ea09": {
+      "pad": "W06",
+      "widarID": 9,
+      "offset": -6.38e-11,
+      "X": -261.8096,
+      "Y": -15.0015,
+      "Z": -136.194,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie64",
+      "pipeline_id": 0
+    },
+    "ea18": {
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie65",
+      "pipeline_id": 1,
+      "pad": "N05",
+      "widarID": 18,
+      "offset": -6.2e-12,
+      "X": 16.6026,
+      "Y": 108.471,
+      "Z": 161.0113,
+      "config": "D"
+    },
+    "ea04": {
+      "pad": "E03",
+      "widarID": 4,
+      "offset": 2.96e-11,
+      "X": 71.0283,
+      "Y": -45.6607,
+      "Z": -30.9534,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie43",
+      "pipeline_id": 1
+    },
+    "ea24": {
+      "pad": "W09",
+      "widarID": 24,
+      "offset": 5e-12,
+      "X": -524.6265,
+      "Y": -29.422,
+      "Z": -273.5417,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie43",
+      "pipeline_id": 1
+    },
+    "ea08": {
+      "pad": "E01",
+      "widarID": 8,
+      "offset": 2.88e-11,
+      "X": -7.0887,
+      "Y": -45.3387,
+      "Z": -65.4406,
+      "config": "D",
+      "server": "cosmic-fpga-0",
+      "pcie_id": "pcie65",
+      "pipeline_id": 1
+    },
+    "ea15": {
+      "pad": "N07",
+      "widarID": 15,
+      "offset": 4.1e-12,
+      "X": 29.749,
+      "Y": 193.6891,
+      "Z": 286.4666,
+      "config": "D",
+      "server": "cosmic-fpga-2",
+      "pcie_id": "pcie64",
+      "pipeline_id": 0
+    },
+    "ea11": {
+      "pad": "W02",
+      "widarID": 11,
+      "offset": 1.18e-11,
+      "X": -39.8687,
+      "Y": -2.84079,
+      "Z": -20.2104,
+      "config": "D",
+      "server": "cosmic-fpga-1",
+      "pcie_id": "pcie3e",
+      "pipeline_id": 0
+    }
+  },
+  "META_antennaDelays": {
+    "ea18D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea15C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea22C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea07D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea05A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea21C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea10C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea06C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea01D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea18B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea17A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea01A": {
+      "delay_absolute": -4668.7391765353195,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea26D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea14B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea27B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea09A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea09C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea02D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea18C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea17B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea09D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea11D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea01B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea11B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea15B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea17D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea06B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea04A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea25C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea11A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea06A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea28C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea27D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea14A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea10B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea14D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea13D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea07C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea08B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea22A": {
+      "delay_absolute": 5512.996027110978,
+      "delay_reference": 0.0,
+      "delay_relative": 5512.996027110978,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 11290.615863523282,
+      "sample_delay_programmed": 11290
+    },
+    "ea08A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea13B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea25B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea02C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea28A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea22B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea28D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea19C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea21B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea12C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 0.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea06D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea10A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea01C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea27A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea10D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea04D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea25A": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea04C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea21A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea02A": {
+      "delay_absolute": 8807.954185309583,
+      "delay_reference": 0.0,
+      "delay_relative": 8807.954185309583,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 18038.690171514027,
+      "sample_delay_programmed": 18038
+    },
+    "ea19A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea07A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea05B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea19B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea19D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea15A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea28B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea12A": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 0.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea05C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea13C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea11C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea15D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea02B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea07B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea08C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea05D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea25D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea09B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea18A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea17C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea26C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea12B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 0.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea22D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea13A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea26B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea26A": {
+      "delay_absolute": 0.0,
+      "delay_reference": -4668.7391765353195,
+      "delay_relative": 4668.7391765353195,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 9561.577833544334,
+      "sample_delay_programmed": 9561
+    },
+    "ea27C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea21D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea04B": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea12D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 0.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea08D": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    },
+    "ea14C": {
+      "delay_absolute": 0.0,
+      "delay_reference": 0.0,
+      "delay_relative": 0.0,
+      "delay_unit_scale": 1e-09,
+      "fengine_samplehz": 2048000000.0,
+      "sample_delay_offset": 0,
+      "sample_delay": 0.0,
+      "sample_delay_programmed": 0
+    }
+  },
+  "META_fengineDevice": {},
+  "META_VCI_DELAY": {
+    "ea18D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea18D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.1072802952790035E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.046887037101432E-11"
+          },
+          {
+            "index": "2",
+            "cff": "3.839540597909725E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-10.610000000000001"
+    },
+    "ea15C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea15C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.834758549991997E-6"
+          },
+          {
+            "index": "1",
+            "cff": "3.654356587369701E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.863825939219656E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-12.97"
+    },
+    "ea22C": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1465",
+      "idString": "ea22C",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.521239919314022E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.0517556702992614E-12"
+          },
+          {
+            "index": "2",
+            "cff": "2.254346645453538E-16"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-166.90000000000003"
+    },
+    "ea07D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea07D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.976977020378511E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-5.870391969728796E-11"
+          },
+          {
+            "index": "2",
+            "cff": "1.7423192325358445E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-19.790000000000003"
+    },
+    "ea24B": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "1406",
+      "idString": "ea24B",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.821422744464582E-6"
+          },
+          {
+            "index": "1",
+            "cff": "8.643352651552388E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.4304269717475692E-15"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-129.70000000000002"
+    },
+    "ea05A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea05A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.303041884197048E-6"
+          },
+          {
+            "index": "1",
+            "cff": "7.153306355910662E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-9.656111650630605E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-21.310000000000002"
+    },
+    "ea21C": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea21C",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.60526285390483E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.755288636294301E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-4.2553988077975894E-15"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-187.9"
+    },
+    "ea10C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea10C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-7.752088573921873E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-7.36954393913904E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.1938822969873773E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-16.990000000000002"
+    },
+    "ea24C": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "1406",
+      "idString": "ea24C",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.884822744464582E-6"
+          },
+          {
+            "index": "1",
+            "cff": "8.643352651552388E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.4304269717475692E-15"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-129.70000000000002"
+    },
+    "ea06C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea06C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.947674634177719E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4126991408762961E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.647957070443876E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-20.530000000000005"
+    },
+    "ea01D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea01D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.709757078717996E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.0563861013013153E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.4169704084986777E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-24.67"
+    },
+    "ea18B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea18B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.1350802952790035E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.046887037101432E-11"
+          },
+          {
+            "index": "2",
+            "cff": "3.839540597909725E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-10.610000000000001"
+    },
+    "ea01A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea01A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.913357078717996E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.0563861013013153E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.4169704084986777E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-24.67"
+    },
+    "ea17A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea17A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.45305424608017E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.802216237533629E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.262177090043379E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-11.290000000000001"
+    },
+    "ea26D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea26D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.584022028630317E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.31969841813462E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-5.907157423281296E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-4.630000000000001"
+    },
+    "ea14B": {
+      "t0": "59844.60466435185",
+      "sslo": "43024.0",
+      "sequenceNum": "22767",
+      "idString": "ea14B",
+      "fShift": "-424.1",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.52469426518036E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.51859426518036E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        }
+      ]
+    },
+    "ea27B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea27B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.966331695501612E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-2.2580073943887194E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.648758397950355E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-4.010000000000001"
+    },
+    "ea03D": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "3703",
+      "idString": "ea03D",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.932758216506733E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.1957174061675977E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-1.7012695993564531E-16"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-574.9000000000001"
+    },
+    "ea09A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea09A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.1874824198627584E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4479404119852428E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.935433912555399E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-17.87"
+    },
+    "ea09C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea09C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.1533324198627576E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4479404119852428E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.935433912555399E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-17.87"
+    },
+    "ea02D": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "3722",
+      "idString": "ea02D",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-8.698254185309584E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.259013803135863E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.17945369055487E-15"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-598.7"
+    },
+    "ea17B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea17B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.428654246080171E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.802216237533629E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.262177090043379E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-11.290000000000001"
+    },
+    "ea18C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea18C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.177680295279004E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.046887037101432E-11"
+          },
+          {
+            "index": "2",
+            "cff": "3.839540597909725E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-10.610000000000001"
+    },
+    "ea09D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea09D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.1006124198627584E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4479404119852428E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.935433912555399E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-17.87"
+    },
+    "ea16A": {
+      "t0": "59837.69808854166",
+      "sequenceNum": "3364",
+      "idString": "ea16A",
+      "epoch": "2022-09-15T16:45:14.850Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.879739650367296E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.1342380064154749E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-2.6943946952145103E-16"
+          }
+        ]
+      },
+      "sslo": "1965.0",
+      "fShift": "-370.1"
+    },
+    "ea24A": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "1406",
+      "idString": "ea24A",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.895222744464582E-6"
+          },
+          {
+            "index": "1",
+            "cff": "8.643352651552388E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.4304269717475692E-15"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-129.70000000000002"
+    },
+    "ea01B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea01B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.816357078717996E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.0563861013013153E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.4169704084986777E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-24.67"
+    },
+    "ea11D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea11D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.912247330661609E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.095221813152959E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-2.961203233986566E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-16.130000000000003"
+    },
+    "ea11B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea11B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.8936473306616085E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.095221813152959E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-2.961203233986566E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-16.130000000000003"
+    },
+    "ea15B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea15B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.759858549991997E-6"
+          },
+          {
+            "index": "1",
+            "cff": "3.654356587369701E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.863825939219656E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-12.97"
+    },
+    "ea06B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea06B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.892174634177719E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4126991408762961E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.647957070443876E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-20.530000000000005"
+    },
+    "ea17D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea17D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.45145424608017E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.802216237533629E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.262177090043379E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-11.290000000000001"
+    },
+    "ea04A": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22550",
+      "idString": "ea04A",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.036473566408064E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.026373566408064E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-700.1"
+    },
+    "ea25C": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1302",
+      "idString": "ea25C",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.133025803719334E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-1.0151153477485684E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.59784877260435E-17"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-110.30000000000001"
+    },
+    "ea11A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea11A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.896847330661609E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.095221813152959E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-2.961203233986566E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-16.130000000000003"
+    },
+    "ea06A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea06A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.04337463417772E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4126991408762961E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.647957070443876E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-20.530000000000005"
+    },
+    "ea28C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea28C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.7864713283099622E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.3793755716830818E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.1681248551433686E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-3.37"
+    },
+    "ea27D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea27D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.937531695501613E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-2.2580073943887194E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.648758397950355E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-4.010000000000001"
+    },
+    "ea14A": {
+      "t0": "59844.60466435185",
+      "sslo": "43024.0",
+      "sequenceNum": "22767",
+      "idString": "ea14A",
+      "fShift": "-424.1",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.5155942651803604E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.5066942651803596E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        }
+      ]
+    },
+    "ea16C": {
+      "t0": "59837.69808854166",
+      "sequenceNum": "3364",
+      "idString": "ea16C",
+      "epoch": "2022-09-15T16:45:14.850Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.861239650367297E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.1342380064154749E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-2.6943946952145103E-16"
+          }
+        ]
+      },
+      "sslo": "1965.0",
+      "fShift": "-370.1"
+    },
+    "ea10B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea10B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-7.657988573921874E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-7.36954393913904E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.1938822969873773E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-16.990000000000002"
+    },
+    "ea14D": {
+      "t0": "59844.60466435185",
+      "sslo": "43024.0",
+      "sequenceNum": "22767",
+      "idString": "ea14D",
+      "fShift": "-424.1",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.540394265180361E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.540394265180361E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        }
+      ]
+    },
+    "ea08B": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea08B",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.046349262894672E-6"
+          },
+          {
+            "index": "1",
+            "cff": "6.654198481473414E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-3.2652447616340946E-16"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-464.30000000000007"
+    },
+    "ea07C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea07C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-7.03775702037851E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-5.870391969728796E-11"
+          },
+          {
+            "index": "2",
+            "cff": "1.7423192325358445E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-19.790000000000003"
+    },
+    "ea13D": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22768",
+      "idString": "ea13D",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.4215000841396665E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.421800084139667E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-451.70000000000005"
+    },
+    "ea22A": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1465",
+      "idString": "ea22A",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.508639919314021E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.0517556702992614E-12"
+          },
+          {
+            "index": "2",
+            "cff": "2.254346645453538E-16"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-166.90000000000003"
+    },
+    "ea25B": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1302",
+      "idString": "ea25B",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.071125803719335E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-1.0151153477485684E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.59784877260435E-17"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-110.30000000000001"
+    },
+    "ea08A": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea08A",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.117249262894672E-6"
+          },
+          {
+            "index": "1",
+            "cff": "6.654198481473414E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-3.2652447616340946E-16"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-464.30000000000007"
+    },
+    "ea13B": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22768",
+      "idString": "ea13B",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.3756000841396666E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.3698000841396675E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-451.70000000000005"
+    },
+    "ea02C": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "3722",
+      "idString": "ea02C",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-8.792554185309584E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.259013803135863E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.17945369055487E-15"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-598.7"
+    },
+    "ea28A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea28A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.8004713283099624E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.3793755716830818E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.1681248551433686E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-3.37"
+    },
+    "ea22B": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1465",
+      "idString": "ea22B",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.4721399193140215E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.0517556702992614E-12"
+          },
+          {
+            "index": "2",
+            "cff": "2.254346645453538E-16"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-166.90000000000003"
+    },
+    "ea20A": {
+      "t0": "59802.712449074075",
+      "sslo": "8844.0",
+      "sequenceNum": "2",
+      "idString": "ea20A",
+      "fShift": "208.7",
+      "epoch": "2022-08-11T17:05:55.600Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-1.5601423507995085E-7"
+          },
+          {
+            "index": "1",
+            "cff": "-4.25808695171045E-14"
+          },
+          {
+            "index": "2",
+            "cff": "6.422939161209661E-18"
+          }
+        ]
+      }
+    },
+    "ea28D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea28D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.7166713283099625E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.3793755716830818E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.1681248551433686E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-3.37"
+    },
+    "ea19C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea19C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.6590579018668885E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.303513186479478E-11"
+          },
+          {
+            "index": "2",
+            "cff": "9.756456026377185E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-9.91"
+    },
+    "ea06D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea06D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.850374634177719E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4126991408762961E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.647957070443876E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-20.530000000000005"
+    },
+    "ea12C": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "1504",
+      "idString": "ea12C",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.182406374045753E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.320195076524921E-14"
+          },
+          {
+            "index": "2",
+            "cff": "-5.6629998641845965E-18"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-376.1"
+    },
+    "ea21B": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea21B",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.555662853904831E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.755288636294301E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-4.2553988077975894E-15"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-187.9"
+    },
+    "ea23C": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22765",
+      "idString": "ea23C",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.978133939873188E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.968133939873188E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-191.3"
+    },
+    "ea10A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea10A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-7.706788573921872E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-7.36954393913904E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.1938822969873773E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-16.990000000000002"
+    },
+    "ea01C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea01C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.817857078717997E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.0563861013013153E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.4169704084986777E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-24.67"
+    },
+    "ea27A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea27A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.014231695501613E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-2.2580073943887194E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.648758397950355E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-4.010000000000001"
+    },
+    "ea16D": {
+      "t0": "59837.69808854166",
+      "sequenceNum": "3364",
+      "idString": "ea16D",
+      "epoch": "2022-09-15T16:45:14.850Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.791339650367296E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.1342380064154749E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-2.6943946952145103E-16"
+          }
+        ]
+      },
+      "sslo": "2989.0",
+      "fShift": "-370.1"
+    },
+    "ea10D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea10D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-7.697088573921873E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-7.36954393913904E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.1938822969873773E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-16.990000000000002"
+    },
+    "ea23D": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22765",
+      "idString": "ea23D",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.857933939873189E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.856933939873188E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-191.3"
+    },
+    "ea04D": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22550",
+      "idString": "ea04D",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.122773566408064E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.121173566408064E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-700.1"
+    },
+    "ea25A": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1302",
+      "idString": "ea25A",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.164525803719334E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-1.0151153477485684E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.59784877260435E-17"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-110.30000000000001"
+    },
+    "ea04C": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22550",
+      "idString": "ea04C",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.101573566408063E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.091373566408063E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-700.1"
+    },
+    "ea03B": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "3703",
+      "idString": "ea03B",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.026358216506733E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.1957174061675977E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-1.7012695993564531E-16"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-574.9000000000001"
+    },
+    "ea24D": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "1406",
+      "idString": "ea24D",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.7987227444645815E-6"
+          },
+          {
+            "index": "1",
+            "cff": "8.643352651552388E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.4304269717475692E-15"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-129.70000000000002"
+    },
+    "ea21A": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea21A",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.6458628539048305E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.755288636294301E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-4.2553988077975894E-15"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-187.9"
+    },
+    "ea02A": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "3722",
+      "idString": "ea02A",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-8.807954185309584E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.259013803135863E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.17945369055487E-15"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-598.7"
+    },
+    "ea19A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea19A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.611457901866889E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.303513186479478E-11"
+          },
+          {
+            "index": "2",
+            "cff": "9.756456026377185E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-9.91"
+    },
+    "ea07A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea07A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-7.069417020378511E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-5.870391969728796E-11"
+          },
+          {
+            "index": "2",
+            "cff": "1.7423192325358445E-15"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-19.790000000000003"
+    },
+    "ea05B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea05B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.291341884197047E-6"
+          },
+          {
+            "index": "1",
+            "cff": "7.153306355910662E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-9.656111650630605E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-21.310000000000002"
+    },
+    "ea16B": {
+      "t0": "59837.69808854166",
+      "sequenceNum": "3364",
+      "idString": "ea16B",
+      "epoch": "2022-09-15T16:45:14.850Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.8101396503672965E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.1342380064154749E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-2.6943946952145103E-16"
+          }
+        ]
+      },
+      "sslo": "2989.0",
+      "fShift": "-370.1"
+    },
+    "ea19D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea19D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.616457901866888E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.303513186479478E-11"
+          },
+          {
+            "index": "2",
+            "cff": "9.756456026377185E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-9.91"
+    },
+    "ea19B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea19B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.629557901866889E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.303513186479478E-11"
+          },
+          {
+            "index": "2",
+            "cff": "9.756456026377185E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-9.91"
+    },
+    "ea03C": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "3703",
+      "idString": "ea03C",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.051958216506733E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.1957174061675977E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-1.7012695993564531E-16"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-574.9000000000001"
+    },
+    "ea28B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea28B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.7483713283099625E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.3793755716830818E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-3.1681248551433686E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-3.37"
+    },
+    "ea15A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea15A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.820258549991998E-6"
+          },
+          {
+            "index": "1",
+            "cff": "3.654356587369701E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.863825939219656E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-12.97"
+    },
+    "ea12A": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "1504",
+      "idString": "ea12A",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.200506374045753E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.320195076524921E-14"
+          },
+          {
+            "index": "2",
+            "cff": "-5.6629998641845965E-18"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-376.1"
+    },
+    "ea05C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea05C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.366141884197048E-6"
+          },
+          {
+            "index": "1",
+            "cff": "7.153306355910662E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-9.656111650630605E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-21.310000000000002"
+    },
+    "ea03A": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "3703",
+      "idString": "ea03A",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.1516582165067334E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-3.1957174061675977E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-1.7012695993564531E-16"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-574.9000000000001"
+    },
+    "ea13C": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22768",
+      "idString": "ea13C",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.519100084139667E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.509800084139667E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-451.70000000000005"
+    },
+    "ea11C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea11C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.934747330661609E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.095221813152959E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-2.961203233986566E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-16.130000000000003"
+    },
+    "ea02B": {
+      "t0": "59844.88903935185",
+      "sequenceNum": "3722",
+      "idString": "ea02B",
+      "epoch": "2022-09-22T21:20:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-8.726754185309584E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.259013803135863E-11"
+          },
+          {
+            "index": "2",
+            "cff": "2.17945369055487E-15"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-598.7"
+    },
+    "ea15D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea15D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.729358549991997E-6"
+          },
+          {
+            "index": "1",
+            "cff": "3.654356587369701E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.863825939219656E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-12.97"
+    },
+    "ea07B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea07B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-7.004937020378511E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-5.870391969728796E-11"
+          },
+          {
+            "index": "2",
+            "cff": "1.7423192325358445E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-19.790000000000003"
+    },
+    "ea23B": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22765",
+      "idString": "ea23B",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.839633939873188E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.834533939873188E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-191.3"
+    },
+    "ea08C": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea08C",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.155649262894673E-6"
+          },
+          {
+            "index": "1",
+            "cff": "6.654198481473414E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-3.2652447616340946E-16"
+          }
+        ]
+      },
+      "sslo": "988.0",
+      "fShift": "-464.30000000000007"
+    },
+    "ea05D": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea05D",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.319341884197047E-6"
+          },
+          {
+            "index": "1",
+            "cff": "7.153306355910662E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-9.656111650630605E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-21.310000000000002"
+    },
+    "ea20C": {
+      "t0": "59802.712449074075",
+      "sslo": "8844.0",
+      "sequenceNum": "2",
+      "idString": "ea20C",
+      "fShift": "208.7",
+      "epoch": "2022-08-11T17:05:55.600Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-1.6421423507995088E-7"
+          },
+          {
+            "index": "1",
+            "cff": "-4.25808695171045E-14"
+          },
+          {
+            "index": "2",
+            "cff": "6.422939161209661E-18"
+          }
+        ]
+      }
+    },
+    "ea25D": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1302",
+      "idString": "ea25D",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.064225803719334E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-1.0151153477485684E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.59784877260435E-17"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-110.30000000000001"
+    },
+    "ea09B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea09B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-3.122422419862758E-6"
+          },
+          {
+            "index": "1",
+            "cff": "1.4479404119852428E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-1.935433912555399E-15"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-17.87"
+    },
+    "ea17C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea17C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.471354246080171E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.802216237533629E-11"
+          },
+          {
+            "index": "2",
+            "cff": "5.262177090043379E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-11.290000000000001"
+    },
+    "ea18A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea18A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.1829802952790035E-6"
+          },
+          {
+            "index": "1",
+            "cff": "2.046887037101432E-11"
+          },
+          {
+            "index": "2",
+            "cff": "3.839540597909725E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-10.610000000000001"
+    },
+    "ea26C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea26C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.661922028630317E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.31969841813462E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-5.907157423281296E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-4.630000000000001"
+    },
+    "ea12B": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "1504",
+      "idString": "ea12B",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.120706374045754E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.320195076524921E-14"
+          },
+          {
+            "index": "2",
+            "cff": "-5.6629998641845965E-18"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-376.1"
+    },
+    "ea22D": {
+      "t0": "59844.882326388884",
+      "sequenceNum": "1465",
+      "idString": "ea22D",
+      "epoch": "2022-09-22T21:10:33.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.442639919314021E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.0517556702992614E-12"
+          },
+          {
+            "index": "2",
+            "cff": "2.254346645453538E-16"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-166.90000000000003"
+    },
+    "ea20D": {
+      "t0": "59802.712449074075",
+      "sslo": "8972.0",
+      "sequenceNum": "2",
+      "idString": "ea20D",
+      "fShift": "208.7",
+      "epoch": "2022-08-11T17:05:55.600Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-1.9651423507995085E-7"
+          },
+          {
+            "index": "1",
+            "cff": "-4.25808695171045E-14"
+          },
+          {
+            "index": "2",
+            "cff": "6.422939161209661E-18"
+          }
+        ]
+      }
+    },
+    "ea26B": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea26B",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.627322028630317E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.31969841813462E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-5.907157423281296E-16"
+          }
+        ]
+      },
+      "sslo": "739.8495065431616",
+      "fShift": "-4.630000000000001"
+    },
+    "ea13A": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22768",
+      "idString": "ea13A",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.3736000841396665E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-3.364200084139667E-6"
+            },
+            {
+              "index": "1",
+              "cff": "8.612028341023093E-12"
+            },
+            {
+              "index": "2",
+              "cff": "-2.243478144564718E-15"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-451.70000000000005"
+    },
+    "ea26A": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea26A",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-4.6701220286303164E-6"
+          },
+          {
+            "index": "1",
+            "cff": "4.31969841813462E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-5.907157423281296E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-4.630000000000001"
+    },
+    "ea27C": {
+      "t0": "59842.015603009255",
+      "sequenceNum": "962",
+      "idString": "ea27C",
+      "epoch": "2022-09-20T00:22:28.100Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-6.004431695501613E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-2.2580073943887194E-11"
+          },
+          {
+            "index": "2",
+            "cff": "6.648758397950355E-16"
+          }
+        ]
+      },
+      "sslo": "1227.7877694446179",
+      "fShift": "-4.010000000000001"
+    },
+    "ea04B": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22550",
+      "idString": "ea04B",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.090673566408063E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.084173566408063E-6"
+            },
+            {
+              "index": "1",
+              "cff": "-1.0659568745218153E-11"
+            },
+            {
+              "index": "2",
+              "cff": "4.0330837845009213E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-700.1"
+    },
+    "ea21D": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea21D",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.527762853904831E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.755288636294301E-11"
+          },
+          {
+            "index": "2",
+            "cff": "-4.2553988077975894E-15"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-187.9"
+    },
+    "ea20B": {
+      "t0": "59802.712449074075",
+      "sslo": "8972.0",
+      "sequenceNum": "2",
+      "idString": "ea20B",
+      "fShift": "208.7",
+      "epoch": "2022-08-11T17:05:55.600Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-1.9561423507995086E-7"
+          },
+          {
+            "index": "1",
+            "cff": "-4.25808695171045E-14"
+          },
+          {
+            "index": "2",
+            "cff": "6.422939161209661E-18"
+          }
+        ]
+      }
+    },
+    "ea23A": {
+      "t0": "59844.60466435185",
+      "sequenceNum": "22765",
+      "idString": "ea23A",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.839033939873188E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-6.831433939873188E-6"
+            },
+            {
+              "index": "1",
+              "cff": "4.2157762591817394E-11"
+            },
+            {
+              "index": "2",
+              "cff": "5.574519730126702E-16"
+            }
+          ]
+        }
+      ],
+      "sslo": "43024.0",
+      "fShift": "-191.3"
+    },
+    "ea12D": {
+      "t0": "59844.88684027778",
+      "sequenceNum": "1504",
+      "idString": "ea12D",
+      "epoch": "2022-09-22T21:17:03.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.103906374045754E-6"
+          },
+          {
+            "index": "1",
+            "cff": "-6.320195076524921E-14"
+          },
+          {
+            "index": "2",
+            "cff": "-5.6629998641845965E-18"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-376.1"
+    },
+    "ea08D": {
+      "t0": "59844.689733796295",
+      "sequenceNum": "54",
+      "idString": "ea08D",
+      "epoch": "2022-09-22T16:33:13.000Z",
+      "bbDelayModel": {
+        "bbId": "0",
+        "modelCff": [
+          {
+            "index": "0",
+            "cff": "-5.113149262894671E-6"
+          },
+          {
+            "index": "1",
+            "cff": "6.654198481473414E-12"
+          },
+          {
+            "index": "2",
+            "cff": "-3.2652447616340946E-16"
+          }
+        ]
+      },
+      "sslo": "998.0",
+      "fShift": "-464.30000000000007"
+    },
+    "ea14C": {
+      "t0": "59844.60466435185",
+      "sslo": "43024.0",
+      "sequenceNum": "22767",
+      "idString": "ea14C",
+      "fShift": "-424.1",
+      "epoch": "2022-09-22T14:30:43.000Z",
+      "bbDelayModel": [
+        {
+          "bbId": "0",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.64669426518036E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        },
+        {
+          "bbId": "1",
+          "modelCff": [
+            {
+              "index": "0",
+              "cff": "-5.63629426518036E-6"
+            },
+            {
+              "index": "1",
+              "cff": "9.075215095363268E-12"
+            },
+            {
+              "index": "2",
+              "cff": "1.1956761843475417E-16"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "META_ANT": {
+    "datasetId": "Q3eq_2GHz.59844.59974230324",
+    "EopSet": {
+      "eopday": [
+        {
+          "epoch": {
+            "value": 59842.0
+          },
+          "tai_utc": {
+            "value": 37.0
+          },
+          "ut1_utc": {
+            "value": -0.007635
+          },
+          "x_pole": {
+            "value": 0.29079
+          },
+          "y_pole": {
+            "value": 0.28406
+          }
+        },
+        {
+          "epoch": {
+            "value": 59843.0
+          },
+          "tai_utc": {
+            "value": 37.0
+          },
+          "ut1_utc": {
+            "value": -0.006822
+          },
+          "x_pole": {
+            "value": 0.28942
+          },
+          "y_pole": {
+            "value": 0.28214
+          }
+        },
+        {
+          "epoch": {
+            "value": 59844.0
+          },
+          "tai_utc": {
+            "value": 37.0
+          },
+          "ut1_utc": {
+            "value": -0.006116
+          },
+          "x_pole": {
+            "value": 0.28804
+          },
+          "y_pole": {
+            "value": 0.28024
+          }
+        },
+        {
+          "epoch": {
+            "value": 59845.0
+          },
+          "tai_utc": {
+            "value": 37.0
+          },
+          "ut1_utc": {
+            "value": -0.005592
+          },
+          "x_pole": {
+            "value": 0.28667
+          },
+          "y_pole": {
+            "value": 0.27833
+          }
+        },
+        {
+          "epoch": {
+            "value": 59846.0
+          },
+          "tai_utc": {
+            "value": 37.0
+          },
+          "ut1_utc": {
+            "value": -0.005281
+          },
+          "x_pole": {
+            "value": 0.28535
+          },
+          "y_pole": {
+            "value": 0.27641
+          }
+        }
+      ]
+    },
+    "creation": "59844.59974290509",
+    "configuration": "D",
+    "AntennaProperties": [
+      {
+        "name": "ea14",
+        "widarID": {
+          "value": 14
+        },
+        "pad": {
+          "value": "N03"
+        },
+        "X": {
+          "value": 7.99834
+        },
+        "Y": {
+          "value": 52.4439
+        },
+        "Z": {
+          "value": 78.6808
+        },
+        "offset": {
+          "value": -1.9e-12
+        }
+      },
+      {
+        "name": "ea13",
+        "widarID": {
+          "value": 13
+        },
+        "pad": {
+          "value": "W07"
+        },
+        "X": {
+          "value": -340.9751
+        },
+        "Y": {
+          "value": -19.3425
+        },
+        "Z": {
+          "value": -177.5606
+        },
+        "offset": {
+          "value": 6.3e-12
+        }
+      },
+      {
+        "name": "ea12",
+        "widarID": {
+          "value": 12
+        },
+        "pad": {
+          "value": "N01"
+        },
+        "X": {
+          "value": -0.251565
+        },
+        "Y": {
+          "value": -0.643716
+        },
+        "Z": {
+          "value": 0.5318
+        },
+        "offset": {
+          "value": -3.4e-12
+        }
+      },
+      {
+        "name": "ea11",
+        "widarID": {
+          "value": 11
+        },
+        "pad": {
+          "value": "W02"
+        },
+        "X": {
+          "value": -39.8687
+        },
+        "Y": {
+          "value": -2.84079
+        },
+        "Z": {
+          "value": -20.2104
+        },
+        "offset": {
+          "value": 1.18e-11
+        }
+      },
+      {
+        "name": "ea10",
+        "widarID": {
+          "value": 10
+        },
+        "pad": {
+          "value": "E08"
+        },
+        "X": {
+          "value": 383.4825
+        },
+        "Y": {
+          "value": -241.8706
+        },
+        "Z": {
+          "value": -169.4508
+        },
+        "offset": {
+          "value": -2.6e-12
+        }
+      },
+      {
+        "name": "ea28",
+        "widarID": {
+          "value": 28
+        },
+        "pad": {
+          "value": "W08"
+        },
+        "X": {
+          "value": -428.6815
+        },
+        "Y": {
+          "value": -24.1537
+        },
+        "Z": {
+          "value": -223.392
+        },
+        "offset": {
+          "value": -7e-12
+        }
+      },
+      {
+        "name": "ea27",
+        "widarID": {
+          "value": 27
+        },
+        "pad": {
+          "value": "E04"
+        },
+        "X": {
+          "value": 116.5888
+        },
+        "Y": {
+          "value": -74.4138
+        },
+        "Z": {
+          "value": -51.0601
+        },
+        "offset": {
+          "value": -2e-13
+        }
+      },
+      {
+        "name": "ea26",
+        "widarID": {
+          "value": 26
+        },
+        "pad": {
+          "value": "W03"
+        },
+        "X": {
+          "value": -79.7537
+        },
+        "Y": {
+          "value": -5.03095
+        },
+        "Z": {
+          "value": -41.0461
+        },
+        "offset": {
+          "value": -5.1e-12
+        }
+      },
+      {
+        "name": "ea24",
+        "widarID": {
+          "value": 24
+        },
+        "pad": {
+          "value": "W09"
+        },
+        "X": {
+          "value": -524.6265
+        },
+        "Y": {
+          "value": -29.422
+        },
+        "Z": {
+          "value": -273.5417
+        },
+        "offset": {
+          "value": 5e-12
+        }
+      },
+      {
+        "name": "ea23",
+        "widarID": {
+          "value": 23
+        },
+        "pad": {
+          "value": "N08"
+        },
+        "X": {
+          "value": 37.455
+        },
+        "Y": {
+          "value": 243.6808
+        },
+        "Z": {
+          "value": 360.0454
+        },
+        "offset": {
+          "value": -2.5e-12
+        }
+      },
+      {
+        "name": "ea22",
+        "widarID": {
+          "value": 22
+        },
+        "pad": {
+          "value": "N02"
+        },
+        "X": {
+          "value": 4.51882
+        },
+        "Y": {
+          "value": 30.0682
+        },
+        "Z": {
+          "value": 45.7234
+        },
+        "offset": {
+          "value": 7.1e-12
+        }
+      },
+      {
+        "name": "ea21",
+        "widarID": {
+          "value": 21
+        },
+        "pad": {
+          "value": "E09"
+        },
+        "X": {
+          "value": 469.4505
+        },
+        "Y": {
+          "value": -295.6832
+        },
+        "Z": {
+          "value": -207.7468
+        },
+        "offset": {
+          "value": 2.1e-12
+        }
+      },
+      {
+        "name": "ea09",
+        "widarID": {
+          "value": 9
+        },
+        "pad": {
+          "value": "W06"
+        },
+        "X": {
+          "value": -261.8096
+        },
+        "Y": {
+          "value": -15.0015
+        },
+        "Z": {
+          "value": -136.194
+        },
+        "offset": {
+          "value": -6.38e-11
+        }
+      },
+      {
+        "name": "ea08",
+        "widarID": {
+          "value": 8
+        },
+        "pad": {
+          "value": "E01"
+        },
+        "X": {
+          "value": -7.0887
+        },
+        "Y": {
+          "value": -45.3387
+        },
+        "Z": {
+          "value": -65.4406
+        },
+        "offset": {
+          "value": 2.88e-11
+        }
+      },
+      {
+        "name": "ea07",
+        "widarID": {
+          "value": 7
+        },
+        "pad": {
+          "value": "E07"
+        },
+        "X": {
+          "value": 304.8161
+        },
+        "Y": {
+          "value": -192.8869
+        },
+        "Z": {
+          "value": -134.4455
+        },
+        "offset": {
+          "value": -8.8e-12
+        }
+      },
+      {
+        "name": "ea06",
+        "widarID": {
+          "value": 6
+        },
+        "pad": {
+          "value": "N04"
+        },
+        "X": {
+          "value": 11.4333
+        },
+        "Y": {
+          "value": 74.8534
+        },
+        "Z": {
+          "value": 111.6222
+        },
+        "offset": {
+          "value": 2.4e-12
+        }
+      },
+      {
+        "name": "ea05",
+        "widarID": {
+          "value": 5
+        },
+        "pad": {
+          "value": "W04"
+        },
+        "X": {
+          "value": -130.5072
+        },
+        "Y": {
+          "value": -7.80897
+        },
+        "Z": {
+          "value": -67.5978
+        },
+        "offset": {
+          "value": 1.9e-12
+        }
+      },
+      {
+        "name": "ea04",
+        "widarID": {
+          "value": 4
+        },
+        "pad": {
+          "value": "E03"
+        },
+        "X": {
+          "value": 71.0283
+        },
+        "Y": {
+          "value": -45.6607
+        },
+        "Z": {
+          "value": -30.9534
+        },
+        "offset": {
+          "value": 2.96e-11
+        }
+      },
+      {
+        "name": "ea03",
+        "widarID": {
+          "value": 3
+        },
+        "pad": {
+          "value": "W01"
+        },
+        "X": {
+          "value": -3.64364
+        },
+        "Y": {
+          "value": -22.9778
+        },
+        "Z": {
+          "value": -32.4726
+        },
+        "offset": {
+          "value": -4.8e-12
+        }
+      },
+      {
+        "name": "ea02",
+        "widarID": {
+          "value": 2
+        },
+        "pad": {
+          "value": "N09"
+        },
+        "X": {
+          "value": 45.9155
+        },
+        "Y": {
+          "value": 298.4631
+        },
+        "Z": {
+          "value": 440.6382
+        },
+        "offset": {
+          "value": 0.0
+        }
+      },
+      {
+        "name": "ea01",
+        "widarID": {
+          "value": 1
+        },
+        "pad": {
+          "value": "W05"
+        },
+        "X": {
+          "value": -191.6133
+        },
+        "Y": {
+          "value": -11.157
+        },
+        "Z": {
+          "value": -99.5125
+        },
+        "offset": {
+          "value": 1.2e-12
+        }
+      },
+      {
+        "name": "ea19",
+        "widarID": {
+          "value": 19
+        },
+        "pad": {
+          "value": "E05"
+        },
+        "X": {
+          "value": 170.9355
+        },
+        "Y": {
+          "value": -108.7454
+        },
+        "Z": {
+          "value": -75.1047
+        },
+        "offset": {
+          "value": -7.5e-12
+        }
+      },
+      {
+        "name": "ea18",
+        "widarID": {
+          "value": 18
+        },
+        "pad": {
+          "value": "N05"
+        },
+        "X": {
+          "value": 16.6026
+        },
+        "Y": {
+          "value": 108.471
+        },
+        "Z": {
+          "value": 161.0113
+        },
+        "offset": {
+          "value": -6.2e-12
+        }
+      },
+      {
+        "name": "ea17",
+        "widarID": {
+          "value": 17
+        },
+        "pad": {
+          "value": "N06"
+        },
+        "X": {
+          "value": 22.7962
+        },
+        "Y": {
+          "value": 148.5204
+        },
+        "Z": {
+          "value": 220.0013
+        },
+        "offset": {
+          "value": -6.4e-12
+        }
+      },
+      {
+        "name": "ea16",
+        "widarID": {
+          "value": 16
+        },
+        "pad": {
+          "value": "E06"
+        },
+        "X": {
+          "value": 233.8052
+        },
+        "Y": {
+          "value": -148.4077
+        },
+        "Z": {
+          "value": -102.9147
+        },
+        "offset": {
+          "value": -1.61e-11
+        }
+      },
+      {
+        "name": "ea15",
+        "widarID": {
+          "value": 15
+        },
+        "pad": {
+          "value": "N07"
+        },
+        "X": {
+          "value": 29.749
+        },
+        "Y": {
+          "value": 193.6891
+        },
+        "Z": {
+          "value": 286.4666
+        },
+        "offset": {
+          "value": 4.1e-12
+        }
+      }
+    ]
+  },
+  "META_FIBER_DELAY": {
+    "E18": {
+      "date_one": "Wed Jun 02 15:37:40 MDT 2021",
+      "delay": -13634.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jun 02 15:37:40 MDT 2021"
+    },
+    "N02": {
+      "date_one": "Mon Mar 15 15:25:53 MDT 2021",
+      "delay": -5347.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Mar 15 15:25:00 MDT 2021"
+    },
+    "N28": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -24391.7,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "E56": {
+      "date_one": "Wed Jul 24 13:59:28 MDT 2019",
+      "delay": -72561.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jul 24 13:59:00 MDT 2019"
+    },
+    "W05": {
+      "date_one": "Tue Jul 12 13:58:16 MDT 2022",
+      "delay": -4152.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Tue Jul 12 13:56:00 MDT 2022"
+    },
+    "W07": {
+      "date_one": "Mon Jul 11 13:29:57 MDT 2022",
+      "delay": -3851.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Mon Jul 11 13:29:00 MDT 2022"
+    },
+    "W12": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -6837.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "E03": {
+      "date_one": "Wed Jul 06 15:45:21 MDT 2022",
+      "delay": -5931.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Wed Jul 06 15:45:00 MDT 2022"
+    },
+    "W20": {
+      "date_one": "Wed Dec 01 15:54:07 MST 2021",
+      "delay": -15133.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 01 15:54:07 MST 2021"
+    },
+    "W01": {
+      "date_one": "Wed Jul 06 15:46:56 MDT 2022",
+      "delay": -5041.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Wed Jul 06 15:46:00 MDT 2022"
+    },
+    "E20": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -15485.5,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "E32": {
+      "date_one": "Wed Dec 01 15:54:07 MST 2021",
+      "delay": -30336.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 01 15:54:07 MST 2021"
+    },
+    "N09": {
+      "date_one": "Wed Jul 20 14:02:37 MDT 2022",
+      "delay": -7810.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jul 20 14:02:00 MDT 2022"
+    },
+    "E40": {
+      "date_one": "Tue Mar 15 15:04:09 MDT 2022",
+      "delay": -42520.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Tue Mar 15 15:04:00 MDT 2022"
+    },
+    "E14": {
+      "date_one": "Wed Jun 02 15:37:40 MDT 2021",
+      "delay": -10118.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jun 02 15:37:40 MDT 2021"
+    },
+    "E07": {
+      "date_one": "Tue Jul 19 15:43:05 MDT 2022",
+      "delay": -6050.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Jul 19 15:43:00 MDT 2022"
+    },
+    "E12": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -8990.9,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "N16": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -12450.3,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "N01": {
+      "date_one": "Mon Jul 18 12:21:04 MDT 2022",
+      "delay": -5065.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Jul 18 12:21:00 MDT 2022"
+    },
+    "N18": {
+      "date_one": "Thu Jun 03 15:17:13 MDT 2021",
+      "delay": -13847.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jun 03 15:17:13 MDT 2021"
+    },
+    "N12": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -9747.9,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "N36": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -34269.1,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "N32": {
+      "date_one": "Wed Sep 22 12:33:23 MDT 2021",
+      "delay": -29080.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Sep 22 12:33:00 MDT 2021"
+    },
+    "E10": {
+      "date_one": "Thu Jun 03 15:17:13 MDT 2021",
+      "delay": -7425.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jun 03 15:17:13 MDT 2021"
+    },
+    "N08": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -7507.5,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "N64": {
+      "date_one": "Mon Jan 31 16:18:51 MST 2022",
+      "delay": -83793.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Jan 31 16:18:00 MST 2022"
+    },
+    "E24": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -20139.1,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "N04": {
+      "date_one": "Thu Jul 14 15:05:19 MDT 2022",
+      "delay": -5970.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jul 14 15:05:00 MDT 2022"
+    },
+    "N20": {
+      "date_one": "Wed Jan 05 11:26:04 MST 2022",
+      "delay": -24900.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jan 05 11:26:00 MST 2022"
+    },
+    "W32": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -29657.4,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "E08": {
+      "date_one": "Wed Dec 01 17:27:38 MST 2021",
+      "delay": -6626.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Nov 30 17:27:00 MST 2021"
+    },
+    "N24": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -20075.1,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "N06": {
+      "date_one": "Fri Mar 19 17:54:10 MDT 2021",
+      "delay": -6544.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Fri Mar 19 17:54:00 MDT 2021"
+    },
+    "E16": {
+      "date_one": "Thu Dec 30 14:48:00 MST 2021",
+      "delay": -12130.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Dec 30 14:48:00 MST 2021"
+    },
+    "MAS": {
+      "date_one": "Thu Jul 14 15:55:08 MDT 2022",
+      "delay": -7590.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jul 14 15:55:00 MDT 2022"
+    },
+    "E04": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -5605.3,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "W08": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -4541.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "E02": {
+      "date_one": "Tue Jul 05 17:30:53 MDT 2022",
+      "delay": -6048.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Jul 05 17:30:00 MDT 2022"
+    },
+    "N10": {
+      "date_one": "Tue Jan 05 22:34:26 MST 2016",
+      "delay": -8178.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Jan 05 22:34:00 MST 2016"
+    },
+    "W56": {
+      "date_one": "Tue Mar 01 14:07:20 MST 2022",
+      "delay": -72200.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Mar 01 14:07:00 MST 2022"
+    },
+    "E05": {
+      "date_one": "Mon Jul 11 13:30:28 MDT 2022",
+      "delay": -5110.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Mon Jul 11 13:30:00 MDT 2022"
+    },
+    "N05": {
+      "date_one": "Wed Jul 20 14:03:16 MDT 2022",
+      "delay": -6411.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Wed Jul 20 14:03:00 MDT 2022"
+    },
+    "W16": {
+      "date_one": "Wed Dec 01 15:54:07 MST 2021",
+      "delay": -11342.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 01 15:54:07 MST 2021"
+    },
+    "W18": {
+      "date_one": "Wed Jun 02 15:37:40 MDT 2021",
+      "delay": -12986.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jun 02 15:37:40 MDT 2021"
+    },
+    "N03": {
+      "date_one": "Thu Jul 21 14:50:12 MDT 2022",
+      "delay": -5760.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jul 21 14:50:00 MDT 2022"
+    },
+    "W06": {
+      "date_one": "Wed Jul 13 14:49:29 MDT 2022",
+      "delay": -3600.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jul 13 14:49:00 MDT 2022"
+    },
+    "N07": {
+      "date_one": "Tue Jul 19 15:42:33 MDT 2022",
+      "delay": -6999.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Jul 19 15:42:00 MDT 2022"
+    },
+    "W28": {
+      "date_one": "Wed Dec 01 15:54:07 MST 2021",
+      "delay": -24212.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 01 15:54:07 MST 2021"
+    },
+    "W02": {
+      "date_one": "Tue Jul 05 17:09:13 MDT 2022",
+      "delay": -5100.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Jul 05 17:09:00 MDT 2022"
+    },
+    "N72": {
+      "date_one": "Tue Feb 01 20:41:11 MST 2022",
+      "delay": -101013.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Jan 31 20:41:00 MST 2022"
+    },
+    "W10": {
+      "date_one": "Thu Jun 03 15:17:13 MDT 2021",
+      "delay": -5555.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jun 03 15:17:13 MDT 2021"
+    },
+    "W72": {
+      "date_one": "Tue Feb 22 15:27:02 MST 2022",
+      "delay": -109200.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Feb 22 15:27:00 MST 2022"
+    },
+    "N40": {
+      "date_one": "Tue Feb 01 20:37:36 MST 2022",
+      "delay": -40096.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Jan 31 20:37:00 MST 2022"
+    },
+    "E72": {
+      "date_one": "Mon Feb 28 19:41:07 MST 2022",
+      "delay": -109800.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Sun Feb 27 19:41:00 MST 2022"
+    },
+    "E64": {
+      "date_one": "Tue Mar 01 14:08:37 MST 2022",
+      "delay": -90740.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Mar 01 14:08:00 MST 2022"
+    },
+    "E48": {
+      "date_one": "Thu Mar 03 15:10:01 MST 2022",
+      "delay": -56723.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Mar 03 15:10:00 MST 2022"
+    },
+    "E28": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -25224.8,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "W04": {
+      "date_one": "Thu Jul 07 13:26:10 MDT 2022",
+      "delay": -4344.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Thu Jul 07 13:26:00 MDT 2022"
+    },
+    "N48": {
+      "date_one": "Tue Feb 01 20:39:27 MST 2022",
+      "delay": -53070.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Jan 31 20:39:00 MST 2022"
+    },
+    "W40": {
+      "date_one": "Mon Dec 07 21:15:42 MST 2020",
+      "delay": -41700.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Sun Dec 06 21:15:00 MST 2020"
+    },
+    "W36": {
+      "date_one": "Wed Dec 08 16:07:22 MST 2021",
+      "delay": -35456.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 08 16:07:22 MST 2021"
+    },
+    "E09": {
+      "date_one": "Tue Jul 12 13:58:35 MDT 2022",
+      "delay": -6968.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Tue Jul 12 13:58:00 MDT 2022"
+    },
+    "W09": {
+      "date_one": "Thu Jul 14 15:05:59 MDT 2022",
+      "delay": -5125.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jul 14 15:05:00 MDT 2022"
+    },
+    "W03": {
+      "date_one": "Wed Jul 06 15:47:28 MDT 2022",
+      "delay": -4841.0,
+      "measured_by": "DEMOREST",
+      "date_two": "Wed Jul 06 15:47:00 MDT 2022"
+    },
+    "E06": {
+      "date_one": "Wed Jul 13 14:50:01 MDT 2022",
+      "delay": -5890.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jul 13 14:50:00 MDT 2022"
+    },
+    "N14": {
+      "date_one": "Thu Jun 03 15:17:13 MDT 2021",
+      "delay": -10877.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Jun 03 15:17:13 MDT 2021"
+    },
+    "E36": {
+      "date_one": "Wed Dec 01 16:04:20 MST 2021",
+      "delay": -36088.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Dec 01 16:04:00 MST 2021"
+    },
+    "N56": {
+      "date_one": "Tue Feb 01 20:40:13 MST 2022",
+      "delay": -67448.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Jan 31 20:40:00 MST 2022"
+    },
+    "W48": {
+      "date_one": "Thu Dec 03 16:42:42 MST 2020",
+      "delay": -56010.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Dec 03 16:42:00 MST 2020"
+    },
+    "W14": {
+      "date_one": "Wed Jun 02 15:37:40 MDT 2021",
+      "delay": -9594.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Wed Jun 02 15:37:40 MDT 2021"
+    },
+    "W64": {
+      "date_one": "Fri Nov 13 20:03:13 MST 2020",
+      "delay": -89984.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Thu Nov 12 20:03:00 MST 2020"
+    },
+    "E01": {
+      "date_one": "Tue Jul 05 16:01:28 MDT 2022",
+      "delay": -5133.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Tue Jul 05 16:01:00 MDT 2022"
+    },
+    "W24": {
+      "date_one": "Mon Apr 18 12:09:13 MDT 2022",
+      "delay": -19450.0,
+      "measured_by": "VDHAWAN",
+      "date_two": "Mon Apr 18 12:09:00 MDT 2022"
+    }
+  }
+}

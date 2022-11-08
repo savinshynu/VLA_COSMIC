@@ -74,13 +74,10 @@ for i in range(bls):
 #print(uvd.get_baseline_nums())
 #print(uvw_array[bi,0,:]/3e+8)  
 
-
-#print(ant_dat.shape)
-
-
+ant_dat = data = uvd.get_data(26, 23)
+print(ant_dat.shape)
 
 
-"""
 resp_rr = 10*np.log10(np.abs(ant_dat[0,:,0]))
 resp_ll = 10*np.log10(np.abs(ant_dat[0,:,1]))
 phase_rr = np.angle(ant_dat[0,:,0], deg = True)
@@ -107,7 +104,7 @@ plt.legend()
 plt.show()
 
 
-
+"""
 
 #resp_xx = np.absolute(np.mean(tdata[:,:,0,2,2], axis = 0))
 #resp_yy = np.absolute(np.mean(tdata[:,:,3,2,2], axis = 0))

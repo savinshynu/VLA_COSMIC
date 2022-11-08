@@ -58,6 +58,20 @@ def main(args):
         print(f"Warning: Given intg_time > duration of the file: {round(n_blocks*ntsamp_block*del_t)} s, Using maximum time duration of the file")
         n_blocks_read = n_blocks
 
+    
+    band_percentage = float(args.band)
+    bandcenter_percentage = float(args.band_center)
+    assert band_percentage > 0.0 and band_percentage <= 1.0
+
+    band_bottom = bandcenter_percentage - (0.5 * band_percentage) # center case, default
+    band_top = bandcenter_percentage + (0.5 * band_percentage) # center case, default
+    assert band_bottom > 0.0 and band_bottom <= 1.0
+    assert band_top > 0.0 and band_top <= 1.0
+
+    freq_range = freq_end - freq_start
+    chan_in_plt = int(band_bottom*nchan)
+    chan_fin_plt = int(band_top*nchan)
+
     print("The header info for the file: ")
     print(header)
     print(f"Nblocks: {n_blocks},  Number of blocks to read: {n_blocks_read}")
@@ -84,6 +98,8 @@ def main(args):
                 del_f,
                 freq_start,
                 freq_end,
+                chan_in_plt,
+                chan_fin_plt,
                 obsid
             )
     
@@ -101,6 +117,8 @@ def plot_func(
     del_f,
     freq_start,
     freq_end,
+    chan_in_plt,
+    chan_fin_plt,
     obsid
 ):
     antpair_str = f"{ants[0]}-{ants[1]}"
@@ -173,8 +191,8 @@ def plot_func(
     mean_crosscorr_spec = np.mean(cross_corr, axis = 0) # Cross correlations
 
     #mid freq range
-    midi = int((nchan*nfine/2) - 16*nfine)
-    mide = int((nchan*nfine/2) + 16*nfine) 
+    midi = int(chan_in_plt*nfine)
+    mide = int(chan_fin_plt*nfine) 
 
     #Plotting the phase and amplitude of the autocorrelation for 2 antennas
 
@@ -303,7 +321,7 @@ def plot_func(
 
         #Defining  total frequency channels and fine channel bandwidths in Hz to get the time lags
         tlags = np.fft.fftfreq(nchan*nfine,(del_f/nfine)*1e+6)
-        tlags = np.fft.fftshift(tlags)*1e+9 #Converting the time lag into us
+        tlags = np.fft.fftshift(tlags)*1e+9 #Converting the time lag into ns
         tmax_pol0 = np.argmax(10*np.log(np.abs(mean_crosscorr_pol0_ifft)))
         tmax_pol1 = np.argmax(10*np.log(np.abs(mean_crosscorr_pol1_ifft)))
           
@@ -373,6 +391,8 @@ if __name__ == '__main__':
         description='Reads guppi rawfiles, upchannelize, conducts auto and crosscorrelation',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-d','--dat_file', type = str, required = True, help = 'GUPPI raw file to read in')
+    parser.add_argument('-b','--band', type = float, required = False, default = 1.0,  help = 'Bandwidth to plot specified as a decimal percentage [0.0, 1.0], default:1.0')
+    parser.add_argument('-bc','--band-center', type = float, required = False, default = 1.0,  help = 'Bandwidth center to plot specified as a decimal percentage [0.0, 1.0]-`band`, default:0.5')
     parser.add_argument('-f','--lfft', type = int, required = True, default = 120,  help = 'Length of FFT, default:120')
     parser.add_argument('-i', '--tint', type = float, required = True, help = 'Time to integrate in (s), default: whole file duration')
     parser.add_argument('-td', '--time_delay', action = 'store_true', help = 'If there are fringes, plot/save the time delay plot. An RFI filtering is conductted before the IFFT')

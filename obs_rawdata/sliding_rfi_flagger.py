@@ -20,7 +20,7 @@ def flag_rfi(data, winSize, clip=3):
           
     bad = np.argwhere(abs(diff-med) > clip*sig_md)
 
-    return  bad, smth
+    return  bad
 
 
    

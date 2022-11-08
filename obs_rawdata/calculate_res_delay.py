@@ -71,7 +71,7 @@ for i,ant in enumerate(ants):
     
     XYZ[i,:] = [X + VLA_X, Y + VLA_Y, Z + VLA_Z]
     #Getting the baseline vector
-    V_ant_ref = np.array([X-ref_X, Y-ref_Y, Z-ref_Z])
+    V_ref_ant = np.array([ref_X-X, ref_Y-Y, ref_Z-Z])
     #d = np.sqrt((X-ref_X)**2+(Y-ref_Y)**2+(Z-ref_Z)**2)
     
     #Converting that to ENU
@@ -81,14 +81,14 @@ for i,ant in enumerate(ants):
                      [np.cos(lon_vla_rad)*np.cos(lat_vla_rad), np.sin(lon_vla_rad)*np.cos(lat_vla_rad), np.sin(lat_vla_rad)]
                     ])
     
-    enu_ant_ref = np.matmul(T_mat, V_ant_ref.T)
+    enu_ant_ref = np.matmul(T_mat, V_ref_ant.T)
 
     #delay[i] = (d*np.cos(alt*(np.pi/180.0)))/c
     delay = np.dot(enu_ant_ref, S_enu) #/c
     #print(f"{ant}: X,Y,Z = {X, Y, Z}")
-    print(f"{ant}-{ref_ant}, delay = {delay} ns")
-
-print("Getting UVW terms from Paul's scripts")
+    #print(f"{ref_ant}-{ant}, delay = {delay} ns")
+    print(f"{ref_ant}-{ant}, delay_distance = {delay} m")
+print("Getting UVW terms(in meters) from Paul's scripts")
 
 uvw = vla_uvw(mjd_time_start, (ra_deg*(np.pi/180.0), dec_deg*(np.pi/180.0)), XYZ) 
 

@@ -2,7 +2,6 @@ import sys
 import numpy as np
 from matplotlib import pyplot as plt
 import sdmpy
-from sdmpy import calib
 import time
 
 #Enter the directory containing data and metadata
@@ -15,7 +14,7 @@ for scan in sdm.scans():
 
 scan_int = sdm.scan(5)
 
-print("Metadata of this scan")
+print("Metadata of this scan from solutions are derived")
 
 print(f" Source: {scan_int.source} \n\
          Field : {scan_int.field} \n\
@@ -41,9 +40,19 @@ freqs = scan_int.freqs().flatten()/1e+9
 print(freqs.shape)
 #print(freqs[0,:])
 
+#data to derive solutions
 data = bd.get_data() # Read full visibility data array for the scan
 
-data_avg = np.mean(data, axis=0)
+
+#data to apply the derived calibrations.
+# Plotting them before and after applying calibrations
+
+scan_apply = sdm.scan(10)
+bd_apply = scan_apply.bdf
+data_apply = bd_apply.get_data()
+
+
+data_avg = np.mean(data_apply, axis=0)
 
 nbls = data_avg.shape[0]
 grid = int(np.ceil(np.sqrt(nbls)))
@@ -72,6 +81,7 @@ fig.supxlabel("Frequency (GHz)")
 plt.show()
 
 print(data.shape)
+print(data_apply.shape)
 
 #Looking at data before calibration
 
@@ -84,12 +94,16 @@ print(f"Took {t2-t1}s for getting solution from {dur}s of data")
 
 print(gainsol.shape)
 
+
+# Apply the derived solutions on a different datasets to see
+# if they are consistent
+
 #Applying the solutions now:
-calib.applycal(data, gainsol, axis=1)
+calib.applycal(data_apply, gainsol, axis=1)
 
 #plotting after calibrations
 
-cal_data_avg = np.mean(data, axis=0)
+cal_data_avg = np.mean(data_apply, axis=0)
 
 fig, axs = plt.subplots(grid, grid, sharex = True, sharey = True, constrained_layout=True, figsize = (12,12))
 for i in range(grid):

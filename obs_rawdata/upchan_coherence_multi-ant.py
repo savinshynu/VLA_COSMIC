@@ -75,7 +75,11 @@ def main(args):
     print("The header info for the file: ")
     print(header)
     print(f"Nblocks: {n_blocks},  Number of blocks to read: {n_blocks_read}")
-   
+
+    #Open a text file to store the delays for each  pols and the correlation coefficients
+
+    fh = open("delay.txt", "w")
+    fh.write("pol0 pol1 coefficient")
 
     # Collecting data from each block into a big array
     data = np.zeros((nant, nchan, int(ntsamp_block*n_blocks_read), npols), dtype = 'complex64')
@@ -100,9 +104,11 @@ def main(args):
                 freq_end,
                 chan_in_plt,
                 chan_fin_plt,
-                obsid
+                obsid,
+                fh
             )
-    
+    fh.close()
+
     tend = time.time()
     print(f"Total processing time: {(tend-tbeg)/60.0} min")
 
@@ -119,7 +125,8 @@ def plot_func(
     freq_end,
     chan_in_plt,
     chan_fin_plt,
-    obsid
+    obsid,
+    fh
 ):
     antpair_str = f"{ants[0]}-{ants[1]}"
     print(f"Processing data from baseline {antpair_str}")
@@ -177,6 +184,11 @@ def plot_func(
 
     # Cross correlation part
     cross_corr = chan_dat1*np.conjugate(chan_dat2) # First antenna data times the conjugate of the second antenna
+    
+
+    #Calculating the crosscorrelation coefficient
+    coff = np.sum(cross_corr)/np.sqrt(np.sum(autocorr1)*np.sum(autocorr2))
+    coff = np.abs(coff)
 
     t2 = time.time() 
     print(f"Correlation done in {t2-t1} s")
@@ -324,7 +336,10 @@ def plot_func(
         tlags = np.fft.fftshift(tlags)*1e+9 #Converting the time lag into ns
         tmax_pol0 = np.argmax(10*np.log(np.abs(mean_crosscorr_pol0_ifft)))
         tmax_pol1 = np.argmax(10*np.log(np.abs(mean_crosscorr_pol1_ifft)))
-          
+        
+
+        fh.write(f"{tmax_pol0} {tmax_pol1} {coff}")
+
         print('Plotting time delay') 
         fig, (ax0, ax1) = plt.subplots(1, 2, constrained_layout=True, figsize = (10,8))
 

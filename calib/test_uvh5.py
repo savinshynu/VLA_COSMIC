@@ -8,20 +8,20 @@ from numpy import linalg
 filename = sys.argv[1]
 
 uvd = UVData()
-uvd.read(filename, fix_old_proj=False)
+self.uvd.read(filename, fix_old_proj=False)
 
-dat = uvd.data_array
+dat = self.uvd.data_array
 print(dat.shape)
 
-bls = uvd.Nbls
+bls = self.uvd.Nbls
 
 data = dat[:bls, :, :, :]
 
 print(bl2ant(100))
 
 print(bls)
-print(uvd.Ntimes)
-#print(uvd.time_array)
+print(self.uvd.Ntimes)
+#print(self.uvd.time_array)
 
 
 """

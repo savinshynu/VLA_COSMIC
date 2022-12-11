@@ -20,7 +20,7 @@ def vla_uvw(mjd, direction, antpos):
     antpos = coordinates.EarthLocation(x=antpos[:,0], y=antpos[:,1], z=antpos[:,2], unit='m')
 
     datetime = time.Time(mjd,format='mjd')
-    print(datetime)
+    #print(datetime)
 
     # VLA array center location
     tel = coordinates.EarthLocation(x=-1601185.4, y=-5041977.5, z=3554875.9, unit='m')

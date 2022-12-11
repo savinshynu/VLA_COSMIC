@@ -8,25 +8,25 @@ import pyuvdata.utils as uvutils
 filename = sys.argv[1]
 
 uvd = UVData()
-uvd.read(filename, fix_old_proj=False)
+self.uvd.read(filename, fix_old_proj=False)
 
-dat = uvd.data_array
-nant_data = uvd.Nants_data
-nant_array = uvd.Nants_telescope
-ant_names = uvd.antenna_names
-nfreqs = uvd.Nfreqs
-ntimes = uvd.Ntimes
-npols = uvd.Npols
-bls = uvd.Nbls
-nspws = uvd.Nspws
-chan_width = uvd.channel_width
-intg_time = uvd.integration_time
-source = uvd.object_name
-telescope = uvd.telescope_name
-pol_array = uvutils.polnum2str(uvd.polarization_array)
-freq_array = uvd.freq_array[0,:]
+dat = self.uvd.data_array
+nant_data = self.uvd.Nants_data
+nant_array = self.uvd.Nants_telescope
+ant_names = self.uvd.antenna_names
+nfreqs = self.uvd.Nfreqs
+ntimes = self.uvd.Ntimes
+npols = self.uvd.Npols
+bls = self.uvd.Nbls
+nspws = self.uvd.Nspws
+chan_width = self.uvd.channel_width
+intg_time = self.uvd.integration_time
+source = self.uvd.object_name
+telescope = self.uvd.telescope_name
+pol_array = uvutils.polnum2str(self.uvd.polarization_array)
+freq_array = self.uvd.freq_array[0,:]
 lobs = ntimes*intg_time
-uvw_array = uvd.uvw_array
+uvw_array = self.uvd.uvw_array
 uvw_array = uvw_array.reshape(ntimes,bls, 3)
 
 #Print out the observation details
@@ -48,18 +48,18 @@ print(f" Observations from {telescope}: \n\
          No. of antennas in the array: {nant_array} \n\
          Antenna name: {ant_names}")
 
-print (np.unique(uvd.ant_1_array))
+print (np.unique(self.uvd.ant_1_array))
 
-#uvd.write_ms("test_vla.ms", force_phase = True)
+#self.uvd.write_ms("test_vla.ms", force_phase = True)
 
-#print(uvd.time_array)
+#print(self.uvd.time_array)
 
 # Collect the data for a pair of antennas at a polarization
 
-#ant_pair = uvd.get_antpairs()
+#ant_pair = self.uvd.get_antpairs()
 
-#print(uvd.baseline_array)
-ant1, ant2 = uvd.baseline_to_antnums(uvd.baseline_array[:bls])
+#print(self.uvd.baseline_array)
+ant1, ant2 = self.uvd.baseline_to_antnums(self.uvd.baseline_array[:bls])
 
 ant1 = np.array(ant1)
 ant2 = np.array(ant2)
@@ -71,10 +71,10 @@ for i in range(bls):
 
 #print(len(ant_pair))
 
-#print(uvd.get_baseline_nums())
+#print(self.uvd.get_baseline_nums())
 #print(uvw_array[bi,0,:]/3e+8)  
 
-ant_dat = data = uvd.get_data(26, 23)
+ant_dat = data = self.uvd.get_data(26, 23)
 print(ant_dat.shape)
 
 

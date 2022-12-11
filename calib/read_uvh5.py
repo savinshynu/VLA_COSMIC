@@ -8,23 +8,23 @@ from numpy import linalg
 filename = sys.argv[1]
 
 uvd = UVData()
-uvd.read(filename, fix_old_proj=False)
+self.uvd.read(filename, fix_old_proj=False)
 
-dat = uvd.data_array
-nant_data = uvd.Nants_data
-nant_array = uvd.Nants_telescope
-ant_names = uvd.antenna_names
-nfreqs = uvd.Nfreqs
-ntimes = uvd.Ntimes
-npols = uvd.Npols
-bls = uvd.Nbls
-nspws = uvd.Nspws
-chan_width = uvd.channel_width
-intg_time = uvd.integration_time
-source = uvd.object_name
-telescope = uvd.telescope_name
-pol_array = uvd.polarization_array
-freq_array = uvd.freq_array[0,:]
+dat = self.uvd.data_array
+nant_data = self.uvd.Nants_data
+nant_array = self.uvd.Nants_telescope
+ant_names = self.uvd.antenna_names
+nfreqs = self.uvd.Nfreqs
+ntimes = self.uvd.Ntimes
+npols = self.uvd.Npols
+bls = self.uvd.Nbls
+nspws = self.uvd.Nspws
+chan_width = self.uvd.channel_width
+intg_time = self.uvd.integration_time
+source = self.uvd.object_name
+telescope = self.uvd.telescope_name
+pol_array = self.uvd.polarization_array
+freq_array = self.uvd.freq_array[0,:]
 lobs = ntimes*intg_time
 #Print out the observation details
 
@@ -45,22 +45,22 @@ print(f" Observations from {telescope}: \n\
          No. of antennas in the array: {nant_array}")
 
 
-#uvd.write_ms("test_vla.ms", force_phase = True)
+#self.uvd.write_ms("test_vla.ms", force_phase = True)
 
 
 
 
 
 
-bls = uvd.Nbls
+bls = self.uvd.Nbls
 
 data = dat[:, :, :, :]
 
 print(bl2ant(2))
 
 print(bls)
-print(uvd.Ntimes)
-print(uvd.time_array)
+print(self.uvd.Ntimes)
+print(self.uvd.time_array)
 
 
 
@@ -80,7 +80,7 @@ tdata = np.zeros((ntimes,)+data.shape[axis+2:]+(nant, nant),
 
 print (tdata.shape)
 
-a0, a1 = uvd.baseline_to_antnums(1)
+a0, a1 = self.uvd.baseline_to_antnums(1)
 
 print(a0, a1)
 

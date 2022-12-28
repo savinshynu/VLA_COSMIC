@@ -90,7 +90,8 @@ for i,ant in enumerate(ants):
     print(f"{ref_ant}-{ant}, delay_distance = {delay} m")
 print("Getting UVW terms(in meters) from Paul's scripts")
 
-uvw = vla_uvw(mjd_time_start, (ra_deg*(np.pi/180.0), dec_deg*(np.pi/180.0)), XYZ) 
+uvw1 = vla_uvw(mjd_time_start, (ra_deg*(np.pi/180.0), dec_deg*(np.pi/180.0)), XYZ) 
+uvw2 = vla_uvw(mjd_time_start + (10/86400), (ra_deg*(np.pi/180.0), dec_deg*(np.pi/180.0)), XYZ) 
 
 #for i in range(uvw.shape[0]):
 #    print(f"{ants[i]}: X,Y,Z = {XYZ[i,0], XYZ[i,1], XYZ[i,2]}")
@@ -100,10 +101,6 @@ uvw = vla_uvw(mjd_time_start, (ra_deg*(np.pi/180.0), dec_deg*(np.pi/180.0)), XYZ
 for i, ant1 in enumerate(ants):
     for j, ant2 in enumerate(ants):
         if j > i:
-           print(f"{ants[i]}-{ants[j]}: U,V,W = {uvw[i,0]-uvw[j,0], uvw[i,1]-uvw[j,1] , uvw[i,2]-uvw[j,2]}") 
-
-           
-
-
-
+            #print(f"{ants[i]}-{ants[j]}: U,V,W = {uvw[i,0]-uvw[j,0], uvw[i,1]-uvw[j,1] , uvw[i,2]-uvw[j,2]}") 
+            print(f"{ants[i]}-{ants[j]}: W1 = {uvw1[i,2]-uvw1[j,2]}, W2 = {uvw2[i,2]-uvw2[j,2]}, W2-W1 = {((uvw2[i,2]-uvw2[j,2]) - (uvw1[i,2]-uvw1[j,2]))/10.0} ")
 

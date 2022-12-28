@@ -3,7 +3,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 import sdmpy
 import time
-
+import calib
+#from sdmpy import calib
+#from calib_util import gaincal, applycal
 #Enter the directory containing data and metadata
 dirname = sys.argv[1]
 
@@ -12,7 +14,7 @@ sdm = sdmpy.SDM(dirname, use_xsd=False)
 for scan in sdm.scans(): 
     print (scan.idx,scan.source,scan.intents)
 
-scan_int = sdm.scan(5)
+scan_int = sdm.scan(2)
 
 print("Metadata of this scan from solutions are derived")
 
@@ -47,7 +49,7 @@ data = bd.get_data() # Read full visibility data array for the scan
 #data to apply the derived calibrations.
 # Plotting them before and after applying calibrations
 
-scan_apply = sdm.scan(10)
+scan_apply = sdm.scan(2)
 bd_apply = scan_apply.bdf
 data_apply = bd_apply.get_data()
 
@@ -57,17 +59,27 @@ data_avg = np.mean(data_apply, axis=0)
 nbls = data_avg.shape[0]
 grid = int(np.ceil(np.sqrt(nbls)))
 
-fig, axs = plt.subplots(grid, grid, sharex  = True, sharey = True, constrained_layout=True, figsize = (12,12))
 for i in range(grid):
     for j in range(grid):
         rbl = (i*grid)+j
         if rbl < nbls:
+            print(bls[rbl])
 
+gridx = 6
+gridy = 6
+
+fig, axs = plt.subplots(gridx, gridy, sharex  = True, sharey = True, constrained_layout=True, figsize = (12,12))
+for i in range(gridx):
+    for j in range(gridy):
+        rbl = (i*gridy)+j
+        #if rbl < nbls:
+        if rbl < 36 :
            #Picking the baseline
            data_bls0_rr = data_avg[rbl,:,0,:,0].flatten()
            #data_bls0_ll = data_avg[rbl,:,0,:,1].flatten()
-
-           axs[i,j].plot(freqs, np.angle(data_bls0_rr, deg = True), '.', label = "RR")
+        
+           axs[i,j].plot(freqs, np.abs(data_bls0_rr), '.', label = "RR")
+           #axs[i,j].plot(freqs, np.angle(data_bls0_rr, deg = True), '.', label = "RR")
            #axs[i,j].plot(freqs, np.angle(data_bls0_ll, deg = True), '.',  label = "LL")
 
            #axs[i,j].set_ylabel("Phase (degrees)")
@@ -76,7 +88,8 @@ for i in range(grid):
            axs[i,j].legend(loc = 'upper right')
            
 fig.suptitle("Before calibration")
-fig.supylabel("Phase (degrees)")
+#fig.supylabel("Phase (degrees)")
+fig.supylabel("Amplitude (a.u.)")
 fig.supxlabel("Frequency (GHz)")
 plt.show()
 
@@ -105,17 +118,18 @@ calib.applycal(data_apply, gainsol, axis=1)
 
 cal_data_avg = np.mean(data_apply, axis=0)
 
-fig, axs = plt.subplots(grid, grid, sharex = True, sharey = True, constrained_layout=True, figsize = (12,12))
-for i in range(grid):
-    for j in range(grid):
-        rbl = (i*grid)+j
-        if rbl < nbls:
-
+fig, axs = plt.subplots(gridx, gridy, sharex = True, sharey = True, constrained_layout=True, figsize = (12,12))
+for i in range(gridx):
+    for j in range(gridy):
+        rbl = (i*gridx)+j
+        #if rbl < nbls:
+        if rbl < 36 :
            #Picking the baseline
            cal_data_bls0_rr = cal_data_avg[rbl,:,0,:,0].flatten()
            #cal_data_bls0_ll = cal_data_avg[rbl,:,0,:,1].flatten()
 
-           axs[i,j].plot(freqs, np.angle(cal_data_bls0_rr,  deg = True), '.', label = "RR")
+           axs[i,j].plot(freqs, np.abs(cal_data_bls0_rr), '.', label = "RR") 
+           #axs[i,j].plot(freqs, np.angle(cal_data_bls0_rr,  deg = True), '.', label = "RR")
            #axs[i,j].plot(freqs, np.angle(cal_data_bls0_ll,  deg = True), '.',  label = "LL")
 
            #axs[i,j].set_ylabel("Phase (degrees)")
@@ -124,7 +138,8 @@ for i in range(grid):
            axs[i,j].legend(loc = 'upper right')
 
 fig.suptitle("After calibration}")
-fig.supylabel("Phase (degrees)")
+#fig.supylabel("Phase (degrees)")
+fig.supylabel("Amplitude (a.u.)")
 fig.supxlabel("Frequency (GHz)")
 plt.show()
 

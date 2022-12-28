@@ -1,0 +1,142 @@
+2022-12-13 00:06:39	INFO	::casa	
+2022-12-13 00:06:39	INFO	::casa	
+2022-12-13 00:06:39	INFO	::casa	
+2022-12-13 00:06:40	INFO	::casa	
+2022-12-13 00:06:45	INFO	::casa	Python version 3.8.10
+2022-12-13 00:06:45	INFO	::casa	CASA Version CASALITH 6.5.0.15
+2022-12-13 00:06:45	INFO	::casa	
+2022-12-13 00:06:45	INFO	::casa	Found an existing telemetry logfile: /home/svarghes/.casa/casastats-6.5.0.15-40854a6a835824142e-20221028-173922.log
+2022-12-13 00:06:45	INFO	::casa	Telemetry log file: /home/svarghes/.casa/casastats-6.5.0.15-40854a6a835824142e-20221028-173922.log
+2022-12-13 00:06:45	INFO	::casa	Checking telemetry submission interval
+2022-12-13 00:06:45	INFO	::casa	Telemetry submit interval reached, submitting telemetry data.
+2022-12-13 00:06:47	INFO	::casa	b'  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1134    0     0  100  1134      0   1188 --:--:-- --:--:-- --:--:--  1187\r100  4696    0  3562  100  1134   3733   1188 --:--:-- --:--:-- --:--:--  4917\n<!-- start of nrao-header.html -->\n<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html>\n  <head>\n    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">\n    <link REL="icon" HREF="/common/favicon.ico">\n    <link rel="stylesheet" href="/common/nraostyle.css" media="screen">\n    <!-- end of nrao-header.html -->\n\n<title>CASA Crash Report Uploader</title>\n  <!-- Start of nrao-nav1.html -->\n  </head>\n  <body>\n    <div id="main">\n      <div id="topbar">\n\t<div id="logo">\n\t  <a href="http://www.nrao.edu/">\n\t    <img align="left" src="/icons/nrao_logo_pms_51.png" alt="NRAO"\n\t\t border="0" width="39" height="51">\n\t  </a>\n\t  National Radio<br>Astronomy Observatory\n\t</div>\n\t<div id="search">\n\t  <form name="gs" method="get" action="http://search.nrao.edu/search" style="display: inline;">\n\t    <input type="text" name="q" size="15" maxlength="255"  />\n\t    <input type="submit" name="btn" value="Search NRAO" />\n\t  </form>\n\t</div>\n\t<div id="subnavArea">\n\t  <!-- End of nrao-nav1.html -->\n\n&nbsp;<a class="navig" href="http://www.nrao.edu/">NRAO Home</a> &gt; CASA Crash Report Uploader          <!-- Start of nrao-nav2nomenu.html -->\n        </div>\n      </div>\n    </div>\t\n    <hr style="height:1px;">\n    <table width="100%" cellpadding="5" cellspacing="0" border="0">\n      <tr>\n\t<td bgcolor="#ffffff" valign="top" id="contentArea">\n      \n\n<table align="LEFT" border="0" cellpadding="5" cellspacing="0" width="650"><tr valign="center"><td><h2>CASA Crash Report Uploader</h2>\n</td></tr> <tr valign="center"><td></td></tr> <tr valign="center"><td>Pick a file to upload<form method="post" action="/cgi-bin/crash-report.pl" enctype="multipart/form-data"><input type="file" name="file" value="telemetry-40854a6a835824142e-20221213000645.tar.gz" /><input type="submit" name=".submit" value="Upload" /></form></td></tr> <tr valign="center"><td></td></tr></table><BR CLEAR="ALL">\n<!-- Start of nrao-trailer.html -->\n<div id="footerUtilities">\n  <a href="https://staff.nrao.edu/">Staff</a> |\n  <a href="http://www.nrao.edu/cgi-bin/contact">Contact Us</a> |\n<!--\n  <a href="https://careers.nrao.edu/">Careers</a> |\n-->\n  <a href="http://www.nrao.edu/admin/hr/careers.shtml">Careers</a> |\n\n  <a href="http://www.nrao.edu/navbar/directories.shtml">Directories</a> |\n  <a href="http://www.nrao.edu/navbar/sitemap.shtml">Site Map</a> |\n  <a href="http://www.nrao.edu/index.php/Help">Help</a> |\n  <a href="http://www.nrao.edu/policy/">Policies</a> |\n  <a href="http://www.nrao.edu/policy/diversity.shtml">Diversity</a> |\n  <a href="http://search.nrao.edu/">Search</a>\n</div>\n<div id="footer">\n <a href="http://www.nrao.edu">\n  <img src="/common/logoNRAO.jpg" alt="NRAO"\n   width="41" height="41" vspace="5" border="0" align="middle"\n   style="float:left;" />\n </a>\n <a href="http://www.nsf.gov/">\n  <img src="/common/logoNSF.jpg" alt="NSF"\n   width="57" height="57" hspace="10" border="0" align="middle"\n   style="float:left;" />\n </a> \n <a href="http://www.aui.edu/">\n  <img src="/common/logoAUI.gif" alt="AUI"\n   width="74" height="49" vspace="1" border="0" align="middle"\n   style="float:left; margin-right:20px;" />\n </a> \n <p style="padding-top:10px;">\n  Copyright &#169; 2009 Associated Universities, Inc.<br>\n  The National Radio Astronomy Observatory is a facility of the National\n  Science Foundation operated under cooperative agreement by Associated\n  Universities, Inc.\n </p>  \n</div>\n<!-- End of nrao-trailer.html -->\n\n<!-- Start of nrao-end.html -->\n\n\n\t\t</td>\n\t</tr>\n</table>\n\n</body>\n</html>\n\n<!-- End of nrao-end.html -->\n'
+2022-12-13 00:06:47	INFO	::casa	Removed/home/svarghes/.casa/telemetry-40854a6a835824142e-20221213000645.tar.gz
+2022-12-13 00:06:47	INFO	::casa	Telemetry log file: /home/svarghes/.casa/casastats-6.5.0.15-40854a6a835824142e-20221213-000646.log
+2022-12-13 00:06:47	INFO	::casa	
+2022-12-13 00:06:50	INFO	::casa	Using configuration file ~/.casa/config.py
+2022-12-13 00:06:50	INFO	::casa	
+2022-12-13 00:06:50	INFO	::casa	Checking Measures tables in data repository sub-directory /home/svarghes/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/site-packages/casadata/__data__/geodetic
+2022-12-13 00:06:50	INFO	::casa	  IERSeop2000 (version date, last date in table (UTC)): 2022/05/19/15:00, 2022/04/19/00:00:00
+2022-12-13 00:06:50	INFO	::casa	  IERSeop97 (version date, last date in table (UTC)): 2022/05/19/15:00, 2022/04/19/00:00:00
+2022-12-13 00:06:50	INFO	::casa	  IERSpredict (version date, last date in table (UTC)): 2022/05/22/15:00, 2022/08/20/00:00:00
+2022-12-13 00:06:50	INFO	::casa	  TAI_UTC (version date, last date in table (UTC)): 2022/05/19/15:00, 2017/01/01/00:00:00
+2022-12-13 00:08:31	INFO	plotms::::casa	##########################################
+2022-12-13 00:08:31	INFO	plotms::::casa	##### Begin Task: plotms             #####
+2022-12-13 00:08:31	INFO	plotms::::casa	plotms( vis='/home/svarghes/benchmark_test/correlated_data/test0/uvh5_59925_67754_50990934875_3C286_0001.ms/', gridrows=1, gridcols=1, rowindex=0, colindex=0, plotindex=0, xaxis='', xdatacolumn='', xframe='', xinterp='', yaxis='', ydatacolumn='', yframe='', yinterp='', yaxislocation='', selectdata=True, field='', spw='', timerange='', uvrange='', antenna='', scan='', correlation='', array='', observation='', intent='', feed='', msselect='', averagedata=True, avgchannel='', avgtime='', avgscan=False, avgfield=False, avgbaseline=False, avgantenna=False, avgspw=False, scalar=False, transform=True, freqframe='', restfreq='', veldef='RADIO', phasecenter='', extendflag=False, extcorr=False, extchannel=False, iteraxis='', xselfscale=False, yselfscale=False, xsharedaxis=False, ysharedaxis=False, customsymbol=[], symbolshape='autoscaling', symbolsize=2, symbolcolor='0000ff', symbolfill='fill', symboloutline=False, coloraxis='', customflaggedsymbol=False, flaggedsymbolshape='circle', flaggedsymbolsize=2, flaggedsymbolcolor='ff0000', flaggedsymbolfill='fill', flaggedsymboloutline=False, xconnector='', timeconnector=False, plotrange=[], title='', titlefont=0, xlabel='', xaxisfont=0, ylabel='', yaxisfont=0, showmajorgrid=False, majorwidth=1, majorstyle='', majorcolor='B0B0B0', showminorgrid=False, minorwidth=1, minorstyle='', minorcolor='D0D0D0', showlegend=False, legendposition='', plotfile='', expformat='', verbose=True, exprange='', highres=False, dpi=-1, width=-1, height=-1, overwrite=False, showgui=True, clearplots=True, callib=[], headeritems='', showatm=False, showtsky=False, showimage=False )
+2022-12-13 00:08:38	INFO	plotms::::casa	casaplotms started: 0.0.0.0:43545
+2022-12-13 00:08:38	INFO	PlotMS::params_changed	Updating: REDRAW, MSDATA, CACHE, AXES, CANVAS, DISPLAY, PAGEHEADER, ITERATION, LOG, PLOTMS_OPTIONS.
+2022-12-13 00:08:44	INFO	PlotMS::params_changed	Updating: REDRAW, MSDATA, CACHE, AXES, CANVAS, DISPLAY, PAGEHEADER, ITERATION, LOG, PLOTMS_OPTIONS.
+2022-12-13 00:08:44	INFO	PlotMS::params_changed	Updating: REDRAW, MSDATA.
+2022-12-13 00:08:44	INFO	PlotMS::load_cache	Clearing the existing plotms cache.
+2022-12-13 00:08:44	INFO	PlotMS::load_cache	START     Current memory usage: 11221 kilobytes.
+2022-12-13 00:08:46	INFO	PlotMS::load_cache	Plotting table uvh5_59925_67754_50990934875_3C286_0001.ms
+2022-12-13 00:08:46	INFO	PlotMS::load_cache	Caching for the new plot: Amp(17):data vs. Time(2)...
+2022-12-13 00:08:46	INFO	plotms::::casa	Task plotms complete. Start time: 2022-12-13 00:08:30.904711 End time: 2022-12-13 00:08:46.194465
+2022-12-13 00:08:46	INFO	plotms::::casa	##### End Task: plotms               #####
+2022-12-13 00:08:46	INFO	plotms::::casa	##########################################
+2022-12-13 00:08:46	INFO	PlotMS::load_cache	Loading page header cache
+2022-12-13 00:08:49	INFO	PlotMS::load_cache	Data selection will yield a total of 21377024 plottable points (flagged and unflagged).
+2022-12-13 00:08:49	INFO	PlotMS::load_cache+	The plotms cache will require an estimated 0.129248 GB of memory (6.04613 bytes/point).
+2022-12-13 00:08:49	INFO	PlotMS::load_cache+	This is 0.0244705% of the memory avail. to CASA (528.179 GB).
+2022-12-13 00:08:49	INFO	PlotMS::load_cache	Loading chunks......
+2022-12-13 00:08:50	INFO	PlotMS::load_cache	Generating the plot mask.
+2022-12-13 00:08:50	INFO	PlotMS::load_cache	refTime = 2022/12/12/00:00:00.0
+2022-12-13 00:08:50	INFO	PlotMS::load_cache	Finished loading.
+2022-12-13 00:08:50	INFO	PlotMS::load_cache	Setting up iteration indexing (if necessary), and calculating plot ranges.
+2022-12-13 00:08:51	INFO	PlotMS::load_cache	Axes ranges:
+2022-12-13 00:08:51	INFO	PlotMS::load_cache+	Time: 5.17759e+09 to 5.17759e+09 (unflagged); (no flagged data)
+2022-12-13 00:08:51	INFO	PlotMS::load_cache+	Amp:data: 0 to 2.14748e+09 (unflagged); (no flagged data)
+2022-12-13 00:08:51	INFO	PlotMS::load_cache	Finished indexing.
+2022-12-13 00:08:44	INFO	PlotMS::load_cache	END       Time: +7 seconds.  Memory: +128646 kilobytes.
+2022-12-13 00:08:51	INFO	PlotMS::plot	Plotting 21377024 unflagged points.
+2022-12-13 00:10:21	INFO	PlotMS::params_changed	Updating: REDRAW, CACHE.
+2022-12-13 00:10:21	INFO	PlotMS::load_cache	START     Current memory usage: 140060 kilobytes.
+2022-12-13 00:10:21	INFO	PlotMS::load_cache	Plotting table uvh5_59925_67754_50990934875_3C286_0001.ms
+2022-12-13 00:10:21	INFO	PlotMS::load_cache	Caching for the new plot: Phase(18):data vs. Frequency(6)...
+2022-12-13 00:10:21	INFO	PlotMS::load_cache	Loading page header cache
+2022-12-13 00:10:23	INFO	PlotMS::load_cache	Data selection will yield a total of 21377024 plottable points (flagged and unflagged).
+2022-12-13 00:10:23	INFO	PlotMS::load_cache+	The plotms cache will require an estimated 0.214756 GB of memory (10.0461 bytes/point).
+2022-12-13 00:10:23	INFO	PlotMS::load_cache+	This is 0.0406597% of the memory avail. to CASA (528.179 GB).
+2022-12-13 00:10:24	INFO	PlotMS::load_cache	Loading chunks......
+2022-12-13 00:10:25	INFO	PlotMS::load_cache	Generating the plot mask.
+2022-12-13 00:10:25	INFO	PlotMS::load_cache	refTime = 2022/12/12/00:00:00.0
+2022-12-13 00:10:25	INFO	PlotMS::load_cache	Finished loading.
+2022-12-13 00:10:25	INFO	PlotMS::load_cache	Setting up iteration indexing (if necessary), and calculating plot ranges.
+2022-12-13 00:10:25	INFO	PlotMS::load_cache	Axes ranges:
+2022-12-13 00:10:25	INFO	PlotMS::load_cache+	Frequency: 1.2005 to 1.3275 (unflagged); (no flagged data)
+2022-12-13 00:10:25	INFO	PlotMS::load_cache+	Phase:data: -180 to 180 (unflagged); (no flagged data)
+2022-12-13 00:10:25	INFO	PlotMS::load_cache	Finished indexing.
+2022-12-13 00:10:21	INFO	PlotMS::load_cache	END       Time: +6 seconds.  Memory: +83633.1 kilobytes.
+2022-12-13 00:10:28	INFO	PlotMS::plot	Plotting 21377024 unflagged points.
+2022-12-13 00:10:50	INFO	PlotMS::params_changed	Updating: REDRAW, MSDATA.
+2022-12-13 00:10:50	INFO	PlotMS::load_cache	Clearing the existing plotms cache.
+2022-12-13 00:10:50	INFO	PlotMS::load_cache	START     Current memory usage: 12331.4 kilobytes.
+2022-12-13 00:10:50	INFO	PlotMS::load_cache	Plotting table uvh5_59925_67754_50990934875_3C286_0001.ms
+2022-12-13 00:10:50	INFO	PlotMS::load_cache	  Selection: antenna: ea01&ea04
+2022-12-13 00:10:50	INFO	PlotMS::load_cache	Caching for the new plot: Phase(18):data vs. Frequency(6)...
+2022-12-13 00:10:50	INFO	PlotMS::load_cache	Loading page header cache
+2022-12-13 00:10:52	INFO	PlotMS::load_cache	Data selection will yield a total of 157184 plottable points (flagged and unflagged).
+2022-12-13 00:10:52	INFO	PlotMS::load_cache+	The plotms cache will require an estimated 0.00143185 GB of memory (9.10938 bytes/point).
+2022-12-13 00:10:52	INFO	PlotMS::load_cache+	This is 0.000271091% of the memory avail. to CASA (528.179 GB).
+2022-12-13 00:10:53	INFO	PlotMS::load_cache	Loading chunks......
+2022-12-13 00:10:53	INFO	PlotMS::load_cache	Generating the plot mask.
+2022-12-13 00:10:53	INFO	PlotMS::load_cache	refTime = 2022/12/12/00:00:00.0
+2022-12-13 00:10:53	INFO	PlotMS::load_cache	Finished loading.
+2022-12-13 00:10:53	INFO	PlotMS::load_cache	Setting up iteration indexing (if necessary), and calculating plot ranges.
+2022-12-13 00:10:53	INFO	PlotMS::load_cache	Axes ranges:
+2022-12-13 00:10:53	INFO	PlotMS::load_cache+	Frequency: 1.2005 to 1.3275 (unflagged); (no flagged data)
+2022-12-13 00:10:53	INFO	PlotMS::load_cache+	Phase:data: -179.998 to 179.997 (unflagged); (no flagged data)
+2022-12-13 00:10:53	INFO	PlotMS::load_cache	Finished indexing.
+2022-12-13 00:10:50	INFO	PlotMS::load_cache	END       Time: +3 seconds.  Memory: +2751.88 kilobytes.
+2022-12-13 00:10:55	INFO	PlotMS::plot	Plotting 157184 unflagged points.
+2022-12-13 00:11:29	INFO	PlotMS::params_changed	Updating: REDRAW, MSDATA.
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	Clearing the existing plotms cache.
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	START     Current memory usage: 12359.3 kilobytes.
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	Plotting table uvh5_59925_67754_50990934875_3C286_0001.ms
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	  Selection: antenna: ea01&ea04
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	Data Averaging: 
+2022-12-13 00:11:29	INFO	PlotMS::load_cache+	 Using VECTOR averaging.
+2022-12-13 00:11:29	INFO	PlotMS::load_cache+	 Time: 1 seconds.  Scan: false;  Field: false
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	Caching for the new plot: Phase(18):data vs. Frequency(6)...
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	Loading page header cache
+2022-12-13 00:11:31	INFO	PlotMS::load_cache	Data selection will yield a total of 157184 plottable points (flagged and unflagged).
+2022-12-13 00:11:31	INFO	PlotMS::load_cache+	The plotms cache will require an estimated 0.00143185 GB of memory (9.10938 bytes/point).
+2022-12-13 00:11:31	INFO	PlotMS::load_cache+	This is 0.000271091% of the memory avail. to CASA (528.179 GB).
+2022-12-13 00:11:32	INFO	PlotMS::load_cache	Loading chunks......
+2022-12-13 00:11:32	INFO	PlotMS::load_cache	Generating the plot mask.
+2022-12-13 00:11:32	INFO	PlotMS::load_cache	refTime = 2022/12/12/00:00:00.0
+2022-12-13 00:11:32	INFO	PlotMS::load_cache	Finished loading.
+2022-12-13 00:11:32	INFO	PlotMS::load_cache	Setting up iteration indexing (if necessary), and calculating plot ranges.
+2022-12-13 00:11:32	INFO	PlotMS::load_cache	Axes ranges:
+2022-12-13 00:11:32	INFO	PlotMS::load_cache+	Frequency: 1.2005 to 1.3275 (unflagged); (no flagged data)
+2022-12-13 00:11:32	INFO	PlotMS::load_cache+	Phase:data: -179.998 to 179.997 (unflagged); (no flagged data)
+2022-12-13 00:11:32	INFO	PlotMS::load_cache	Finished indexing.
+2022-12-13 00:11:29	INFO	PlotMS::load_cache	END       Time: +3 seconds.  Memory: +2732.98 kilobytes.
+2022-12-13 00:11:33	INFO	PlotMS::plot	Plotting 157184 unflagged points.
+2022-12-13 00:12:26	INFO	PlotMS::params_changed	Updating: REDRAW, MSDATA.
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	Clearing the existing plotms cache.
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	START     Current memory usage: 12386.5 kilobytes.
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	Plotting table uvh5_59925_67754_50990934875_3C286_0001.ms
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	  Selection: antenna: ea01&ea04
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	Data Averaging: 
+2022-12-13 00:12:26	INFO	PlotMS::load_cache+	 Using VECTOR averaging.
+2022-12-13 00:12:26	INFO	PlotMS::load_cache+	 Time: 310 seconds.  Scan: false;  Field: false
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	Caching for the new plot: Phase(18):data vs. Frequency(6)...
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	Loading page header cache
+2022-12-13 00:12:28	INFO	PlotMS::load_cache	Data selection will yield a total of 512 plottable points (flagged and unflagged).
+2022-12-13 00:12:28	INFO	PlotMS::load_cache+	The plotms cache will require an estimated 4.664e-06 GB of memory (9.10938 bytes/point).
+2022-12-13 00:12:28	INFO	PlotMS::load_cache+	This is 8.83033e-07% of the memory avail. to CASA (528.179 GB).
+2022-12-13 00:12:29	INFO	PlotMS::load_cache	Loading chunks......
+2022-12-13 00:12:29	INFO	PlotMS::load_cache	Generating the plot mask.
+2022-12-13 00:12:29	INFO	PlotMS::load_cache	refTime = 2022/12/12/00:00:00.0
+2022-12-13 00:12:29	INFO	PlotMS::load_cache	Finished loading.
+2022-12-13 00:12:29	INFO	PlotMS::load_cache	Setting up iteration indexing (if necessary), and calculating plot ranges.
+2022-12-13 00:12:29	INFO	PlotMS::load_cache	Axes ranges:
+2022-12-13 00:12:29	INFO	PlotMS::load_cache+	Frequency: 1.2005 to 1.3275 (unflagged); (no flagged data)
+2022-12-13 00:12:29	INFO	PlotMS::load_cache+	Phase:data: -179.291 to 179.997 (unflagged); (no flagged data)
+2022-12-13 00:12:29	INFO	PlotMS::load_cache	Finished indexing.
+2022-12-13 00:12:26	INFO	PlotMS::load_cache	END       Time: +3 seconds.  Memory: -9.67188 kilobytes.
+2022-12-13 00:12:29	INFO	PlotMS::plot	Plotting 512 unflagged points.
+2022-12-13 00:23:07	INFO	plotms::::casa	Terminating casaplotms, PID: 1165577
+2022-12-13 00:23:07	INFO	plotms::::casa	Waiting for casaplotms to terminate. Poll return code: None, PID: 1165577
+2022-12-13 00:23:08	INFO	plotms::::casa	Finished shutting down casaplotms. Poll return code: -15, PID: 1165577

@@ -1,5 +1,13 @@
+"""
+Calibration codes written by Paul Demorest
+Edited by Savin Shynu Varghese for calibrating the COSMIC data
+"""
+
 import numpy as np
-from numpy import linalg
+from numpy import linalg as linalg_cpu
+import cupy as cp
+from cupy import linalg as linalg_gpu
+
 
 
 # Some routines to derive simple calibration solutions directly
@@ -24,7 +32,7 @@ def bl2ant(i):
 
 
 
-def gaincal(data, nant, ant_indices, axis=0, ref=0, avg=[], nit=3):
+def gaincal_cpu(data, nant, ant_indices, axis=0, ref=0, avg=[], nit=3):
     """Derives amplitude/phase calibration factors from the data array
     for the given baseline axis.  In the returned array, the baseline
     dimension is converted to antenna.  No other axes are modified.
@@ -57,7 +65,7 @@ def gaincal(data, nant, ant_indices, axis=0, ref=0, avg=[], nit=3):
             tdata[..., a0, a1] = data.take(i, axis=axis)
             tdata[..., a1, a0] = np.conj(data.take(i, axis=axis))
     for it in range(nit):
-        (wtmp, vtmp) = linalg.eigh(tdata)
+        (wtmp, vtmp) = linalg_cpu.eigh(tdata)
         v = vtmp[..., -1].copy()
         w = wtmp[..., -1]
         for i in range(nant):
@@ -79,6 +87,83 @@ def gaincal(data, nant, ant_indices, axis=0, ref=0, avg=[], nit=3):
     outdims = list(range(axis)) + [-1, ] + list(range(axis, ndim-1))
     return result.transpose(outdims)
 
+def gaincal_gpu(data, nant, ant_indices, axis=0, ref=0, avg=[], nit=3):
+    """Derives amplitude/phase calibration factors from the data array
+    for the given baseline axis.  In the returned array, the baseline
+    dimension is converted to antenna.  No other axes are modified.
+    Note this internally makes a transposed copy of the data so be
+    careful with memory usage in the case of large data sets.  A list
+    of axes to average over before solving can be given in the avg
+    argument (length-1 dimensions are kept so that the solution can be
+    applied to the original data)."""
+
+    nbl = data.shape[axis]
+    ndim = len(data.shape)
+    #(check, nant) = bl2ant(nbl)
+    #print(nant)
+    #if check != 0:
+    #    raise RuntimeError("Specified axis dimension (%d) is not a valid number of baselines" % nbl)
+    if avg != []:
+        # Average, ignoring zeros
+        #norm = np.count_nonzero(data,axis=avg,keepdims=True) # requires numpy 1.19 for keepdims
+        norm = np.count_nonzero(data,axis=tuple(avg))
+        norm[np.where(norm==0)] = 1
+        data = data.sum(axis=tuple(avg), keepdims=True)
+        norm = norm.reshape(data.shape) # workaround lack of keepdims
+        data = data / norm
+    
+    
+    print("Making a reordered visiility set")
+    tdata = np.zeros(data.shape[:axis]+data.shape[axis+1:]+(nant, nant),
+                     dtype=data.dtype)
+    for i in range(nbl):
+        #(a0, a1) = bl2ant(i)
+        #print(a0, a1)
+        [a0, a1] = ant_indices[i]
+        if a0 != a1:
+            tdata[..., a0, a1] = data.take(i, axis=axis)
+            tdata[..., a1, a0] = np.conj(data.take(i, axis=axis))
+    
+    #Transferring the array to GPU
+    print("Transferring data to GPU")
+    with cp.cuda.Device(0):
+        tdata_gpu = cp.asarray(tdata)
+    
+    print("Eigen value decomposition")
+
+    for it in range(nit):
+        (wtmp, vtmp) = linalg_gpu.eigh(tdata_gpu)
+        v = vtmp[..., -1].copy()
+        w = wtmp[..., -1]
+        for i in range(nant):
+            tdata_gpu[..., i, i] = w*(v.real[..., i]**2 + v.imag[..., i]**2)
+           
+
+
+    #(wtmp, vtmp) = linalg.eigh(tdata)
+    #v = vtmp[..., -1].copy()
+    #w = wtmp[..., -1]
+    del tdata_gpu
+    
+    print("Calculating the gain")
+    # result = np.sqrt(w[...,-1]).T*v[...,-1].T
+    result = cp.sqrt(w).T*v.T
+    # First axis is now antenna.. refer all phases to reference ant
+    phi = cp.angle(result[ref])
+    amp = cp.abs(result[ref])
+    fac = (cp.cos(phi) - 1.0j*cp.sin(phi)) * (amp>0.0)
+    result = (result*fac).T 
+
+    result_cpu = result.get()
+
+    # TODO try to reduce number of transposes
+    outdims = list(range(axis)) + [-1, ] + list(range(axis, ndim-1))
+
+    return result_cpu.transpose(outdims)
+
+
+
+
 
 def applycal(data, caldata, nant_check, ant_indices, axis=0, phaseonly=False):
     """
@@ -86,6 +171,10 @@ def applycal(data, caldata, nant_check, ant_indices, axis=0, phaseonly=False):
     to the data array.  The baseline/antenna axis must be specified in
     the axis argument.  Dimensions of all other axes must match up
     (in the numpy broadcast sense) between the two arrays.
+
+    Actually what matters is the correct list of antennas and not the number of antennas
+    Solutions derived from the same set of antennas must be applied to the 
+    another dataset which has same set of antennas. 
     """
 
     ndim = len(data.shape)

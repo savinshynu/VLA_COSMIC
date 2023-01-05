@@ -1,3 +1,8 @@
+"""
+Written by Savin Shynu Varghese
+Scripts to derive delay and phase calibrations from UVH5 files using Pyuvdata
+Also, produces variety of diagnostic plots
+"""
 import sys
 import os
 import argparse
@@ -6,10 +11,19 @@ import numpy as np
 from matplotlib import pyplot as plt
 import pyuvdata.utils as uvutils
 from pyuvdata import UVData
-from calib_util import gaincal, applycal
+from calib_util import gaincal_cpu, gaincal_gpu, applycal
 from sliding_rfi_flagger import flag_rfi
 
+
+
 def flag_spectrum(spectrum, win, threshold = 3):
+
+    """
+    Function to flag bad RFI channel using a 
+    sliding median window:
+    Can be used if the delay values derived does not makes any 
+    sense
+    """
 
     #Getting bad channels
     bad_chan = flag_rfi(spectrum, win, threshold)
@@ -30,11 +44,14 @@ class calibrate_uvh5:
         self.uvd = UVData()
         self.uvd.read(datafile, fix_old_proj=False)
         self.metadata = self.get_metadata()
-        #self.vis_data = self.get_vis_data()
         self.vis_data = self.get_vis_data_new()
         self.ant_indices = self.get_ant_array_indices()
 
     def get_metadata(self):
+        """
+        Reading the metadata from the uvh5 object 
+        and adding them to a dictionary
+        """
 
         nant_data = self.uvd.Nants_data
         nant_array = self.uvd.Nants_telescope
@@ -52,8 +69,7 @@ class calibrate_uvh5:
         pol_array = uvutils.polnum2str(self.uvd.polarization_array)
         freq_array = self.uvd.freq_array[0,:]
         lobs = ntimes*intg_time
-        #print(intg_time)
-        #print(lobs)
+        
         time_array = np.arange(ntimes)*intg_time
         metadata  = {'nant_data' : nant_data,
         'nant_array' : nant_array,
@@ -74,7 +90,8 @@ class calibrate_uvh5:
         return metadata
 
     def print_metadata(self):
-          #Print out the observation details
+        #Print out the observation details
+        
         meta = self.metadata
         print(f" Observations from {meta['telescope']}: \n\
                 Source observed: {meta['source']} \n\
@@ -96,37 +113,55 @@ class calibrate_uvh5:
 
 
     def get_uvw_data(self):
+        #Get the UVW info
         uvw_array = self.uvd.uvw_array
         uvw_array = uvw_array.reshape(self.metadata['ntimes'], self.metadata['bls'], 3)
         return uvw_array
 
+    """
     def get_vis_data(self):
+        
+        # This seems to be a straight forward method
+        # But the values out of uvd_data_array does not make any sense
+
+
         vis = np.zeros((self.metadata['nbls'], self.metadata['ntimes'], self.metadata['nfreqs'], self.metadata['npols']), dtype = 'complex128')
         print(self.uvd.data_array.dtype)
         vis = self.uvd.data_array.copy()
         new_shape = (self.metadata['nbls'], self.metadata['ntimes'])+vis.shape[1:]
         return np.squeeze(vis.reshape(new_shape))
-    
+    """
+
     def get_vis_data_new(self):
         
+        """
+        Iterate baseline by baseline and collect the
+        visibility data
+        """
         ant1, ant2 = self.uvd.baseline_to_antnums(self.uvd.baseline_array[:self.metadata['nbls']])
         vis_new = np.zeros((self.metadata['nbls'], self.metadata['ntimes'], self.metadata['nfreqs'], self.metadata['npols']), dtype = 'complex128')
         for i in range(self.metadata['nbls']):
             vis_new[i,...] = self.uvd.get_data(ant1[i], ant2[i])
 
         return np.squeeze(vis_new)
-   
-    #def derive_delay(self):
+       
     def write_ms(self, outdir):
+        """
+        Write the uvh5 data file into measurement set for CASA
+        """
         outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0] +'.ms')
         return self.uvd.write_ms(outfile)
 
     def derive_phase(self):
+        """
+        Derive gains per antenna/channel/polarizations
+        using some of the sdmpy calibration codes
+        """
 
         print("Deriving Calibrations now")
         t1 = time.time()
-        
-        gainsol = gaincal(self.vis_data, self.metadata['nant_data'], self.ant_indices,  axis = 0, ref = 0)
+        #Check the ref antenna here, make sure if it is antenna 10.
+        gainsol = gaincal_cpu(self.vis_data, self.metadata['nant_data'], self.ant_indices,  axis = 0, ref = 0)
 
         t2 = time.time()
         print(f"Took {t2-t1}s for getting solution from {self.metadata['lobs']}s of data")
@@ -135,18 +170,23 @@ class calibrate_uvh5:
         
         return gainsol
 
-    #def apply_delay(self):
-
     def apply_phase(self, gainsol):
+        """
+        Apply the derived gains to the same dataset.
+        Little problematic if input and output shape are different
+        """
         data_cp = self.vis_data.copy()
         applycal(data_cp, gainsol, self.metadata['nant_data'], self.ant_indices, axis=0, phaseonly=False)
         print(self.vis_data.dtype)
         return data_cp
     
-    #def plot_corr_coefficient(self, outdir):
 
     def get_ant_array_indices(self):
 
+        """
+        Getting baseline indices the way data is arranged in the 
+        pyuvdata object
+        """
         auto = []
         cross = []
         nant = self.metadata['nant_data']
@@ -162,14 +202,14 @@ class calibrate_uvh5:
 
         ant_indices = auto+cross        
         
-        #print(indices)
-        #ant1, ant2 = self.uvd.baseline_to_antnums(self.uvd.baseline_array[:self.metadata['nbls']])
-        #for i in range(self.metadata['nbls']):
-        #    print(ant1[i], ant2[i], ant_indices[i])
         return ant_indices
 
 
     def plot_gain_phases_amp(self, gain, outdir, plot_amp = False):
+
+        """
+        Plots the amplitude and phase (averaged over time) across frequency for a gain solutions (antenna, times, frequency, pols)
+        """
         
         print("plotting gain phase & amp vs freq ")
         
@@ -200,8 +240,7 @@ class calibrate_uvh5:
                         axs[i,j].plot(self.metadata['freq_array']/1e+9, np.angle(gain_rr, deg = True), '.',  label = "RR")
                         axs[i,j].plot(self.metadata['freq_array']/1e+9, np.angle(gain_ll, deg = True), '.',  label = "LL")
 
-                        #axs[i,j].set_ylabel("Phase (degrees)")
-                        #axs[i,j].set_xlabel("Frequency (GHz)")
+                    
                         #axs[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
                         axs[i,j].legend(loc = 'upper right')
             
@@ -209,11 +248,11 @@ class calibrate_uvh5:
             fig.supylabel("Phase (degrees)")
             fig.supxlabel("Frequency (GHz)")
             plt.savefig(outfile, dpi = 150)
-            #plt.show()
             plt.close()
         
         
         if plot_amp:
+
             #plotting the amplitude 
             print("Plotting Gain amplitude vs freq over time")
             for n in range(nplts):
@@ -226,12 +265,12 @@ class calibrate_uvh5:
                         bl = grid_val*n + rbl
                         if bl < nant:
 
-                            #Picking the baseline
+                            #Picking the antenna
                             gain_rr = gain_avg[bl,:,0]
                             gain_ll = gain_avg[bl,:,3]
 
-                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(data_bls_rr), '.',  label = "RR")
-                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(data_bls_ll), '.',  label = "LL")
+                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(gain_rr), '.',  label = "RR")
+                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(gain_ll), '.',  label = "LL")
 
                             #axs[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
                             axs[i,j].legend(loc = 'upper right')
@@ -241,22 +280,17 @@ class calibrate_uvh5:
                 fig.supylabel("Amplitude (a.u.)")
                 fig.supxlabel("Frequency (GHz)")
                 plt.savefig(outfile, dpi = 150)
-                #plt.show()
                 plt.close()
 
     def plot_phases_vs_freq(self, data, outdir, plot_amp = False, corrected = False):
-        print("plotting phase vs freq on all baselines")
         
-        #dat_check = self.uvd.get_data(1,2)
-        #print (dat_check.dtype)
-        #print (data.dtype)
-        #check = np.mean(self.uvd.get_data(1,2), axis = 0)[:,0]
-        #plt.plot(np.angle(check, deg = True))
-        #plt.show()
+        """
+        Plotting the phase and amplitude across frequency for a visibility dataset
+        Use corrected = True to adjust the title after the gain corrections
+        """
+        print("plotting phase vs freq on all baselines")
 
-        print(data.shape)
-        data_avg = np.squeeze(np.mean(data, axis=1))
-        print(data_avg.shape)
+        data_avg = np.mean(data, axis=1)
         ant1, ant2 = self.uvd.baseline_to_antnums(self.uvd.baseline_array[:self.metadata['nbls']])
         
         nbls = self.metadata['nbls']
@@ -269,15 +303,14 @@ class calibrate_uvh5:
         
         for n in range(nplts):
             if not corrected:
-                outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"uncor_phase_freq_{n}.png")
+                outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"_uncor_phase_freq_{n}.png")
             else:
-                outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"cor_phase_freq_{n}.png")
+                outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"_cor_phase_freq_{n}.png")
             fig, axs = plt.subplots(grid_x, grid_y, sharex  = True, sharey = True, constrained_layout=True, figsize = (12,12))
             for i in range(grid_x):
                 for j in range(grid_y):
                     rbl = (i*grid_y)+j
                     bl = grid_val*n + rbl
-                    #print(bl)
                     if bl < nbls:
 
                         #Picking the baseline
@@ -287,8 +320,6 @@ class calibrate_uvh5:
                         axs[i,j].plot(self.metadata['freq_array']/1e+9, np.angle(data_bls_rr, deg = True), '.',  label = "RR")
                         axs[i,j].plot(self.metadata['freq_array']/1e+9, np.angle(data_bls_ll, deg = True), '.',  label = "LL")
 
-                        #axs[i,j].set_ylabel("Phase (degrees)")
-                        #axs[i,j].set_xlabel("Frequency (GHz)")
                         axs[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
                         axs[i,j].legend(loc = 'upper right')
             if not corrected:
@@ -298,7 +329,6 @@ class calibrate_uvh5:
             fig.supylabel("Phase (degrees)")
             fig.supxlabel("Frequency (GHz)")
             plt.savefig(outfile, dpi = 150)
-            #plt.show()
             plt.close()
         
         
@@ -307,9 +337,9 @@ class calibrate_uvh5:
             print("Plotting amplitude vs freq over time")
             for n in range(nplts):
                 if not corrected:
-                    outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"uncor_amp_vs_freq_{n}.png")
+                    outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"_uncor_amp_vs_freq_{n}.png")
                 else:   
-                    outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"cor_amp_vs_freq_{n}.png")
+                    outfile = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"_cor_amp_vs_freq_{n}.png")
                 fig, axs = plt.subplots(grid_x, grid_y, sharex  = True, sharey = True, constrained_layout=True, figsize = (12,12))
                 for i in range(grid_x):
                     for j in range(grid_y):
@@ -334,10 +364,13 @@ class calibrate_uvh5:
                 fig.supylabel("Amplitude (a.u.)")
                 fig.supxlabel("Frequency (GHz)")
                 plt.savefig(outfile, dpi = 150)
-                #plt.show()
                 plt.close()
             
     def plot_phases_waterflall(self, data, outdir, track_phase = False):
+
+        """
+        Make waterfall plots of phases from the visibility dataset
+        """
        
         data = np.squeeze(data)
         ant1, ant2 = self.uvd.baseline_to_antnums(self.uvd.baseline_array[:self.metadata['nbls']])
@@ -368,18 +401,14 @@ class calibrate_uvh5:
 
                         #Picking the baseline
                         data_bls_rr = data[bl,:,:,0]
-                        #data_bls0_ll = data_avg[rbl,:,0,:,1].flatten()
 
                         axs_ph1[i,j].pcolormesh(xr, yr, np.angle(data_bls_rr, deg = True))
                         axs_ph1[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
-                        #axs[i,j].legend(loc = 'upper right')
            
             fig_ph1.suptitle("Phase vs Freq over time, RR")
             fig_ph1.supylabel("Time (s)")
             fig_ph1.supxlabel("Frequency (GHz)")
             plt.savefig(outfile_rr, dpi = 150)
-            #if n == 0:
-            #    plt.show()
             plt.close()
         
     
@@ -399,13 +428,11 @@ class calibrate_uvh5:
 
                         axs_ph2[i,j].pcolormesh(xr, yr, np.angle(data_bls_ll, deg = True))
                         axs_ph2[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
-                        #axs[i,j].legend(loc = 'upper right')
            
             fig_ph2.suptitle("Phase vs Freq over time, LL")
             fig_ph2.supylabel("Time (s)")
             fig_ph2.supxlabel("Frequency (GHz)")
             plt.savefig(outfile_ll, dpi = 150)
-            #plt.show()
             plt.close()
 
         if track_phase:
@@ -438,15 +465,107 @@ class calibrate_uvh5:
                 fig_ph3.supxlabel("Time (s)")
                 fig_ph3.supylabel("Phase averaged over frequency (degrees) ")
                 plt.savefig(outfile_ph_track, dpi = 150)
-                #plt.show()
                 plt.close()   
+
+
+    def get_res_delays(self, data, outdir, ref_ant = 'ea10'):
+
+        data = np.squeeze(data) # removing redundant axis
+        fin_nchan =  1024 # Getting frequency shape
+
+        #Defining  total frequency channels and fine channel bandwidths in Hz to get the time lags
+        tlags = np.fft.fftfreq(fin_nchan, self.metadata['chan_width'])
+        tlags = np.fft.fftshift(tlags)*1e+9 #Converting the time lag into ns
+
+        #Antenna corresponding to each baselines
+        ant1, ant2 = self.uvd.baseline_to_antnums(self.uvd.baseline_array[:self.metadata['nbls']])
+        
+        #Total number of baselines
+        nbls = self.metadata['nbls']
+
+        #Time array
+        times_ar = self.metadata['time_array']
+
+        #Array to store the delay values across time for RR and LL
+        delay_vals = np.zeros((nbls, len(times_ar),2),  dtype = 'float32')
+
+        # Writing the delay values to a csv file
+        #Opening a file to save the delays for each baselines
+        tun_mnt = self.datafile.split('/')[2]
+        if tun_mnt == 'buf0':
+            tun = 'AC'
+        else:
+            tun = 'BD'
+        outfile_res = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"_res_delay_{tun}.csv")
+        dh = open(outfile_res, "w")
+        dh.write(",".join(
+                [
+                "Baseline",
+                "res_pol0",
+                "res_pol1"
+                ]
+                )+"\n")
+        
+        for bl in range(nbls):
+            #Picking the RR data
+            data_bls_rr = data[bl,:,:,0]
+
+            #Conduct an ifft along the frequency axis
+            data_bls_rr_ifft = np.fft.ifft(data_bls_rr, n = fin_nchan, axis = 1)
+            data_bls_rr_ifft = np.fft.fftshift(data_bls_rr_ifft, axes = 1)
+
+            spec_rr = np.abs(data_bls_rr_ifft)
+            peak_inds = np.argmax(spec_rr, axis = 1)
+            delay_vals[bl,:,0] = tlags[peak_inds]  
+
+            #Picking the LL data
+            data_bls_ll = data[bl,:,:,3]
+                        
+            #Conduct an ifft along the frequency axis
+            data_bls_ll_ifft = np.fft.ifft(data_bls_ll, n = fin_nchan, axis = 1)
+            data_bls_ll_ifft = np.fft.fftshift(data_bls_ll_ifft, axes = 1)
+                        
+            spec_ll = np.abs(data_bls_ll_ifft)
+            peak_inds = np.argmax(spec_ll, axis = 1)
+            delay_vals[bl,:,1] = tlags[peak_inds]
+
+
+            #writing the delay value part, taking a mean across time assuming delay are constant
+            ant1_str = 'ea' + str(ant1[bl]).zfill(2)
+            ant2_str = 'ea' + str(ant2[bl]).zfill(2)
+            bls_str = ant1_str +'-'+ ant2_str
+            
+            #If ref_ant is not specified print out the whole baselines
+            if ref_ant == None:
+                dh.write(f"{bls_str}, {np.mean(delay_vals[bl,:,0])}, {np.mean(delay_vals[bl,:,1])} \n")
+            
+            #if ref_ant is specified, only baselines involving the ref antenna will be listed
+            else:
+                ant_base = [ant1_str, ant2_str]
+                #print(ant_base)
+                if ref_ant in ant_base:
+                    ant_base.remove(ref_ant)
+                    ant_new = ant_base[0]
+                    #print(ant_new)
+                    if ant1_str == ref_ant and ant2_str == ref_ant:
+                        #if both antennas are the ref antenna case
+                        dh.write(f"{ant_new}, {np.mean(delay_vals[bl,:,0])}, {np.mean(delay_vals[bl,:,1])} \n")
+                        continue
+                    if ant1_str == ref_ant:
+                        #Negating the delay values so that all the delay values are with reference to ref ant, ea_x - ea_ref, if not make the sign negative
+                        dh.write(f"{ant_new}, {-np.mean(delay_vals[bl,:,0])}, {-np.mean(delay_vals[bl,:,1])} \n")
+                    if ant2_str == ref_ant:
+                        dh.write(f"{ant_new}, {np.mean(delay_vals[bl,:,0])}, {np.mean(delay_vals[bl,:,1])} \n")
+            
+
+        dh.close()
 
 
     def plot_delays_waterflall(self, data, outdir, track_delay = True):
         
-        
         data = np.squeeze(data) # removing redundant axis
-        fin_nchan = data.shape[2] + 1024 # Getting frequency shape
+        
+        fin_nchan = 1024 # Getting frequency shape
 
         #Defining  total frequency channels and fine channel bandwidths in Hz to get the time lags
         tlags = np.fft.fftfreq(fin_nchan, self.metadata['chan_width'])
@@ -458,8 +577,8 @@ class calibrate_uvh5:
         #Total number of baselines
         nbls = self.metadata['nbls']
         times_ar = self.metadata['time_array']
-        #grid = int(np.ceil(np.sqrt(nbls)))
-
+        
+        #Storing delay values to track across time
         delay_vals = np.zeros((nbls, len(times_ar),2),  dtype = 'float32')
 
         grid_x = 6
@@ -491,23 +610,20 @@ class calibrate_uvh5:
                         data_bls_rr_ifft = np.fft.ifft(data_bls_rr, n = fin_nchan, axis = 1)
                         data_bls_rr_ifft = np.fft.fftshift(data_bls_rr_ifft, axes = 1)
 
-                        #spec = 10*np.log(np.abs(data_bls_rr_ifft))
                         spec = np.abs(data_bls_rr_ifft)
+                        
                         peak_inds = np.argmax(spec, axis = 1)
                         delay_vals[bl,:,0] = tlags[peak_inds]
                         
-                        #print(f"{ant1[bl]} - {ant2[bl]}, {tlags[peak_inds][:20]} ")
-                        #flag_rfi(spec, fin_chan/50)
+                        
                         axs_d1[i,j].pcolormesh(xr, yr, spec)
                         
                         axs_d1[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
-                        #axs[i,j].legend(loc = 'upper right')
            
             fig_d1.suptitle("Delay vs time-lags over time, RR")
             fig_d1.supylabel("Time (s)")
             fig_d1.supxlabel("Time-lags (ns)")
             plt.savefig(outfile_rr, dpi = 150)
-            #plt.show()
             plt.close()
         
 
@@ -529,43 +645,23 @@ class calibrate_uvh5:
                         data_bls_ll_ifft = np.fft.ifft(data_bls_ll, n = fin_nchan, axis = 1)
                         data_bls_ll_ifft = np.fft.fftshift(data_bls_ll_ifft, axes = 1)
                         
-                        #spec = 10*np.log(np.abs(data_bls_ll_ifft))
                         spec = np.abs(data_bls_ll_ifft)
+                        
                         peak_inds = np.argmax(spec, axis = 1)
                         delay_vals[bl,:,1] = tlags[peak_inds]
-                        #print(f"{ant1[bl]} - {ant2[bl]}, {tlags[peak_inds][:20]} ")
                        
                         axs_d2[i,j].pcolormesh(xr, yr, spec)
                         
                         axs_d2[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
-                        #axs[i,j].legend(loc = 'upper right')
            
             fig_d2.suptitle("Delay vs time-lags over time, LL")
             fig_d2.supylabel("Time (s)")
             fig_d2.supxlabel("Time-lags (ns)")
             plt.savefig(outfile_ll, dpi = 150)
-            #plt.show()
             plt.close()
 
         #plotting the delay values
         if track_delay:
-
-            # Writing the delay values to a csv file
-            #Opening a file to save the delays for each baselines
-            tun_mnt = self.datafile.split('/')[2]
-            if tun_mnt == 'buf0':
-                tun = 'AC'
-            else:
-                tun = 'BD'
-            outfile_res = os.path.join(outdir, os.path.basename(self.datafile).split('.')[0]+ f"_res_delay_{tun}.csv")
-            dh = open(outfile_res, "w")
-            dh.write(",".join(
-                [
-                "Baseline",
-                "res_pol0",
-                "res_pol1"
-                ]
-                )+"\n")
             
             print("Plotting delay peaks vs time-lags over time")
             for n in range(nplts):
@@ -583,35 +679,67 @@ class calibrate_uvh5:
                             axs_d3[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
                             axs_d3[i,j].legend(loc = 'upper right')
 
-                            #writing the delay value part, taking a mean across time assuming delay are constant
-                            ant1_str = str(ant1[bl]).zfill(2)
-                            ant2_str = str(ant2[bl]).zfill(2)
-                            bls_str = 'ea'+ ant1_str +'-ea'+ ant2_str
-                            dh.write(f"{bls_str}, {np.mean(delay_vals[bl,:,0])}, {np.mean(delay_vals[bl,:,1])} \n")
            
                 fig_d3.suptitle(f"Delay peaks vs time, delay resolution: {round(tlags[1] - tlags[0], 3)} ns")
                 fig_d3.supxlabel("Time (s)")
                 fig_d3.supylabel("Delay peak (ns)")
                 plt.savefig(outfile_peak, dpi = 150)
-                #plt.show()
                 plt.close()    
             
-            dh.close()
+          
         
                  
         
 
 def main(args):
+    
+    # Creating an object with the input data file from solutions needed to be derived
     cal_ob = calibrate_uvh5(args.dat_file)
+    
+    #Print the metdata of the input file
     cal_ob.print_metadata()
+
+    #Uncomment the following lines depending on the tasks to be completed
+
+    #++++++++++++++++++++++++++++++++++++++++++++++++
+    #Use if needed to convert file to a CASA MS format
     #cal_ob.write_ms(args.out_dir)
+
+    #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    #Make a bunch of diagnostic plots before applying calibrations
+    
+    #plot the ampilitude and phase of visibility data
     #cal_ob.plot_phases_vs_freq(cal_ob.vis_data, args.out_dir, plot_amp = True)
+    
+    #plot the Phase waterfall plots of the visibility
     #cal_ob.plot_phases_waterflall(cal_ob.vis_data, args.out_dir, track_phase = True)
+
+    #plot the Delay waterfall plots of the visibility
     #cal_ob.plot_delays_waterflall(cal_ob.vis_data, args.out_dir, track_delay = True)
-    #cal_ob.get_ant_array_indices()
-    gain = cal_ob.derive_phase()
-    cal_data = cal_ob.apply_phase(gain)
-    cal_ob.plot_phases_vs_freq(cal_data, args.out_dir, plot_amp = True, corrected = True)
+    #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    #Calculate the delays and spit out the delay values per baseline in the out_dir
+    cal_ob.get_res_delays(cal_ob.vis_data, args.out_dir, ref_ant = None)
+    
+    #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    #Derive the gain solutions from the visibility data
+    #gain = cal_ob.derive_phase()
+
+    #Plotting amplitude and phase of the gain solutions
+    #cal_ob.plot_gain_phases_amp(gain, args.out_dir, plot_amp = True)
+
+    #Apply the solutions to the same dataset and plot the phases and amplitudes
+    #cal_data = cal_ob.apply_phase(gain)
+    #cal_ob.plot_phases_vs_freq(cal_data, args.out_dir, plot_amp = True, corrected = True)
+    #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==
+    
+    #Apply the solutions to a different dataset
+    #In that case a create a different object of the same class withe the apply_dat_file
+    # Creating an object with the datset to apply the solutions, apply the solutions and plot the phase and amp
+    #cal_apply_ob = calibrate_uvh5(args.apply_dat_file)
+    #cal_data_apply = cal_apply_ob.apply_phase(gain) #Gain derived from a different file
+    #cal_apply_ob.plot_phases_vs_freq(cal_data_apply, args.out_dir, plot_amp = True, corrected = True)
+    
     
 if __name__ == '__main__':
     
@@ -619,10 +747,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Reads UVH5 files, derives delay and gain calibrations, apply to the data, make a bunch of diagnostic plots',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-d','--dat_file', type = str, required = True, help = 'UVH5 file to read in')
+    parser.add_argument('-d','--dat_file', type = str, required = True, help = 'UVH5 file to derive delay and phase calibrations')
+    parser.add_argument('-ad','--apply_dat_file', type = str, required = False, help = 'UVH5 file to apply solutions derived from UVH5 file')
     parser.add_argument('-o','--out_dir', type = str, required = True, help = 'Output directory to save the plots')
-    #parser.add_argument('-p', '--plot', action = 'store_true', help = 'plot the figures, otherwise save figures to working directory')
-
     args = parser.parse_args()
     main(args)
 

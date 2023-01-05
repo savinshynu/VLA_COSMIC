@@ -1,22 +1,20 @@
-#Get the residula delays from the .csv files and write out a latest delay file
+#Get the delay from the .csv files and track them as a function of time
 import csv
 import glob
 import sys, os
 from matplotlib import pyplot as plt
 import numpy as np
+import numpy.ma as ma
 
-data_path1 = "/home/svarghes/benchmark_test/correlated_data/AC_delay/uvh5*"
-data_path2 = "/home/svarghes/benchmark_test/correlated_data/BD_delay/uvh5*"
-
-#data_path1 = sys.argv[1]
-#data_path2 = sys.argv[2]
+data_path1 = "/home/svarghes/benchmark_test/rawdata/AC_delay_new_update/delays_guppi*599*"
+data_path2 = "/home/svarghes/benchmark_test/rawdata/BD_delay_new_update/delays_guppi*599*"
 
 files1 = sorted(glob.glob(data_path1))
 files2 = sorted(glob.glob(data_path2))
 
 #Dictionary to store all the collected values
 #Dictionary of the order
-# main_dict = {'ant':{'mjd_time':{ source : '', 'AC':{ 'pol0: '', 'pol1':'' }, BD :{'pol0' : '', 'pol1' : ''}}}
+# main_dict = {'ant':{'mjd_time':{ source : '', 'AC':{ 'delay_pol0: '', 'delay_pol1':'' }, BD :{'delay_pol0' : '', 'delay_pol1' : ''}}}
 
 data_dict = {}
 avg_dict = {}
@@ -33,29 +31,35 @@ ref = 'ea10'
 for f,filename in enumerate(files1):
     print(f"Getting AC values from {filename}")
     basename_split1 = os.path.basename(filename).split('_')
-    mjd_time = float(basename_split1[1]) + float(basename_split1[2])/86400.0
-    source = basename_split1[4]
+    mjd_time = float(basename_split1[2]) + float(basename_split1[3])/86400.0
+    source = basename_split1[5]
     #freq = float(basename_split1[7].split['-'][0])
     with open(filename, mode='r') as csv_file1: 
         csv_reader1 = csv.DictReader(csv_file1)
         for line in csv_reader1:
             bls = line['Baseline']
-            res0 = float(line['res_pol0'])
-            res1 = float(line['res_pol1'])
-            
+            ng0 = float(line['non-geo_pol0'])
+            ng1 = float(line['non-geo_pol1'])
+            #if line['snr_pol0'] != '+00000000nan' and line['snr_pol1'] != '+00000000nan':
+            snr0 = float(line['snr_pol0'])
+            snr1 = float(line['snr_pol1'])
+            #else:
+            #    continue
+
             ants_base = bls.split('-')
     
-            if ref in ants_base:
+            if ref in ants_base and (snr0 > 4.0) and (snr1 > 4.0):
                 #print(ants_base)
                 #print(ref)
                 if ants_base[0] ==  ref:
-                    res0 = -res0
-                    res1 = -res1
+                    ng0 = -ng0
+                    ng1 = -ng1
                 ants_base.remove(ref)
                 ant_new = ants_base[0]
-                #print(ant_new)    
-                data_dict[ant_new][mjd_time] = {'source': source, 'AC':{ 'pol0': res0, 'pol1': res1}}    
-
+                #print(ant_new)  
+                #print(line)  
+                data_dict[ant_new][mjd_time] = {'source': source, 'AC':{ 'pol0': ng0, 'pol1': ng1}}    
+                #print (ant_new, mjd_time, data_dict[ant_new][mjd_time])
 
     basename_split2 =  os.path.basename(files2[f]).split('_')
     if basename_split1[:7] == basename_split2[:7]:
@@ -66,33 +70,35 @@ for f,filename in enumerate(files1):
             for line in csv_reader2:
                 #print(line['Baseline'], line['non-geo_pol0'])
                 bls = line['Baseline']
-                res0 = float(line['res_pol0'])
-                res1 = float(line['res_pol1'])
-                
+                ng0 = float(line['non-geo_pol0'])
+                ng1 = float(line['non-geo_pol1'])
+                snr0 = float(line['snr_pol0'])
+                snr1 = float(line['snr_pol1'])
                 ants_base = bls.split('-')
+                
         
-        
-                if ref in ants_base:
+                if ref in ants_base and snr0 > 4.0 and snr1 > 4.0:
                     if ants_base[0] ==  ref:
-                        res0 = -res0
-                        res1 = -res1
+                        ng0 = -ng0
+                        ng1 = -ng1
                     ants_base.remove(ref)
-                    ant_new = ants_base[0]    
-                    data_dict[ant_new][mjd_time]['BD'] = {'pol0': res0, 'pol1': res1}
+                    ant_new = ants_base[0]  
+                    #print(line)
+                    #print (ant_new, mjd_time, data_dict[ant_new][mjd_time])
+                    if mjd_time in data_dict[ant_new]:
+                        data_dict[ant_new][mjd_time]['BD'] = {'pol0': ng0, 'pol1': ng1}
     else:
         print("No matching files to get the BD values") 
 
 for key in data_dict.keys():
     print(key, data_dict[key])
-
-
 r = np.random.rand(28)
 g = np.random.rand(28)
 b = np.random.rand(28)
 clr = np.round(np.linspace(0.2,0.8, 28),2)
 
 #Writing averaged values into a csv file
-dh = open(f"latest_res_delays1.csv", "w")
+dh = open(f"latest_delays_new.csv", "w")
 dh.write(",".join(
             [
                 "antenna",
@@ -113,31 +119,52 @@ for i,key in enumerate(data_dict.keys()):
     if data_ant:
         times = data_ant.keys()
         times_ar = np.zeros(len(times))
-        vals = np.zeros((len(times),4)) # Storing the values into an array
+        vals_ar = np.zeros((len(times),4)) # Storing the values into an array
+        vals = ma.MaskedArray(vals_ar)
         for i, time in enumerate(times):
             times_ar[i] = time
-            ac0 = data_ant[time]['AC']['pol0']
-            ac1 = data_ant[time]['AC']['pol1']
-            bd0 = data_ant[time]['BD']['pol0']
-            bd1 = data_ant[time]['BD']['pol1']
-            vals[i,:] = [ac0, ac1, bd0, bd1]
+            try:
+                ac0 = data_ant[time]['AC']['pol0']
+                vals[i,0] = ac0
+            except KeyError:
+                vals[i,0] = ma.masked
+            
+            try:
+                ac1 = data_ant[time]['AC']['pol1']
+                vals[i,1] = ac1
+            except KeyError:
+                vals[i,1] = ma.masked
+            
+            try:
+                bd0 = data_ant[time]['BD']['pol0']
+                vals[i,2] = bd0
+            except KeyError:
+                vals[i,2] = ma.masked
+
+            try:
+                bd1 = data_ant[time]['BD']['pol1']
+                vals[i,3] = bd1
+            except KeyError:
+                vals[i,3] = ma.masked
+
+            #vals[i,:] = [ac0, ac1, bd0, bd1]
+
         ac0_avg, ac1_avg, bd0_avg, bd1_avg   = np.mean(vals,axis=0)
+        print( key, ac0_avg, ac1_avg, bd0_avg, bd1_avg)
         dh.write(f"{key},{ac0_avg:+012.03f},{bd0_avg:+012.03f},{ac1_avg:+012.03f},{bd1:+012.03f}\n")
         min = np.min(vals)
         max = np.max(vals)
-
-        #plot the AC values
-
+        
+        #AC
         #axs[row, col].plot(np.round(times_ar,2), vals[:,0], '.', color = 'b', markerfacecolor = 'none', label = '0') #plotting single pol values
         #axs[row, col].plot(np.round(times_ar,2), vals[:,1], '.', color = 'r', markerfacecolor = 'none', label = '1') #plotting single pol values
         
-        #plot the BD values
+        #BD
         axs[row, col].plot(np.round(times_ar,2), vals[:,2], '.', color = 'b', markerfacecolor = 'none', label = '0') #plotting single pol values
         axs[row, col].plot(np.round(times_ar,2), vals[:,3], '.', color = 'r', markerfacecolor = 'none', label = '1') #plotting single pol values
         
-      
-        axs[row, col].set_ylim(min-10, max+10)
         
+        axs[row, col].set_ylim(min-50, max+300)
         axs[row, col].legend(loc='upper right')
         axs[row, col].set_title(f"antenna: {key}")
         col += 1
@@ -149,8 +176,9 @@ for i,key in enumerate(data_dict.keys()):
         dh.write(f"{key},{0:+012.03f},{0:+012.03f},{0:+012.03f},{0:+012.03f}\n")    
 dh.close()
 fig.supxlabel("MJD time")
-fig.supylabel("Residual delay(ns)")
-#fig.suptitle("Residual delays per antenna vs time, IF:AC")
-fig.suptitle("Residual delays per antenna vs time, IF:BD")
+fig.supylabel("Non-geometrical delay(ns)")
+#fig.suptitle("Non-geometrical delays per antenna vs time, IF:AC")
+fig.suptitle("Non-geometrical delays per antenna vs time, IF:BD")
+#plt.legend(loc='upper right')
 plt.show()
    

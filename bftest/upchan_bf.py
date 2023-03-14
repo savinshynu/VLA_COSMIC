@@ -96,7 +96,7 @@ def calculate_weights_from_signal(data):
 def coherent_bf_voltage(data, beam, times, freq_array, recp_ob):
     """
     Coherent beamforming function
-    Takes fft channelized data (nants, ntime, nfreqs, npols)
+    Input: channelized data (nants, ntime, nfreqs, npols)
     Also need a unix time array and frquency array of fine channels in MHz
     Returns a numpy array of beamformeed volates power.
     Output dimensions are [time, chan]
@@ -143,7 +143,9 @@ def coherent_bf_voltage(data, beam, times, freq_array, recp_ob):
     return bf_pow
 
 def incoherent_bf_voltage(data):
-    """Returns a numpy array of beamformeed volates power.
+    """
+    Input: channelized data (nants, ntime, nfreqs, npols)
+    Returns a numpy array of beamformeed volates power.
     Output dimensions are [time, chan]
     """
     #Normalizing the data

@@ -55,6 +55,7 @@ class calibrate_uvh5:
 
         nant_data = self.uvd.Nants_data
         nant_array = self.uvd.Nants_telescope
+        ant_curr = self.uvd.get_ants()
         ant_names = self.uvd.antenna_names
         nfreqs = self.uvd.Nfreqs
         ntimes = self.uvd.Ntimes
@@ -74,6 +75,7 @@ class calibrate_uvh5:
         metadata  = {'nant_data' : nant_data,
         'nant_array' : nant_array,
         'ant_names' : ant_names, 
+        'ant_curr' : ant_curr,
         'nfreqs' : nfreqs,
         'ntimes' : ntimes,
         'npols': npols,
@@ -108,6 +110,7 @@ class calibrate_uvh5:
                 Data array shape: {self.vis_data.shape} \n\
                 No. of baselines: {meta['nbls']}  \n\
                 No. of antennas present in data: {meta['nant_data']} \n\
+                Current antenna list in the data: {meta['ant_curr']} \n\
                 No. of antennas in the array: {meta['nant_array']} \n\
                 Antenna name: {meta['ant_names']}")
 
@@ -161,23 +164,23 @@ class calibrate_uvh5:
         print("Deriving Calibrations now")
         t1 = time.time()
         #Check the ref antenna here, make sure if it is antenna 10.
-        gainsol = gaincal_cpu(self.vis_data, self.metadata['nant_data'], self.ant_indices,  axis = 0, ref = 0)
-
+        gainsol_dict = gaincal_cpu(self.vis_data, self.metadata['ant_curr'], self.ant_indices,  axis = 0, avg = [1], ref_ant = 10)
+        #print(gainsol_dict)
         t2 = time.time()
         print(f"Took {t2-t1}s for getting solution from {self.metadata['lobs']}s of data")
 
-        print(f"Solution shape: {gainsol.shape}")
+        print(f"Solution shape: {gainsol_dict['gain_val'].shape}")
         
-        return gainsol
+        return gainsol_dict
 
-    def apply_phase(self, gainsol):
+    def apply_phase(self, gain_dict):
         """
-        Apply the derived gains to the same dataset.
+        Apply the derived gains to a dataset.
         Little problematic if input and output shape are different
         """
         data_cp = self.vis_data.copy()
-        applycal(data_cp, gainsol, self.metadata['nant_data'], self.ant_indices, axis=0, phaseonly=False)
-        print(self.vis_data.dtype)
+        applycal(data_cp, gain_dict, self.metadata['ant_curr'], self.ant_indices, axis=0, phaseonly=False)
+        #print(self.vis_data.dtype)
         return data_cp
     
 
@@ -205,7 +208,7 @@ class calibrate_uvh5:
         return ant_indices
 
 
-    def plot_gain_phases_amp(self, gain, outdir, plot_amp = False):
+    def plot_gain_phases_amp(self, gain_dict, outdir, plot_amp = False):
 
         """
         Plots the amplitude and phase (averaged over time) across frequency for a gain solutions (antenna, times, frequency, pols)
@@ -213,8 +216,10 @@ class calibrate_uvh5:
         
         print("plotting gain phase & amp vs freq ")
         
+        gain_ant= gain_dict['antennas']
+        gain = gain_dict['gain_val']
         gain_avg = np.squeeze(np.mean(gain, axis=1))
-        nant = self.metadata['nant_data']
+        nant = len(gain_ant)
 
         grid_x = 6
         grid_y = 5
@@ -241,7 +246,7 @@ class calibrate_uvh5:
                         axs[i,j].plot(self.metadata['freq_array']/1e+9, np.angle(gain_ll, deg = True), '.',  label = "LL")
 
                     
-                        #axs[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
+                        axs[i,j].set_title(f"ea{gain_ant[bl]}")
                         axs[i,j].legend(loc = 'upper right')
             
             fig.suptitle("Gain: Phase vs Freq (averaged in time), RR, LL")
@@ -272,7 +277,7 @@ class calibrate_uvh5:
                             axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(gain_rr), '.',  label = "RR")
                             axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(gain_ll), '.',  label = "LL")
 
-                            #axs[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
+                            axs[i,j].set_title(f"ea{gain_ant[bl]}")
                             axs[i,j].legend(loc = 'upper right')
            
                 
@@ -351,8 +356,8 @@ class calibrate_uvh5:
                             data_bls_rr = data_avg[bl,:,0]
                             data_bls_ll = data_avg[bl,:,3]
 
-                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(data_bls_rr), '.',  label = "RR")
-                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.abs(data_bls_ll), '.',  label = "LL")
+                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.log10(np.abs(data_bls_rr)), '.',  label = "RR")
+                            axs[i,j].plot(self.metadata['freq_array']/1e+9, np.log10(np.abs(data_bls_ll)), '.',  label = "LL")
 
                             axs[i,j].set_title(f"ea{ant1[bl]} - ea{ant2[bl]}")
                             axs[i,j].legend(loc = 'upper right')
@@ -361,7 +366,7 @@ class calibrate_uvh5:
                     fig.suptitle("Uncorrected: Amplitude vs Freq (averaged in time), RR, LL")
                 else:
                     fig.suptitle("Corrected: Amplitude vs Freq (averaged in time), RR, LL")
-                fig.supylabel("Amplitude (a.u.)")
+                fig.supylabel("Amplitude in log10 (a.u.)")
                 fig.supxlabel("Frequency (GHz)")
                 plt.savefig(outfile, dpi = 150)
                 plt.close()
@@ -703,42 +708,55 @@ def main(args):
 
     #++++++++++++++++++++++++++++++++++++++++++++++++
     #Use if needed to convert file to a CASA MS format
-    #cal_ob.write_ms(args.out_dir)
+    cal_ob.write_ms(args.out_dir)
 
     #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     #Make a bunch of diagnostic plots before applying calibrations
     
     #plot the ampilitude and phase of visibility data
-    #cal_ob.plot_phases_vs_freq(cal_ob.vis_data, args.out_dir, plot_amp = True)
+    cal_ob.plot_phases_vs_freq(cal_ob.vis_data, args.out_dir, plot_amp = True)
     
     #plot the Phase waterfall plots of the visibility
-    #cal_ob.plot_phases_waterflall(cal_ob.vis_data, args.out_dir, track_phase = True)
+    cal_ob.plot_phases_waterflall(cal_ob.vis_data, args.out_dir, track_phase = True)
 
     #plot the Delay waterfall plots of the visibility
-    #cal_ob.plot_delays_waterflall(cal_ob.vis_data, args.out_dir, track_delay = True)
+    cal_ob.plot_delays_waterflall(cal_ob.vis_data, args.out_dir, track_delay = True)
     #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
-    #Calculate the delays and spit out the delay values per baseline in the out_dir
-    cal_ob.get_res_delays(cal_ob.vis_data, args.out_dir, ref_ant = None)
+    #Calculate the delays and spit out the delay values per antenna/baseline in the out_dir
+    #cal_ob.get_res_delays(cal_ob.vis_data, args.out_dir, ref_ant = 'ea10')
     
     #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     #Derive the gain solutions from the visibility data
-    #gain = cal_ob.derive_phase()
+    #gain_dict = cal_ob.derive_phase()
 
     #Plotting amplitude and phase of the gain solutions
-    #cal_ob.plot_gain_phases_amp(gain, args.out_dir, plot_amp = True)
+    #cal_ob.plot_gain_phases_amp(gain_dict, args.out_dir, plot_amp = True)
 
     #Apply the solutions to the same dataset and plot the phases and amplitudes
-    #cal_data = cal_ob.apply_phase(gain)
-    #cal_ob.plot_phases_vs_freq(cal_data, args.out_dir, plot_amp = True, corrected = True)
+    #caldata = cal_ob.apply_phase(gain_dict)
+    #cal_ob.plot_phases_vs_freq(caldata, args.out_dir, plot_amp = True, corrected = True)
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++==
     
     #Apply the solutions to a different dataset
-    #In that case a create a different object of the same class withe the apply_dat_file
-    # Creating an object with the datset to apply the solutions, apply the solutions and plot the phase and amp
-    #cal_apply_ob = calibrate_uvh5(args.apply_dat_file)
-    #cal_data_apply = cal_apply_ob.apply_phase(gain) #Gain derived from a different file
-    #cal_apply_ob.plot_phases_vs_freq(cal_data_apply, args.out_dir, plot_amp = True, corrected = True)
+    if args.apply_dat_file:
+    
+        #In that case a create a different object of the same class withe the apply_dat_file
+        # Creating an object with the datset to apply the solutions, apply the solutions and plot the phase and amp
+
+        cal_apply_ob = calibrate_uvh5(args.apply_dat_file)
+        cal_apply_ob.print_metadata()
+
+        cal_apply_ob.plot_phases_vs_freq(cal_apply_ob.vis_data, args.out_dir, plot_amp = True, corrected = False)
+    
+        #plot the Phase waterfall plots of the visibility
+        cal_apply_ob.plot_phases_waterflall(cal_apply_ob.vis_data, args.out_dir, track_phase = True)
+
+        #plot the Delay waterfall plots of the visibility
+        cal_apply_ob.plot_delays_waterflall(cal_apply_ob.vis_data, args.out_dir, track_delay = True)
+    
+        cal_data_apply = cal_apply_ob.apply_phase(gain_dict) #Gain derived from a different file
+        cal_apply_ob.plot_phases_vs_freq(cal_data_apply, args.out_dir, plot_amp = True, corrected = True)
     
     
 if __name__ == '__main__':

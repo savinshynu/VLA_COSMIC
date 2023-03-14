@@ -14,7 +14,7 @@ files2 = sorted(glob.glob(data_path2))
 
 #Dictionary to store all the collected values
 #Dictionary of the order
-# main_dict = {'ant':{'mjd_time':{ source : '', 'AC':{ 'delay_pol0: '', 'delay_pol1':'' }, BD :{'delay_pol0' : '', 'delay_pol1' : ''}}}
+# main_dict = {'ant':{'mjd_time':{ 'AC':{ 'delay_pol0: '', 'delay_pol1':'' }, BD :{'delay_pol0' : '', 'delay_pol1' : ''}}}
 
 data_dict = {}
 avg_dict = {}
@@ -30,9 +30,9 @@ ref = 'ea10'
 
 for f,filename in enumerate(files1):
     print(f"Getting AC values from {filename}")
-    basename_split1 = os.path.basename(filename).split('_')
-    mjd_time = float(basename_split1[2]) + float(basename_split1[3])/86400.0
-    source = basename_split1[5]
+    basename_split1 = os.path.basename(filename).split('AC')[0]
+    mjd_time = float(basename_split1.split('_')[3].split('.')[1] + basename_split1.split('_')[3].split('.')[2]) 
+    #source = basename_split1[5]
     #freq = float(basename_split1[7].split['-'][0])
     with open(filename, mode='r') as csv_file1: 
         csv_reader1 = csv.DictReader(csv_file1)
@@ -45,11 +45,11 @@ for f,filename in enumerate(files1):
             #ng0 = float(line['total_pol0'])
             #ng1 = float(line['total_pol1'])
 
-            #if line['snr_pol0'] != '+00000000nan' and line['snr_pol1'] != '+00000000nan':
-            snr0 = float(line['snr_pol0'])
-            snr1 = float(line['snr_pol1'])
-            #else:
-            #    continue
+            if line['snr_pol0'] != '+00000000nan' and line['snr_pol1'] != '+00000000nan':
+                snr0 = float(line['snr_pol0'])
+                snr1 = float(line['snr_pol1'])
+            else:
+                continue
 
             ants_base = bls.split('-')
     
@@ -63,11 +63,11 @@ for f,filename in enumerate(files1):
                 ant_new = ants_base[0]
                 #print(ant_new)  
                 #print(line)  
-                data_dict[ant_new][mjd_time] = {'source': source, 'AC':{ 'pol0': ng0, 'pol1': ng1}}    
+                data_dict[ant_new][mjd_time] = {'AC':{ 'pol0': ng0, 'pol1': ng1}}    
                 #print (ant_new, mjd_time, data_dict[ant_new][mjd_time])
 
-    basename_split2 =  os.path.basename(files2[f]).split('_')
-    if basename_split1[:7] == basename_split2[:7]:
+    basename_split2 =  os.path.basename(files2[f]).split('BD')[0]
+    if basename_split1 == basename_split2:
         print(f"Getting BD values from {files2[f]}")
 
         with open(files2[f], mode='r') as csv_file2: 
@@ -103,7 +103,7 @@ b = np.random.rand(28)
 clr = np.round(np.linspace(0.2,0.8, 28),2)
 
 #Writing averaged values into a csv file
-dh = open(f"latest_res_delays_B_config.csv", "w")
+dh = open(f"latest_delays_B_config.csv", "w")
 dh.write(",".join(
             [
                 "antenna",
@@ -157,7 +157,8 @@ for i,key in enumerate(data_dict.keys()):
 
         ac0_avg, ac1_avg, bd0_avg, bd1_avg   = np.mean(vals,axis=0)
         print( key, ac0_avg, ac1_avg, bd0_avg, bd1_avg)
-        dh.write(f"{key},{ac0_avg:+012.03f},{ac1_avg:+012.03f},{bd0_avg:+012.03f},{bd1:+012.03f}\n")
+        #Writing the values as negative to match the FPGA convention
+        dh.write(f"{key},{-ac0_avg:+012.03f},{-ac1_avg:+012.03f},{-bd0_avg:+012.03f},{-bd1_avg:+012.03f}\n")
         min = np.min(vals)
         max = np.max(vals)
         

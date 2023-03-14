@@ -5,7 +5,7 @@ import glob
 import os
 
 
-keys = ['uvh5_59944_61375_51040837860_3C286_0001*']
+keys = ['uvh5_59949*']
 
 for key in keys:
 

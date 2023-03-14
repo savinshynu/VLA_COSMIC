@@ -36,8 +36,8 @@ for h5file in h5_list:
                       min_drift = 0,
                       gpu_backend = True,
                       gpu_id = 0,
-                      snr = 10,      # Minimum signal to noise ratio = 10:1
-                      n_coarse_chan = 1 , # Blimpy calculate this for earlier BL data, make sure each file has correct coarse channels
+                      snr = 25,      # Minimum signal to noise ratio = 10:1
+                      n_coarse_chan = 64 , # Blimpy calculate this for earlier BL data, make sure each file has correct coarse channels
                      )
        doppler.search()
 t2 = time.time()

@@ -1,0 +1,146 @@
+telescope_name = "VLA"
+latitude = "34:04:43.0"
+longitude = "-107:37:04.0"
+altitude = 2124
+antenna_diameter = 25
+antenna_position_frame = "xyz"
+
+[[antennas]]
+name = "ea01"
+number = 1
+position = [ -4623.2389, -252.5826, -2416.7061]
+
+[[antennas]]
+name = "ea14"
+number = 14
+position = [75.3561, 489.4072, 721.5445]
+
+[[antennas]]
+name = "ea13"
+number = 13
+position = [-1407.4597, -77.4865, -735.1909]
+
+[[antennas]]
+name = "ea11"
+number = 11
+position = [-2064.2846, -113.8898, -1078.1067]
+
+[[antennas]]
+name = "ea10"
+number = 10
+position = [383.4825, -241.8706, -169.4508]
+
+[[antennas]]
+name = "ea28"
+number = 28
+position = [-428.6843, -24.1521, -223.3949]
+
+[[antennas]]
+name = "ea27"
+number = 27
+position = [116.587, -74.412, -51.0616]
+
+[[antennas]]
+name = "ea26"
+number = 26
+position = [-859.519, -48.2849, -448.0748]
+
+[[antennas]]
+name = "ea25"
+number = 25
+position = [1844.5935, -1173.462, -810.6943]
+
+[[antennas]]
+name = "ea24"
+number = 24
+position = [-5656.5685, -302.189, -2962.8798]
+
+[[antennas]]
+name = "ea23"
+number = 23
+position = [37.4523, 243.6808, 360.0436]
+
+[[antennas]]
+name = "ea22"
+number = 22
+position = [255.3014, 1661.1211, 2454.4898]
+
+[[antennas]]
+name = "ea21"
+number = 21
+position = [5057.6801, -3216.2284, -2223.5101]
+
+[[antennas]]
+name = "ea20"
+number = 20
+position = [-3680.2569, -212.5273, -1913.5301]
+
+[[antennas]]
+name = "ea09"
+number = 9
+position = [-2823.3573, -158.3249, -1472.1811]
+
+[[antennas]]
+name = "ea08"
+number = 8
+position = [180.6758, 1174.7062, 1734.2434]
+
+[[antennas]]
+name = "ea07"
+number = 7
+position = [1259.2951, -795.4625, -556.1087]
+
+[[antennas]]
+name = "ea06"
+number = 6
+position = [11.4333, 74.8534, 111.6222]
+
+[[antennas]]
+name = "ea05"
+number = 5
+position = [-130.5097, -7.80897, -67.602]
+
+[[antennas]]
+name = "ea04"
+number = 4
+position = [768.8715, -484.9407, -339.8572]
+
+[[antennas]]
+name = "ea03"
+number = 3
+position = [3285.4875, -2091.1709, -1443.455]
+
+[[antennas]]
+name = "ea02"
+number = 2
+position = [494.7924, 3218.7823, 4756.15]
+
+[[antennas]]
+name = "ea19"
+number = 19
+position = [4132.2706, -2627.1886, -1816.9196]
+
+[[antennas]]
+name = "ea18"
+number = 18
+position = [404.3412, 2630.0778, 3885.6155]
+
+[[antennas]]
+name = "ea17"
+number = 17
+position = [321.7105, 2092.21, 3089.4265]
+
+[[antennas]]
+name = "ea16"
+number = 16
+position = [2522.2963, -1603.8841, -1108.9018]
+
+[[antennas]]
+name = "ea15"
+number = 15
+position = [123.4258, 801.6395, 1182.123]
+
+[extra_info]
+array_configuration = "B"
+timestamp = "59974.656806203704"
+dataset_id = "23A-345.sb43055931.eb43582535.59974.65680560185"

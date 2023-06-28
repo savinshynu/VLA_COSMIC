@@ -3,7 +3,7 @@ Set of scripts used in the commissioning of COSMIC
 
 ## bftest:
   Contains the scripts used for the beamforming tests
-  upchan_bf.py -- A Python based single coarse channel, upchannelizer beamformer
+  - upchan_bf.py -- A Python based single coarse channel, upchannelizer beamformer
 ## calib:
   Calibration routines used for deriving the gain calibration
 ## mcast:

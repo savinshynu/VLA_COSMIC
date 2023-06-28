@@ -1,10 +1,10 @@
 # VLA_COSMIC
 Set of scripts used in the commissioning of COSMIC
 
-## btest:
+## bftest:
   Contains the scripts used for the beamforming tests
   upchan_bf.py -- A Python based single coarse channel, upchannelizer beamformer
-## Calib:
+## calib:
   Calibration routines used for deriving the gain calibration
 ## mcast:
   Broadcasting the metadata information from the VLA multicast systems to COSMIC redis server postprocessing

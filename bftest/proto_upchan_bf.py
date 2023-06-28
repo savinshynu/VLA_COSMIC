@@ -1,3 +1,10 @@
+"""
+A prototype beamformer code:
+Conducts upchannelization, conduct coherent and incoherent beamforming,
+plots the spectra, waterfall plots
+"""
+
+
 import sys,os
 import time
 import glob

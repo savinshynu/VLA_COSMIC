@@ -1,5 +1,6 @@
 """
 Author: Paul Demorest
+Computes the UVW coardinate given the XYZ antenna positions, mjd time and the direction of the source
 """
 import numpy as np
 from astropy import coordinates, time

@@ -1,3 +1,6 @@
+"""
+Reads the guppi raw files
+"""
 import sys
 from blimpy import GuppiRaw
 import numpy as np

@@ -1,3 +1,9 @@
+"""
+Reads a .bfr5 file containing all the informations requried for
+beamforming and print out the details
+
+"""
+
 import sys
 import h5py
 

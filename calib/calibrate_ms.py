@@ -1,3 +1,7 @@
+"""
+Calibration script for the MS visibility datasets
+"""
+
 import sys
 import os
 import shutil

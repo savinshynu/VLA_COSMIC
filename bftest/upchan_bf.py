@@ -1,3 +1,10 @@
+"""
+beamformer code:
+Conducts upchannelization, conduct coherent and incoherent beamforming,
+plots the spectra, waterfall and raster plot around the source
+"""
+
+
 import sys,os
 import time
 import glob

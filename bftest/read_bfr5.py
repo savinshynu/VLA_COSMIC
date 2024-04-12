@@ -52,6 +52,9 @@ for i in range(nbeams):
 #print(np.unique(ras)*(12.0/np.pi))
 #print(np.unique(decs)*(180.0/np.pi))
 
+#print(np.unique(ras)*(12.0/np.pi))
+#print(np.unique(decs)*(180.0/np.pi))
+
 print("Reading cal data")
 cal_all = f["calinfo/cal_all"][()]
 print(cal_all.shape)

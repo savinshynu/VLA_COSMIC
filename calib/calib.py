@@ -1,3 +1,9 @@
+"""
+Taken from sdmpy
+
+"""
+
+
 import math
 import numpy as np
 from numpy import linalg

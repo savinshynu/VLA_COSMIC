@@ -1,3 +1,10 @@
+"""
+beamformer code:
+Conducts upchannelization, conduct coherent and incoherent beamforming,
+plots the spectra, waterfall and raster plot around the source
+"""
+
+
 import sys,os
 import time
 import glob
@@ -642,4 +649,5 @@ if __name__ == "__main__":
 
     plot_spectra(spec_array, freqs_fft[llim:ulim], ns_range, sig_range, beam_info)
     #plot_raster(spec_array, freqs_fft[llim:ulim], ns_range, sig_range, beam_info, rast_info)
+    
     

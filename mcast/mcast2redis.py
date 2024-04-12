@@ -1,3 +1,9 @@
+"""
+Collect metadata form the MCAST and 
+send it out to a REDIS channel
+"""
+
+
 import logging
 import evla_mcast
 import redis

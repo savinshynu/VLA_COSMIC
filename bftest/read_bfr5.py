@@ -1,3 +1,9 @@
+"""
+Reads a .bfr5 file containing all the informations requried for
+beamforming and print out the details
+
+"""
+
 import sys
 import h5py
 import numpy as np
@@ -56,7 +62,8 @@ time_array = f["/delayinfo/time_array"][()]
 #time_array = f["/delayinfo/jds"][()]
 print(time_array[:10]-time_array[0])
 print(f"Delays array shape: {delay.shape}")
-#for i in range(nbeams):
-#    print("Delay vallues from all antennas at start time")
-#    print(f"beam{i} at block 0: {delay[0,i,:]}")
-#    print(f"beam{i} at block 10: {delay[10,i,:]}")
+
+for i in range(nbeams):
+    print("Delay vallues from all antennas at start time")
+    print(f"beam{i} at block 0: {delay[0,i,:]}")
+    print(f"beam{i} at block 10: {delay[10,i,:]}")

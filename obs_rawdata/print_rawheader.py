@@ -1,3 +1,9 @@
+"""
+Prints the Guppi raw header files
+
+"""
+
+
 import sys
 from blimpy import GuppiRaw
 

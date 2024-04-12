@@ -1,3 +1,8 @@
+"""
+Plots the guppi data
+
+"""
+
 import sys,os
 import time
 import json

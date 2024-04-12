@@ -1,3 +1,7 @@
+"""
+print out the metadata from the uvh5 files and also calculates the UVW values
+"""
+
 from pyuvdata import UVData
 import sys
 import numpy as np

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+"""
+
+Collects delay values from multiple observations
+"""
+
+
 import sys
 import glob
 import os

@@ -1,3 +1,8 @@
+"""
+Reads a group of filterbank files and plot their corresponding
+spectra and waterfall files
+"""
+
 import sys,glob
 import numpy as np
 from blimpy import Waterfall

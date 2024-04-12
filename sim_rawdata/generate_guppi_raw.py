@@ -69,9 +69,17 @@ for stream in antenna_array.bg_streams:
 sig_level = [0.0004449990963094901, 0.00034469481781680114, 0.0006293237572446521]
 sig_drift = np.array([4,2,8])*u.Hz/u.s
 
+means = np.random.rand(n_ant)
+sigs = np.random.rand(n_ant)
+#changing the range
+sigs_new = ((sigs - 0)*0.2)/1 + 0.9
+means_new = ((means - 0)*0.2)/1 - 0.1
 
-for stream in antenna_array.bg_streams:
-    stream.add_noise(v_mean=0,v_std=1)
+print(sigs_new)
+print(means_new)
+
+for i,stream in enumerate(antenna_array.bg_streams):
+    stream.add_noise(v_mean=means_new[i],v_std=sigs_new[i])
     #stream.add_constant_signal(f_start=3032e+6*u.Hz, drift_rate=4*u.Hz/u.s, level = 0.001)
     #for i,f in enumerate(freq):
         #    stream.add_constant_signal(f_start=f, drift_rate=sig_drift[i], level = sig_level[i])
@@ -139,7 +147,7 @@ header_dict = {'INSTANCE': 0, 'DATADIR': '/mnt/buf0', 'BINDHOST': 'enp97s0f1', '
 
 
 rvb.record(
-            output_file_stem='/mnt/slow/savin_vla_analysis/simdata/setigen_df-sig',
+            output_file_stem='/mnt/slow/savin_vla_analysis/simdata/setigen_df-sig-noise',
             obs_length = 5.0,
             length_mode='obs_length',
 

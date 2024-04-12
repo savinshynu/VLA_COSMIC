@@ -452,14 +452,89 @@ class Stamp(object):
         for i in range(nants):
             print(f"{i:2d} " + " ".join(f"{corr[i, j]:.2f}" for j in range(nants)))
 
-            
+    def get_metadata(self):
+        signal  = self.stamp.signal
+        
+        #Hit frequency
+        hit_freq  = signal.frequency
+        
+        # This is relative to the coarse channel.
+        hit_index = signal.index
+
+        # How many bins the hit drifts over.
+        # This counts the drift distance over the full rounded-up power-of-two time range.
+        hit_drift_steps = signal.driftSteps 
+
+        # The drift rate in Hz/s
+        hit_drift_rate = signal.driftRate
+
+        # The signal-to-noise ratio for the hit
+        hit_snr = signal.snr 
+
+        # Which coarse channel this hit is in
+        hit_coarse_chan = signal.coarseChannel 
+
+         # Which beam this hit is in. -1 for incoherent beam, or no beam
+        beamid = signal.beam
+
+        # The total power that is normalized to calculate snr.
+        # snr = (power - median) / stdev
+        hit_coh_pow = signal.power 
+
+        # The total power for the same signal, calculated incoherently.
+        hit_incoh_pow = signal.incoherentPower
+
+        # Metadata copied from the input raw file.
+        # We need these so that we can match up this stamp to the beamforming recipe file.
+        # "schan" is where the raw file starts in the beamforming recipe.
+        #hit_schan = signal.schan
+        #hit_obsid = signal.obsid 
+
+        print(f"Source name: {self.stamp.sourceName}\n\
+                Ra (hours): {self.stamp.ra}\n\
+                Dec (degrees): {self.stamp.dec}\n\
+                Start freq: {self.stamp.fch1} MHz\n\
+                Freq resolution : {self.stamp.foff} MHz\n\
+                MJD start : {self.stamp.tstart}\n\
+                Sampling time: {self.stamp.tsamp}\n\
+                Telescope ID : {self.stamp.telescopeId}\n\
+                Dataset info \n\
+                Time steps:  {self.stamp.numTimesteps}\n\
+                No. of channels: {self.stamp.numChannels}\n\
+                No. of pols: {self.stamp.numPolarizations}\n\
+                No. of antennas : {self.stamp.numAntennas}\n\
+                Signal information or the best hit info \n\
+                Coarse channel with hit : {hit_coarse_chan}\n\
+                Upchannelization fft : {self.stamp.fftSize}\n\
+                Signal start channel : {self.stamp.startChannel}\n\
+                Hit frequency : {hit_freq}\n\
+                Hit drift rate : {hit_drift_rate}\n\
+                Index of coarse channel :{hit_index}\n\
+                Hit drift steps : {hit_drift_steps}\n\
+                Hit SNR : {hit_snr}\n\
+                Beam Id : {beamid}\n\
+                Hit coherent power: {hit_coh_pow}\n\
+                Hit Incoherent power: {hit_incoh_pow}")
+        
         
 def read_stamps(filename):
     with open(filename) as f:
         stamps = stamp_capnp.Stamp.read_multiple(f, traversal_limit_in_words=2**30)
         for s in stamps:
             yield Stamp(s)
-    
+
+        
+def stamps_per_file(filename):
+    with open(filename) as f:
+        stamps = stamp_capnp.Stamp.read_multiple(f, traversal_limit_in_words=2**30)
+        return len(list(stamps))
+
+def read_stamps_with_recipe(filename, recipe_file):
+    with open(filename) as f:
+        stamps = stamp_capnp.Stamp.read_multiple(f, traversal_limit_in_words=2**30)
+        for s in stamps:
+            yield Stamp(s,recipe_file)
+
 def main():
     for hit in read_hits("data/voyager.hits"):
         print(hit.filterbank.numChannels, "x", hit.filterbank.numTimesteps,

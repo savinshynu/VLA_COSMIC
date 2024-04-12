@@ -1,5 +1,6 @@
 import sys
 import h5py
+import numpy as np
 
 filename= sys.argv[1]
 
@@ -35,13 +36,15 @@ phase_ra = f['obsinfo']['phase_center_ra'][()]
 phase_dec = f['obsinfo']['phase_center_dec'][()]
 print(f"Freq shape: {freq.shape} \n\
         freq: {freq} ")
-print(f"phase center ra, dec : {phase_ra, phase_dec}")
-
+print(f"phase center ra, dec : {phase_ra*(12.0/np.pi), phase_dec*(180.0/np.pi)}")
 beam =  f['beaminfo']
 ras = beam['ras'][()]
 decs = beam['decs'][()]
 for i in range(nbeams):
-    print(f"beam {i},  ra, dec : {ras[i],decs[i]}")
+    print(f"beam {i},  ra, dec : {ras[i]*(12.0/np.pi),decs[i]*(180.0/np.pi)}")
+
+#print(np.unique(ras)*(12.0/np.pi))
+#print(np.unique(decs)*(180.0/np.pi))
 
 print("Reading cal data")
 cal_all = f["calinfo/cal_all"][()]
@@ -53,7 +56,7 @@ time_array = f["/delayinfo/time_array"][()]
 #time_array = f["/delayinfo/jds"][()]
 print(time_array[:10]-time_array[0])
 print(f"Delays array shape: {delay.shape}")
-for i in range(nbeams):
-    print("Delay vallues from all antennas at start time")
-    print(f"beam{i} at block 0: {delay[0,i,:]}")
-    print(f"beam{i} at block 10: {delay[10,i,:]}")
+#for i in range(nbeams):
+#    print("Delay vallues from all antennas at start time")
+#    print(f"beam{i} at block 0: {delay[0,i,:]}")
+#    print(f"beam{i} at block 10: {delay[10,i,:]}")

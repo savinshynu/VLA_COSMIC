@@ -1,7 +1,7 @@
 import numpy as np
-from mad import median_absolute_deviation as mad
+from scipy.stats import median_abs_deviation as mad
 
-def flag_rfi(data, winSize, clip=3):
+def flag_rfi_real(data, winSize, clip=3):
           
     spec = np.abs(data)
     smth = spec*0.0
@@ -24,4 +24,31 @@ def flag_rfi(data, winSize, clip=3):
 
 
    
+def flag_rfi_complex_pol(data, winSize, clip):
+    """
+    Flagging data from a dataset of the form [freqs, pols] or 
+    a time averaged spectra for eech polarization from a baseline
+    """     
+    #spec = np.abs(data)
+    smth = data*0.0
 
+    # Compute the smoothed bandpass model
+    for i in range(smth.shape[0]):
+        mn = int(max([0, i-winSize/2]))
+        mx = int(min([i+winSize/2+1, smth.shape[0]]))
+        smth[i,:] = np.median(data[mn:mx,:], axis = 0)      
+           
+
+    diff = data-smth 
+    med = np.median(diff, axis = 0)
+    #sig_mn = np.std(diff)
+    sig_md = mad(diff, axis = 0)
+
+    #bad_chan = np.zeros(data.shape[1])
+    bad_chans = {}
+    for pol in range(data.shape[1]):
+        bad = np.argwhere(np.abs(diff[:,pol]-med[pol]) > clip*np.abs(sig_md[pol]))[:,0]
+        bad_chans[pol] = bad
+
+    #returns the bad_chans per pols and smooth bandpass model
+    return  bad_chans, smth

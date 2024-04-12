@@ -1,6 +1,8 @@
+import sys
 import viewer as seticore_viewer
 
-hits_filepath = "/mnt/slow/savin_vla_analysis/bfdata/search/out_bf_synth_df-sig_multi.seticore.hits"
+hits_filepath = sys.argv[1]
+#hits_filepath = "/mnt/slow/savin_vla_analysis/bfdata/search/out_bf_synth_df-sig_multi.seticore.hits"
 f = open(hits_filepath+'.txt', "w")
 for hit_enum, hit in enumerate(seticore_viewer.read_hits(hits_filepath)):
     f.write(f"Hit #{hit_enum}: \n")

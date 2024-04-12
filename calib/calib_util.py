@@ -7,8 +7,214 @@ import numpy as np
 from numpy import linalg as linalg_cpu
 import cupy as cp
 from cupy import linalg as linalg_gpu
+from sliding_rfi_flagger import flag_rfi_real, flag_rfi_complex_pol
+from matplotlib import pyplot as plt
+from scipy.stats import median_abs_deviation as mad
+
+def flag_complex_vis_proto(vis, threshold):
+
+    """
+    Function to flag bad RFI channel using a 
+    sliding median window:
+    """
+    nbls = vis.shape[0]
+    nfreqs = vis.shape[2]
+    win = int(nfreqs/4)
+    if win < 10:
+        win ==10
+    elif win > 20:
+        win == 20
+
+    print("Averaging the visibilities in time:")
+
+    #Average the data along time axis
+    vis_avg = np.mean(vis, axis = 1)
+    
+    print("Flagging RFI in each baseline")
+    #Iterate over each baseline to compute a bandpass model and flaf the rfi
+    for i in [13]:#range(nbls):
+        spec = vis_avg[i,:,:]
+        #Getting a dict of bad channels per spectrum and smooth bandpass model per polarization
+        bad_chans, smth_bp = flag_rfi_complex_pol(spec, win, threshold)
+        plt.plot(np.abs(spec[:,0]))
+        plt.plot(np.abs(smth_bp[:,0]))
+        plt.show()
+        for p,pol in enumerate(bad_chans.keys()):
+            bad = bad_chans[pol]
+            print(bad)
+            #Replacing the bad RFI channels with the values from smooth bandpass model
+            for tm in range(vis.shape[1]):
+                vis[i,tm,bad,pol] = smth_bp[bad, pol]
+
+    vis_avg_new = np.mean(vis, axis = 1)
+    
+    plt.plot(np.abs(vis_avg[13,:,1]), label = "unflagged")
+    plt.plot(np.abs(vis_avg_new[13,:,1]), label = "flagged")
+    plt.xlabel("Channels")
+    plt.ylabel("Power (a.u.)")
+    plt.title("Amplitude per baseline")
+    plt.legend()
+    plt.show()
 
 
+def flag_complex_vis_proto1(vis, threshold):
+
+    """
+    Function to flag bad RFI channel using just median of the data
+    """
+    nbls = vis.shape[0]
+    nfreqs = vis.shape[2]
+    npols = vis.shape[3]
+
+    print("Averaging the visibilities in time:")
+
+    #Average the data along time axis
+    vis_avg = np.mean(vis, axis = 1)
+    #vis_smth = np.median(vis, axis = 1)
+    print("Flagging RFI in each baseline")
+    #Iterate over each baseline to compute a bandpass model and flaf the rfi
+    for i in [13]:#range(nbls):
+        spec = vis_avg[i,:,:]
+        #Getting a dict of bad channels per spectrum and smooth bandpass model per polarization
+        #bad_chans, smth_bp = flag_rfi_complex_pol(spec, win, threshold)
+        #smth_bp = vis_smth[i,:,:]
+        #diff = spec - smth_bp
+        
+        #plt.plot(np.abs(spec[:,0]))
+        #plt.plot(np.abs(smth_bp[:,0]))
+        #plt.show()
+        for pol in range(npols):
+            med = np.median(spec[:,pol])
+            sig_md = mad(spec[:,pol])
+            bad = np.argwhere(abs(spec[:,pol]-med) > threshold*abs(sig_md))
+            print(bad)
+            #Replacing the bad RFI channels with the values from smooth bandpass model
+            for tm in range(vis.shape[1]):
+                vis[i,tm,bad,pol] = med
+
+    vis_avg_new = np.mean(vis, axis = 1)
+    
+    plt.plot(np.abs(vis_avg[13,:,0]), label = "unflagged")
+    plt.plot(np.abs(vis_avg_new[13,:,0]), label = "flagged")
+    plt.xlabel("Channels")
+    plt.ylabel("Power (a.u.)")
+    plt.title("Amplitude per baseline")
+    plt.legend()
+    plt.show()
+
+def flag_complex_vis_medf(vis, threshold):
+
+    """
+    Function to flag bad RFI channel using just median of the data
+    """
+    nbls = vis.shape[0]
+    nfreqs = vis.shape[2]
+    npols = vis.shape[3]
+
+    print("Averaging the visibilities in time:")
+
+    #Average the data along time axis
+    vis_avg = np.mean(vis, axis = 1)
+    print("Flagging RFI in each baseline")
+    #Iterate over each baseline to compute a bandpass model and flaf the rfi
+    for i in range(nbls):
+        
+        spec = vis_avg[i,:,:]
+        
+        for pol in range(npols):
+            med = np.median(spec[:,pol])
+            sig_md = mad(spec[:,pol])
+            print(np.abs(spec[:,pol]))
+            print(abs(med), sig_md)
+            bad = np.argwhere(abs(spec[:,pol]-med) > threshold*abs(sig_md))
+            print(bad)
+            #Replacing the bad RFI channels with the values from smooth bandpass model
+            for tm in range(vis.shape[1]):
+                vis[i,tm,bad,pol] = med
+
+
+def flag_complex_vis_medf_mod(vis, threshold):
+
+    """
+    Function to flag bad RFI channel using just median of the data
+    """
+    nbls = vis.shape[0]
+    nfreqs = vis.shape[2]
+    npols = vis.shape[3]
+
+    print("Averaging the visibilities in time:")
+
+    #Average the data along time axis
+    vis_avg = np.mean(vis, axis = 1)
+    print("Flagging RFI in each baseline")
+    #Iterate over each baseline to compute a bandpass model and flaf the rfi
+    for i in range(nbls):
+        
+        spec = vis_avg[i,:,:]
+        
+        for pol in range(npols):
+            med = np.median(spec[:,pol])
+            diff = abs(spec[:,pol]-med)
+            med_diff = np.median(diff)
+            sig_diff = mad(diff)
+            print(diff)
+            print(med_diff, sig_diff)
+            bad = np.argwhere(diff > threshold*sig_diff)
+            print(bad)
+            #Replacing the bad RFI channels with the values from smooth bandpass model
+            vis[i,:,bad,pol] = med   
+            #for tm in range(vis.shape[1]):
+            #    vis[i,tm,bad,pol] = med   
+
+def flag_complex_vis_smw(vis, threshold):
+
+    """
+    Function to flag bad RFI channel using a 
+    sliding median window:
+    """
+    nbls = vis.shape[0]
+    nfreqs = vis.shape[2]
+    win = int(nfreqs/4)
+    if win < 10:
+        win ==10
+    elif win > 20:
+        win == 20
+
+    print("Averaging the visibilities in time:")
+
+    #Average the data along time axis
+    vis_avg = np.mean(vis, axis = 1)
+    
+    print("Flagging RFI in each baseline")
+    #Iterate over each baseline to compute a bandpass model and flaf the rfi
+    for i in range(nbls):
+        spec = vis_avg[i,:,:]
+        #Getting a dict of bad channels per spectrum and smooth bandpass model per polarization
+        bad_chans, smth_bp = flag_rfi_complex_pol(spec, win, threshold)
+        
+        for pol in bad_chans.keys():
+            bad = bad_chans[pol]
+            #Replacing the bad RFI channels with the values from smooth bandpass model
+            for tm in range(vis.shape[1]):
+                vis[i,tm,bad,pol] = smth_bp[bad, pol]
+
+    
+
+def flag_spectrum(spectrum, win, threshold = 3):
+
+    """
+    Function to flag bad RFI channel using a 
+    sliding median window:
+    Can be used if the delay values derived does not makes any 
+    sense
+    """
+
+    #Getting bad channels
+    bad_chan = flag_rfi(spectrum, win, threshold)
+    
+    ##Zeroing bad channels
+    #spectrum[bad_chan[:,0]] = 0
+    return bad_chan
 
 # Some routines to derive simple calibration solutions directly
 # from data arrays.

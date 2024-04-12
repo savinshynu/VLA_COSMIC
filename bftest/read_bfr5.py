@@ -6,6 +6,7 @@ beamforming and print out the details
 
 import sys
 import h5py
+import numpy as np
 
 filename= sys.argv[1]
 
@@ -48,6 +49,9 @@ ras = beam['ras'][()]
 decs = beam['decs'][()]
 for i in range(nbeams):
     print(f"beam {i},  ra, dec : {ras[i],decs[i]}")
+
+#print(np.unique(ras)*(12.0/np.pi))
+#print(np.unique(decs)*(180.0/np.pi))
 
 print("Reading cal data")
 cal_all = f["calinfo/cal_all"][()]

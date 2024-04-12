@@ -9,6 +9,7 @@ import sys,os
 import time
 import glob
 import json
+#import tkinter
 from blimpy import GuppiRaw
 import numpy as np
 import matplotlib
@@ -18,7 +19,8 @@ import argparse
 import h5py
 import matplotlib
 
-matplotlib.use('Tkagg')
+#matplotlib.use('Tkagg')
+matplotlib.use('Agg')
 
 class Recipe(object):
     """
@@ -61,7 +63,7 @@ class Recipe(object):
         min = np.argmin(dist)
         return min
 
-"""
+
 def normalize(data):
     for ant in range(data.shape[0]):
         for pol in range(data.shape[-1]):
@@ -97,13 +99,13 @@ def calculate_weights_from_signal(data):
     for ant in range(data.shape[0]):
         for pol in range(data.shape[-1]):
             data[ant,:,:,pol] = data[ant,:,:,pol]/weights[ant,pol]
-"""
+
 
 
 def coherent_bf_voltage(data, beam, times, freq_array, recp_ob):
     """
     Coherent beamforming function
-    Input: channelized data (nants, ntime, nfreqs, npols)
+    Takes fft channelized data (nants, ntime, nfreqs, npols)
     Also need a unix time array and frquency array of fine channels in MHz
     Returns a numpy array of beamformeed volates power.
     Output dimensions are [time, chan]
@@ -120,7 +122,7 @@ def coherent_bf_voltage(data, beam, times, freq_array, recp_ob):
 
     # The delay values from bfr5 files are in ns, so converting frequencies to GHz
     freqs = freq_array*1e-3 
-    print(freqs)
+    #print(freqs)
     
     #Now for each time in the upchannelized data, find the delay values close to the time for each antennas
     #Calculates the phasor information for each time 
@@ -128,9 +130,10 @@ def coherent_bf_voltage(data, beam, times, freq_array, recp_ob):
 
     for timestep, time_value in enumerate(times):
         time_array_index = recp_ob.time_array_index(time_value)
-        #print(time_value, time_array_index)
+        #print(time_value, recp_ob.time_array[time_array_index])
         # The delay values for each antennas for a time and beam
         tau = recp_ob.delays[time_array_index, beam, :]
+        #tau -= tau.min()
         #print(tau)
         for ant in range(nants):
             #Calculating the phasor
@@ -144,15 +147,18 @@ def coherent_bf_voltage(data, beam, times, freq_array, recp_ob):
     #Taking the conjugate of phasor, multiply with the data and summing it across the antenna axis
     bf_volt = (np.conjugate(coeff) * data).sum(axis = 0)
 
-    #Squaring the beamformed voltages and summing across the polarizations to get Stokes I
-    bf_pow = (np.abs(bf_volt)**2).sum(axis = 2)
+    #Trying withoug conjugate for just the X band, don't use this unless needed
+    #bf_volt = (coeff * data).sum(axis = 0)
 
-    return bf_pow
+    #Squaring the beamformed voltages and summing across the polarizations to get Stokes I
+    bf_pow_i = (np.abs(bf_volt)**2).sum(axis = 2)
+    
+    #bf_pow_v = np.abs(np.abs(bf_volt[:,:,0])**2 - np.abs(bf_volt[:,:,1])**2)
+    
+    return bf_pow_i
 
 def incoherent_bf_voltage(data):
-    """
-    Input: channelized data (nants, ntime, nfreqs, npols)
-    Returns a numpy array of beamformeed volates power.
+    """Returns a numpy array of beamformeed volates power.
     Output dimensions are [time, chan]
     """
     #Normalizing the data
@@ -160,11 +166,14 @@ def incoherent_bf_voltage(data):
     #calculate_weights_from_signal(data)
 
     #Squaring the data and adding across antenna and polarization axis
-    bf_pow = (np.abs(data)**2).sum(axis = (0,3))
+    bf_pow_i = (np.abs(data)**2).sum(axis = (0,3))
+    
+    #bf_pow_v = np.abs(np.abs(data[:,:,:,0])**2 - np.abs(data[:,:,:,1])**2)
+    #bf_pow_v = bf_pow_v.sum(axis = (0)) 
+    
+    return bf_pow_i
 
-    return bf_pow
-
-def plot_antenna_spectra(data):
+def plot_antenna_spectra(data, freq):
     
     """
     Input: Channelized FFT data
@@ -178,10 +187,13 @@ def plot_antenna_spectra(data):
     #Gettng a a complex data here
     for i in range(data.shape[0]):
         #Plotting the single antennna
-        spec = (np.abs(data[i,:,:,:])**2).sum(axis = 2)
-        pow = np.mean(spec, axis = 0)
+        #spec_i = (np.abs(data[i,:,:,:])**2).sum(axis = 2)
+        spec_v = np.abs(np.abs(data[i,:,:,0])**2 - np.abs(data[i,:,:,1])**2)
+        pow = np.mean(spec_v, axis = 0)
         #plt.plot(10*np.log10(pow), label = i)
-        plt.plot(pow, label = i)
+        plt.plot(freq, 10*np.log10(pow), label = f"ant{i}")
+    plt.xlabel("Channels")
+    plt.ylabel("Specta Averaged in time")
     plt.legend()
     plt.show()
 
@@ -245,8 +257,9 @@ def plot_all(data, freq, tdat, phase = None, point = None, beam = "incoh"):
     else:
         fig.suptitle(f"Pointing: Ra,dec: {np.round(point[0],3), np.round(point[1],3)}, Boresight: {np.round(phase[0],3), np.round(phase[1],3)}")
     #plt.savefig(f"vla_maser-on-bore_beam_{beam}.png")
-    plt.savefig(f"maser-off-bore_beam{beam}.png")
-    #plt.show()
+    #plt.savefig(f"maser-off-bore_beam{beam}.png")
+    plt.savefig(f"voyager2_fixed_{beam}.png")
+    plt.show()
     plt.close()
 
 def plot_spectra(data, freq, ns_range, sig_range, beam_info):
@@ -275,11 +288,12 @@ def plot_spectra(data, freq, ns_range, sig_range, beam_info):
         noise = np.std(spec[ns_range[0]:ns_range[1]])
        
         peak = np.max(spec[sig_range[0]:sig_range[1]])
-       
-        snr = peak/noise
+        mean = np.mean(spec[ns_range[0]:ns_range[1]])
+        snr = (peak - mean)/noise
         print(f"SNR : {snr}")
         
-        plt.plot(freq, 10*np.log10(spec), color=clr[bm], label = beam, marker='.', linestyle='solid')
+        plt.plot(freq, 10*np.log10(spec), label = beam, marker='.', linestyle='solid')
+        #plt.plot(freq, 10*np.log10(spec), color=clr[bm], label = beam, marker='.', linestyle='solid')
         #plt.plot(freq, spec, color=clr[bm], label = beam, marker='.', linestyle='solid')
         plt.ylabel("Power (dB)")
         plt.xlabel("Frequency (MHz)")
@@ -293,10 +307,64 @@ def plot_spectra(data, freq, ns_range, sig_range, beam_info):
         #else:
         #    plt.title(f"Pointing: Ra,dec: {np.round(point[0],3), np.round(point[1],3)}, Boresight: {np.round(phase[0],3), np.round(phase[1],3)}, SNR : {snr}")
    
-    plt.savefig(f"spectra-on-bore_log.png")
+    plt.savefig(f"voyager2-spectra_multi_fixed_sign-flip.png")
     plt.show()
     #plt.close()
 
+
+def plot_raster(data, freq, ns_range, sig_range, beam_info, rast_info):
+
+    """
+    Plots the integrated spectra from al the beams
+    Pass the array which has stored spectra from al the beams
+    """
+    print("plotting now: wait")
+    
+    #print(ns_range)
+    #print(sig_range)
+    nbeam = data.shape[0]
+    SNR = np.zeros(nbeam)
+
+    beams = list(beam_info.keys())
+    print(beams)
+    
+    ras = rast_info[0]
+    decs = rast_info[1]
+    nra = len(rast_info[0])
+    ndec = len(rast_info[1])
+
+    delra =  ras[1] - ras[0]
+    deldec = decs[1] - decs[0]
+
+    ra_ax = np.linspace(ras.min() - delra/2.0, ras.max() + delra/2.0, nra+1)
+    dec_ax = np.linspace(decs.min() - deldec/2.0, decs.max() + deldec/2.0, ndec+1)
+
+    fig = plt.figure(figsize=(10, 6))
+
+    for bm in range(nbeam-1):
+        beam = beams[bm]
+        print(f"Getting beam : {beam}")
+        spec = data[bm,:]
+
+        #Calculates the noise and peak values and SNR from the data
+        noise = np.std(spec[ns_range[0]:ns_range[1]])
+        mean =  np.mean(spec[ns_range[0]:ns_range[1]])
+        peak = np.max(spec[sig_range[0]:sig_range[1]])
+       
+        snr = (peak-mean)/noise
+        print(f"SNR : {snr}")
+
+        SNR[bm] = snr
+    np.save("voyager2-wide_array_I_corr", SNR)
+    SNR_grid = SNR[:-1].reshape(nra, ndec)
+    plt.pcolormesh(dec_ax, ra_ax, 10*np.log10(SNR_grid))
+    cbar = plt.colorbar(label = "SNR (dB)")
+    plt.xlabel("Dec [deg]")
+    plt.ylabel("RA [hrs]")
+   
+    plt.savefig(f"snr_grid-wide_voyager2_I.png")
+    #plt.show()
+    plt.close()
 
 def collect_header(dat_stem):
     """
@@ -316,7 +384,8 @@ def collect_sing_chan_data(dat_stem, chan_num):
 
 
     #files = sorted(glob.glob(dat_stem+'*.raw')) #Input guppi raw file 
-    files = sorted(glob.glob(dat_stem+'.0000''*.raw')) #Taking one file for simplicity
+    files = sorted(glob.glob(dat_stem+'.000[0,1,2,3]*.raw')) #Taking one file for simplicity
+    print(files)
     for f,filename in enumerate(files):
         print(filename)
         gob = GuppiRaw(filename) #Instantiating a guppi object
@@ -332,11 +401,12 @@ def collect_sing_chan_data(dat_stem, chan_num):
         chan_timewidth = header['TBIN']
         chan_freqwidth = header['CHAN_BW']
         
-        freq_start = freq_mid - ((nchan*chan_freqwidth)/2.0)
-        freq_end = freq_mid + ((nchan*chan_freqwidth)/2.0)
+        freq_start = freq_mid - ((nchan*chan_freqwidth)/2.0) + (chan_freqwidth/2.0)
+        
+        freq_end = freq_start + nchan*chan_freqwidth  #freq_mid + ((nchan*chan_freqwidth)/2.0)  - (chan_freqwidth/2.0)
     
-        fstart_chan = freq_start + chan_num*chan_freqwidth
-        fstop_chan = freq_start + (chan_num+1)*chan_freqwidth
+        fstart_chan = (freq_start - (chan_freqwidth/2.0)) + (chan_num*chan_freqwidth) 
+        fstop_chan = (freq_start - (chan_freqwidth/2.0)) + ((chan_num+1)*chan_freqwidth)
 
         print(fstart_chan, fstop_chan)
 
@@ -356,7 +426,7 @@ def collect_sing_chan_data(dat_stem, chan_num):
 
         # Collecting data from each block into a big array
         data = np.zeros((nant, int(ntsamp_block*n_blocks), npols), dtype = 'complex64')
-        print(data.shape)
+        #print(data.shape)
 
         ants1 = header['ANTNMS00']
         ants = ants1.split(',')
@@ -391,7 +461,7 @@ def collect_sing_chan_data(dat_stem, chan_num):
         except NameError:
             data_main = data
         
-        #print(data_main.shape)
+        print(data_main.shape)
 
 
         try:
@@ -435,7 +505,7 @@ def fft_sing_chan(data, times_unix, freqs, header, lfft):
     # Time, frequency resolution and number of time samples after FFT
     chan_timewidth = delt*nfine
     ntsampfine = int(data.shape[1]/nfine)
-    chan_freqwidth = delf/nfine
+    fine_chan_freqwidth = delf/nfine
 
     #Getting new unix time values
     times_unix_new = np.zeros(ntsampfine)
@@ -456,11 +526,35 @@ def fft_sing_chan(data, times_unix, freqs, header, lfft):
     print(f"FFT done, took {t1-t0} s")
 
     print(f"The channelized datashape [A, Tfine, Cfine, P]: {data.shape}") 
-    freq_axis = np.linspace(freq_start, freq_end, nfine) #New Upchannelized frequency channels
-
+    #freq_axis = np.linspace(freq_start, freq_end, nfine) #New Upchannelized frequency channels
+    freq_axis = freq_start + (fine_chan_freqwidth/2.0) + fine_chan_freqwidth * np.arange(nfine)
     return data, times_unix_new, freq_axis
 
+def dedoppler_1(data, drift_rate, tsamp, chan_bw):
+    """
+    Simple de-doppler code for a Filterbank or HDF5 file.
+    Parameters:
+    ----------
+    wf : object
+        Blimpy Waterfall object, previously instantiated with a loaded data matrix.
+    drift_rate : float
+        Signal drift rate over time [Hz/s]
+    """
+    print("De-dopplering now")
+    # Get the time sampling interval in seconda.
+    #tsamp = wf.header['tsamp']
 
+    # Get the fine channel bandwidth in Hz.
+    chan_bw = chan_bw * 1e6
+
+    # Compute the number of numpy rolls to perform.
+    n_roll = (drift_rate * tsamp) / chan_bw
+    print(n_roll)
+    # For each time-row,
+    #      roll all of the data power values in each fine channel frequency column
+    #      given by -(n_roll * row number).
+    for ii in range(data.shape[0]):
+        data[ii][:] = np.roll(data[ii][:], -int(n_roll * ii))
 
 
 
@@ -473,7 +567,7 @@ if __name__ == "__main__":
     recipe_file =  sys.argv[2]
     
     #Coarse channel to collect the data and upchannelize
-    chan_num = 10 #50
+    chan_num = 12 #50
 
     #collecting the header infor and data from all the guppi raw files
     header = collect_header(dat_stem)
@@ -482,34 +576,38 @@ if __name__ == "__main__":
     print(freq_info)
     
     #Upchannelizing the data
-    data_fft, times_unix_fft, freqs_fft = fft_sing_chan(data, times_unix, freq_info, header, 16384)
-    #data_fft, times_unix_fft, freqs_fft = fft_sing_chan(data, times_unix, freq_info, header, 131072)
+    #data_fft, times_unix_fft, freqs_fft = fft_sing_chan(data, times_unix, freq_info, header, 16384)
+    data_fft, times_unix_fft, freqs_fft = fft_sing_chan(data, times_unix, freq_info, header, 524288)
 
-    #plot_antenna_spectra(data_fft)
+    del_tft = times_unix_fft[1] - times_unix_fft[0]
+    del_fqt = freqs_fft[1] - freqs_fft[0]
+    #plot_antenna_spectra(data_fft, freqs_fft)
     #plot_antenna_timeseries(data_fft)
     
-
-    recp_ob = Recipe(recipe_file)
     
+    recp_ob = Recipe(recipe_file)
+    drift_rate = -0.81
+    
+    rast_info = [np.unique(recp_ob.ras)*(12.0/np.pi), np.unique(recp_ob.decs)*(180.0/np.pi)]
 
     #Giving a range of frequencies for displaying the data
 
-    lfreq = 6668.3 #3032.2496 #6669.0#3019.7496
-    hfreq = 6668.5 #3032.2506 #6669.370#3019.7504
+    lfreq =  8420.45 #8419.25 #6668.3 - 0.5 #3032.2496 #6669.0#3019.7496
+    hfreq =  8420.38   #8419.28 #6668.7 - 0.5 #3032.2506 #6669.370#3019.7504
     llim = np.where(np.abs(freqs_fft-lfreq)<0.00016)[0]
     ulim = np.where(np.abs(freqs_fft-hfreq)<0.00016)[0]
     llim = int(np.mean(llim))
     ulim  = int(np.mean(ulim))
-
+    print(llim,ulim)
     freqs_fft_trim = freqs_fft[llim:ulim]
     
     #Noise range freq in MHz
-    ns_beg = 6668.300
-    ns_end = 6668.325
+    ns_beg = 8420.41 #8419.25 #6668.300 - 0.5
+    ns_end = 8420.40 #8419.28 #6668.325 - 0.5
 
     #signal range freq in MHz
-    sig_beg = 6668.375
-    sig_end = 6668.400
+    sig_beg = 8420.43 #8419.25 #6668.375 - 0.5
+    sig_end = 8420.41 #8419.280 #6668.400 - 0.5
 
     ns_llim = np.where(np.abs(freqs_fft_trim-ns_beg)<0.00016)[0]
     ns_ulim = np.where(np.abs(freqs_fft_trim-ns_end)<0.00016)[0]
@@ -530,21 +628,26 @@ if __name__ == "__main__":
 
     #Looking at incoherent beam
     print("Forming incoherent beam")
-    incoh_pow = incoherent_bf_voltage(data_fft) 
-    plot_all(incoh_pow[:, llim:ulim], freqs_fft[llim:ulim], times_unix_fft.copy())
+    incoh_pow = incoherent_bf_voltage(data_fft)
+    #dedoppler_1(incoh_pow, drift_rate, del_tft, del_fqt)
+    #plot_all(incoh_pow[:, llim:ulim], freqs_fft[llim:ulim], times_unix_fft.copy())
     
     beam_info = {}
     for beam in range(recp_ob.nbeams): 
         print(f"Forming beam number: {beam}")
         pow = coherent_bf_voltage(data_fft, beam, times_unix_fft, freqs_fft, recp_ob)
+        #dedoppler_1(pow, drift_rate, del_tft, del_fqt)
         spec_array[beam,:] = np.mean(pow[:, llim:ulim], axis = 0)
        
         point = [recp_ob.ras[beam], recp_ob.decs[beam]]
         bore = [recp_ob.phase_ra, recp_ob.phase_dec]
         beam_info[beam] = [point,bore]
-        plot_all(pow[:, llim:ulim], freqs_fft[llim:ulim], times_unix_fft.copy(), bore, point, beam)
+        #plot_all(pow[:, llim:ulim], freqs_fft[llim:ulim], times_unix_fft.copy(), bore, point, beam)
     
     spec_array[beam+1,:] = np.mean(incoh_pow[:, llim:ulim], axis = 0)
     beam_info['incoh'] = [None, None]
+
     plot_spectra(spec_array, freqs_fft[llim:ulim], ns_range, sig_range, beam_info)
+    #plot_raster(spec_array, freqs_fft[llim:ulim], ns_range, sig_range, beam_info, rast_info)
+    
     
